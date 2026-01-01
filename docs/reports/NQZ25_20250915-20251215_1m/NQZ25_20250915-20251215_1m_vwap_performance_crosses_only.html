@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nqz25 20250915-20251215 1M Vwap Performance Crosses Only - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS will be inlined here */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Nqz25 20250915-20251215 1M Vwap Performance Crosses Only</h1>
+        <div class="subtitle">
+            NQ | 
+            RTH | 
+            1m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+    </div>
+
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Total Rows</div>
+            <div class="value">2</div>
+            
+            <div class="description">Records in dataset</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg Total VWAP Touches</div>
+            <div class="value">1247.00</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg Avg Extension (ticks)</div>
+            <div class="value">45.46</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg Max Extension (ticks)</div>
+            <div class="value">308.89</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+    </div>
+
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Total VWAP Touches by Cross Type</div>
+            
+            <div id="chart-1" style="height: 400px;"></div>
+        </div>
+        
+    </div>
+
+    <div class="panel">
+        <div class="insights-title">Data Preview</div>
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    
+                    <th>Cross Type</th>
+                    
+                    <th>Total VWAP Touches</th>
+                    
+                    <th>Avg Extension (ticks)</th>
+                    
+                    <th>Max Extension (ticks)</th>
+                    
+                    <th>Avg. Performance (ticks)</th>
+                    
+                    <th>Max Performance (ticks)</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    
+                    <td>Up Cross</td>
+                    
+                    <td>1255</td>
+                    
+                    <td>42.47808764940239</td>
+                    
+                    <td>287.2000000000007</td>
+                    
+                    <td>42.47808764940239</td>
+                    
+                    <td>287.2000000000007</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>Down Cross</td>
+                    
+                    <td>1239</td>
+                    
+                    <td>48.45036319612591</td>
+                    
+                    <td>330.579999999999</td>
+                    
+                    <td>48.45036319612591</td>
+                    
+                    <td>330.579999999999</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Generic dashboard for NQZ25_20250915-20251215_1m_vwap_performance_crosses_only.csv</p>
+    </div>
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        Plotly.newPlot('chart-1', [{"marker": {"color": ["#00b4d8", "#0077b6"]}, "type": "bar", "x": ["Down Cross", "Up Cross"], "y": [1239.0, 1255.0]}], {"font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "xaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "Cross Type", "zeroline": false}, "yaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "Total VWAP Touches", "zeroline": false}}, plotlyConfig);
+
+    </script>
+</body>
+</html>

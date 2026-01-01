@@ -1,0 +1,256 @@
+/**
+ * styles.css
+ * 
+ * Alpha Drip color scheme styling - compact, no white space, matching dashboard.
+ * Dark blue backgrounds with cyan accents, dense layout.
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.4;
+    color: #ffffff;
+    background: #1A2035; /* Dark blue background matching Alpha Drip dashboard */
+    min-height: 100vh;
+    padding: 0;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0;
+    background: #1A2035; /* Same as body - no separate container background */
+    padding: 15px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2A3455;
+}
+
+header h1 {
+    font-size: 2em;
+    background: linear-gradient(135deg, #5e9ce0 0%, #80caff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #b0b8c8;
+    font-size: 0.9em;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 180px;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: #b0b8c8;
+    font-size: 0.85em;
+}
+
+.control-group select {
+    padding: 8px 12px;
+    border: 1px solid #5e9ce0; /* Light blue border like dashboard input fields */
+    border-radius: 4px;
+    font-size: 0.95em;
+    background: #0F1529; /* Dark blue background like dashboard input fields */
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.control-group select:hover:not(:disabled) {
+    border-color: #80caff;
+    background: #1A2035;
+}
+
+.control-group select:focus {
+    outline: none;
+    border-color: #80caff;
+    box-shadow: 0 0 0 2px rgba(94, 156, 224, 0.3);
+}
+
+.control-group select:disabled {
+    background: #0F1529;
+    cursor: not-allowed;
+    color: #6b7280;
+    border-color: #2A3455;
+}
+
+.control-group select option {
+    background: #0F1529;
+    color: #ffffff;
+}
+
+.report-content {
+    margin-top: 20px;
+}
+
+.gallery-section {
+    margin-bottom: 25px;
+}
+
+.gallery-section h2 {
+    color: #5e9ce0;
+    margin-bottom: 12px;
+    font-size: 1.4em;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #2A3455;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.gallery-item {
+    background: #0F1529; /* Darker blue like dashboard panels */
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #2A3455;
+    transition: border-color 0.2s ease;
+}
+
+.gallery-item:hover {
+    border-color: #5e9ce0;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    background: #1A2035;
+}
+
+.gallery-label {
+    margin-top: 8px;
+    font-size: 0.85em;
+    color: #b0b8c8;
+    text-align: center;
+    word-break: break-word;
+}
+
+.links-section {
+    margin-bottom: 20px;
+}
+
+.links-section h2 {
+    color: #5e9ce0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #2A3455;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dashboard-link {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #0F1529; /* Dark blue background like dashboard input fields */
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid #5e9ce0; /* Light blue border like dashboard input fields */
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+.dashboard-link:hover {
+    background: #1A2035;
+    border-color: #80caff; /* Brighter cyan border on hover */
+    color: #80caff;
+}
+
+.no-selection {
+    text-align: center;
+    padding: 30px 20px;
+    color: #b0b8c8;
+    font-size: 1em;
+}
+
+.no-files {
+    text-align: center;
+    padding: 15px;
+    color: #b0b8c8;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.6em;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .control-group {
+        width: 100%;
+    }
+    
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white;
+    }
+    
+    .container {
+        box-shadow: none;
+        background: white;
+    }
+    
+    .controls {
+        display: none;
+    }
+    
+    .gallery-item {
+        page-break-inside: avoid;
+    }
+}
