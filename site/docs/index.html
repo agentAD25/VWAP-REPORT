@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWAP Reports Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>VWAP Reports Gallery</h1>
+            <p class="subtitle">Browse VWAP analysis reports by contract and timeframe</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="contract-select">Contract:</label>
+                <select id="contract-select">
+                    <option value="">-- Select Contract --</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="timeframe-select">Timeframe:</label>
+                <select id="timeframe-select" disabled>
+                    <option value="">-- Select Timeframe --</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="report-content" class="report-content hidden">
+            <div id="dashboards-section" class="links-section hidden">
+                <h2>Dashboards</h2>
+                <div id="html-links" class="links"></div>
+            </div>
+        </div>
+
+        <div id="no-selection" class="no-selection">
+            <p>Please select a contract and timeframe to view reports.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
