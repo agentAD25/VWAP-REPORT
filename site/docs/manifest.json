@@ -20,7 +20,9 @@
           "reports/NQU25_20250623-20250915_1m/NQU25_20250623-20250915_1m_vwap_events.html",
           "reports/NQU25_20250623-20250915_1m/NQU25_20250623-20250915_1m_vwap_performance_all_events.html",
           "reports/NQU25_20250623-20250915_1m/NQU25_20250623-20250915_1m_vwap_performance_crosses_only.html",
-          "reports/NQU25_20250623-20250915_1m/index.html"
+          "reports/NQU25_20250623-20250915_1m/index.html",
+          "reports/NQU25_20250623-20250915_1m/mfe_mae_by_event_window.html",
+          "reports/NQU25_20250623-20250915_1m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQU25_20250623-20250915_1m/NQU25_20250623-20250915_1m_daily_max_extensions.csv",
@@ -62,7 +64,9 @@
           "reports/NQU25_20250623-20250915_5m/NQU25_20250623-20250915_5m_vwap_events.html",
           "reports/NQU25_20250623-20250915_5m/NQU25_20250623-20250915_5m_vwap_performance_all_events.html",
           "reports/NQU25_20250623-20250915_5m/NQU25_20250623-20250915_5m_vwap_performance_crosses_only.html",
-          "reports/NQU25_20250623-20250915_5m/index.html"
+          "reports/NQU25_20250623-20250915_5m/index.html",
+          "reports/NQU25_20250623-20250915_5m/mfe_mae_by_event_window.html",
+          "reports/NQU25_20250623-20250915_5m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQU25_20250623-20250915_5m/NQU25_20250623-20250915_5m_daily_max_extensions.csv",
@@ -104,7 +108,9 @@
           "reports/NQU25_20250623-20250915_15m/NQU25_20250623-20250915_15m_vwap_events.html",
           "reports/NQU25_20250623-20250915_15m/NQU25_20250623-20250915_15m_vwap_performance_all_events.html",
           "reports/NQU25_20250623-20250915_15m/NQU25_20250623-20250915_15m_vwap_performance_crosses_only.html",
-          "reports/NQU25_20250623-20250915_15m/index.html"
+          "reports/NQU25_20250623-20250915_15m/index.html",
+          "reports/NQU25_20250623-20250915_15m/mfe_mae_by_event_window.html",
+          "reports/NQU25_20250623-20250915_15m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQU25_20250623-20250915_15m/NQU25_20250623-20250915_15m_daily_max_extensions.csv",
@@ -146,7 +152,9 @@
           "reports/NQU25_20250623-20250915_30m/NQU25_20250623-20250915_30m_vwap_events.html",
           "reports/NQU25_20250623-20250915_30m/NQU25_20250623-20250915_30m_vwap_performance_all_events.html",
           "reports/NQU25_20250623-20250915_30m/NQU25_20250623-20250915_30m_vwap_performance_crosses_only.html",
-          "reports/NQU25_20250623-20250915_30m/index.html"
+          "reports/NQU25_20250623-20250915_30m/index.html",
+          "reports/NQU25_20250623-20250915_30m/mfe_mae_by_event_window.html",
+          "reports/NQU25_20250623-20250915_30m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQU25_20250623-20250915_30m/NQU25_20250623-20250915_30m_daily_max_extensions.csv",
@@ -190,7 +198,9 @@
           "reports/NQZ25_20250915-20251215_1m/NQZ25_20250915-20251215_1m_vwap_events.html",
           "reports/NQZ25_20250915-20251215_1m/NQZ25_20250915-20251215_1m_vwap_performance_all_events.html",
           "reports/NQZ25_20250915-20251215_1m/NQZ25_20250915-20251215_1m_vwap_performance_crosses_only.html",
-          "reports/NQZ25_20250915-20251215_1m/index.html"
+          "reports/NQZ25_20250915-20251215_1m/index.html",
+          "reports/NQZ25_20250915-20251215_1m/mfe_mae_by_event_window.html",
+          "reports/NQZ25_20250915-20251215_1m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQZ25_20250915-20251215_1m/NQZ25_20250915-20251215_1m_daily_max_extensions.csv",
@@ -232,7 +242,9 @@
           "reports/NQZ25_20250915-20251215_5m/NQZ25_20250915-20251215_5m_vwap_events.html",
           "reports/NQZ25_20250915-20251215_5m/NQZ25_20250915-20251215_5m_vwap_performance_all_events.html",
           "reports/NQZ25_20250915-20251215_5m/NQZ25_20250915-20251215_5m_vwap_performance_crosses_only.html",
-          "reports/NQZ25_20250915-20251215_5m/index.html"
+          "reports/NQZ25_20250915-20251215_5m/index.html",
+          "reports/NQZ25_20250915-20251215_5m/mfe_mae_by_event_window.html",
+          "reports/NQZ25_20250915-20251215_5m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQZ25_20250915-20251215_5m/NQZ25_20250915-20251215_5m_daily_max_extensions.csv",
@@ -274,7 +286,9 @@
           "reports/NQZ25_20250915-20251215_15m/NQZ25_20250915-20251215_15m_vwap_events.html",
           "reports/NQZ25_20250915-20251215_15m/NQZ25_20250915-20251215_15m_vwap_performance_all_events.html",
           "reports/NQZ25_20250915-20251215_15m/NQZ25_20250915-20251215_15m_vwap_performance_crosses_only.html",
-          "reports/NQZ25_20250915-20251215_15m/index.html"
+          "reports/NQZ25_20250915-20251215_15m/index.html",
+          "reports/NQZ25_20250915-20251215_15m/mfe_mae_by_event_window.html",
+          "reports/NQZ25_20250915-20251215_15m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQZ25_20250915-20251215_15m/NQZ25_20250915-20251215_15m_daily_max_extensions.csv",
@@ -316,7 +330,9 @@
           "reports/NQZ25_20250915-20251215_30m/NQZ25_20250915-20251215_30m_vwap_events.html",
           "reports/NQZ25_20250915-20251215_30m/NQZ25_20250915-20251215_30m_vwap_performance_all_events.html",
           "reports/NQZ25_20250915-20251215_30m/NQZ25_20250915-20251215_30m_vwap_performance_crosses_only.html",
-          "reports/NQZ25_20250915-20251215_30m/index.html"
+          "reports/NQZ25_20250915-20251215_30m/index.html",
+          "reports/NQZ25_20250915-20251215_30m/mfe_mae_by_event_window.html",
+          "reports/NQZ25_20250915-20251215_30m/regime_segment_grid.html"
         ],
         "csv": [
           "reports/NQZ25_20250915-20251215_30m/NQZ25_20250915-20251215_30m_daily_max_extensions.csv",

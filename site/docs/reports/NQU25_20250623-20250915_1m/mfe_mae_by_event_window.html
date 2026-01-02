@@ -137,6 +137,16 @@ body {
     box-shadow: var(--shadow-panel);
     backdrop-filter: blur(10px);
     margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
 }
 
 .chart-title {
@@ -304,12 +314,8 @@ body {
         <div class="subtitle">
             NQ | 
             RTH | 
-            15m | 
+            1m | 
             Built by TonySnow | ALPHA DRIP
-        </div>
-        
-        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
-            2025-06-23 - 2025-09-15 (74 sessions)
         </div>
         
     </div>
@@ -350,13 +356,13 @@ body {
         <div class="chart-container">
             <div class="chart-title">Median MFE by Window</div>
             
-            <div id="chart-1" style="height: 400px;"></div>
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
         <div class="chart-container">
             <div class="chart-title">Median MAE by Window</div>
             
-            <div id="chart-2" style="height: 400px;"></div>
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
     </div>
@@ -369,7 +375,7 @@ body {
             <thead>
                 <tr>
                     
-                    <th>window_seconds</th>
+                    <th>window_minutes</th>
                     
                     <th>event_type</th>
                     
@@ -387,7 +393,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>CROSS</td>
                     
@@ -403,7 +409,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>CROSS</td>
                     
@@ -419,7 +425,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -435,7 +441,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -451,7 +457,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -467,7 +473,7 @@ body {
                 
                 <tr>
                     
-                    <td>60</td>
+                    <td>1.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -483,7 +489,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>CROSS</td>
                     
@@ -499,7 +505,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -515,7 +521,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -531,7 +537,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -547,7 +553,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>CROSS</td>
                     
@@ -563,7 +569,7 @@ body {
                 
                 <tr>
                     
-                    <td>180</td>
+                    <td>3.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -579,7 +585,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>CROSS</td>
                     
@@ -595,7 +601,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -611,7 +617,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -627,7 +633,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>CROSS</td>
                     
@@ -643,7 +649,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -659,7 +665,7 @@ body {
                 
                 <tr>
                     
-                    <td>300</td>
+                    <td>5.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -675,7 +681,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -691,7 +697,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -707,7 +713,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>CROSS</td>
                     
@@ -723,7 +729,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -739,7 +745,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -755,7 +761,7 @@ body {
                 
                 <tr>
                     
-                    <td>900</td>
+                    <td>15.0</td>
                     
                     <td>CROSS</td>
                     
@@ -771,7 +777,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -787,7 +793,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>CROSS</td>
                     
@@ -803,7 +809,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>CROSS</td>
                     
@@ -819,7 +825,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>PIERCE</td>
                     
@@ -835,7 +841,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -851,7 +857,7 @@ body {
                 
                 <tr>
                     
-                    <td>1800</td>
+                    <td>30.0</td>
                     
                     <td>TOUCH</td>
                     
@@ -917,9 +923,9 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": [60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800], "y": [10.0, 14.0, 18.0, 34.0, 43.0, 10.0, 15.0, 17.5, 25.0, 31.0, 11.0, 14.0, 18.0, 28.0, 35.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": [60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800], "y": [9.0, 16.0, 20.0, 34.0, 46.0, 10.0, 14.0, 18.0, 29.0, 43.0, 10.0, 14.0, 18.0, 29.0, 46.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "window_seconds", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [10.0, 10.0, 11.0, 15.0, 14.0, 14.0, 17.5, 18.0, 18.0, 34.0, 28.0, 25.0, 43.0, 31.0, 35.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [9.0, 10.0, 10.0, 14.0, 14.0, 16.0, 18.0, 20.0, 18.0, 34.0, 29.0, 29.0, 46.0, 43.0, 46.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": [60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800], "y": [21.0, 24.0, 28.0, 38.0, 50.0, 10.0, 13.0, 16.0, 24.0, 36.0, 10.0, 13.0, 15.5, 26.0, 35.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": [60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800, 60, 180, 300, 900, 1800], "y": [20.0, 23.0, 26.0, 37.0, 48.0, 11.0, 15.0, 18.0, 28.0, 38.0, 11.0, 15.0, 19.0, 29.0, 37.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "window_seconds", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [21.0, 10.0, 10.0, 13.0, 13.0, 24.0, 16.0, 28.0, 15.5, 38.0, 26.0, 24.0, 50.0, 36.0, 35.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [20.0, 11.0, 11.0, 15.0, 15.0, 23.0, 18.0, 26.0, 19.0, 37.0, 29.0, 28.0, 48.0, 38.0, 37.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
         
     </script>
