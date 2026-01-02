@@ -12,10 +12,10 @@ from pathlib import Path
 from collections import defaultdict
 
 # Reports directory (relative to this script)
-REPORTS_DIR = Path(__file__).parent.parent / "site" / "docs" / "reports"
+REPORTS_DIR = Path(__file__).parent.parent / "docs" / "reports"
 
 # Manifest output file
-MANIFEST_FILE = Path(__file__).parent.parent / "site" / "docs" / "manifest.json"
+MANIFEST_FILE = Path(__file__).parent.parent / "docs" / "manifest.json"
 
 # Pattern to extract metadata from folder names
 # Format: CONTRACT_YYYYMMDD-YYYYMMDD_TIMEFRAME
