@@ -282,6 +282,8 @@ function displayHTMLDashboards(htmlFiles) {
         if (currentSelection.timeframe) {
             const timeframePattern = `_${currentSelection.timeframe}_`;
             if (!filename.includes(timeframePattern)) {
+                // Debug: log filtered out files
+                console.log(`Filtered out (timeframe mismatch): ${filename} (looking for ${timeframePattern})`);
                 return false;
             }
         }
