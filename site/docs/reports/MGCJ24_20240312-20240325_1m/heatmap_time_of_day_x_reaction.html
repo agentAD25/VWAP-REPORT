@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time of Day x Reaction Heatmap - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Time of Day x Reaction Heatmap</h1>
+        <div class="subtitle">
+            NQ | 
+            RTH | 
+            1m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Best Time (Reaction)</div>
+            <div class="value">08:02</div>
+            
+            <div class="description">Reaction: 39.0</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">1,476</div>
+            
+            <div class="description">Across all time buckets</div>
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Reaction Size by Time of Day</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+
+    
+    <div class="download-section">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+        
+        <a href="heatmap_time_of_day_x_reaction.csv" class="download-link" download>heatmap_time_of_day_x_reaction.csv</a>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
+    </div>
+    
+
+    
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        
+        Plotly.newPlot('chart-1', [{"z": [[3.5, NaN, 4.5, NaN, NaN, 10.0, 12.0, NaN, 6.0, NaN, NaN, 9.0, NaN, 4.0, NaN, 6.0, 3.5, 8.333333333333332, 5.0, NaN, 9.0, 4.333333333333333, 4.0], [NaN, NaN, 24.0, NaN, 13.0, NaN, NaN, NaN, NaN, NaN, NaN, 7.5, NaN, 5.0, 6.0, 4.0, 5.0, 1.75, NaN, NaN, 4.5, 9.33333333333333, 5.0], [5.333333333333333, 2.0, 2.0, NaN, 9.0, NaN, NaN, NaN, 39.0, NaN, NaN, NaN, 12.0, 4.0, 0.5, 5.0, 5.0, 2.333333333333333, NaN, NaN, 9.666666666666666, 9.0, 4.333333333333333], [6.5, 3.0, NaN, NaN, NaN, NaN, NaN, NaN, 20.0, 31.0, NaN, 3.0, NaN, 4.5, 2.0, 2.0, 7.0, 6.333333333333333, NaN, NaN, 5.5, 4.4, 1.6666666666666667], [10.0, 2.0, NaN, NaN, 4.0, NaN, NaN, NaN, NaN, 31.0, NaN, 15.0, 4.0, 9.0, 3.0, 9.5, 4.0, 2.0, 6.0, NaN, 6.5, 8.5, 6.25], [9.0, NaN, NaN, NaN, NaN, 0.0, 5.0, NaN, 2.0, NaN, NaN, 18.0, 10.0, 9.0, 3.0, 15.5, 1.0, 2.0, 6.0, NaN, 3.6666666666666665, 6.0, 4.0], [0.5, NaN, NaN, NaN, NaN, 7.0, 2.0, NaN, 1.0, NaN, NaN, 2.0, 0.0, 8.0, 2.0, 14.5, NaN, 4.5, 11.0, NaN, 3.5, 8.333333333333332, 5.0], [2.0, 6.0, NaN, NaN, NaN, NaN, 3.0, NaN, 2.0, 27.0, NaN, 26.0, 9.0, 5.5, NaN, 13.0, NaN, 3.0, 3.0, NaN, 5.75, 8.0, 5.5], [2.0, NaN, NaN, NaN, NaN, NaN, 1.5, NaN, 3.0, NaN, NaN, NaN, 2.0, NaN, 5.0, 5.0, NaN, 2.0, 7.0, NaN, 7.0, 1.0, 3.0], [3.5, NaN, NaN, 2.5, 8.0, NaN, 5.0, NaN, NaN, NaN, NaN, NaN, NaN, NaN, 4.0, 6.5, NaN, 1.5, 7.0, NaN, NaN, 9.25, 4.666666666666666], [2.5, 7.0, NaN, 6.333333333333333, NaN, 9.0, 3.5, 19.0, NaN, 9.0, NaN, NaN, NaN, NaN, 6.0, 8.0, 4.0, 2.5, 2.0, 12.0, 24.0, 9.2, 4.0], [6.5, 2.0, 14.0, 3.5, NaN, NaN, 4.0, 14.0, 16.0, 3.0, NaN, 8.0, NaN, NaN, NaN, 4.0, 2.0, 2.5, 2.0, NaN, 0.6666666666666666, 5.166666666666666, 6.75], [5.333333333333333, 7.0, 6.0, NaN, 6.0, 0.0, 2.0, 9.0, NaN, 3.0, NaN, NaN, NaN, NaN, 4.0, 3.0, 2.0, 10.0, 2.0, 6.0, 9.25, 2.8, 3.333333333333333], [6.5, NaN, NaN, 3.0, 9.0, 2.0, 9.5, 4.0, 3.0, 3.5, NaN, NaN, NaN, NaN, 4.0, 1.0, 1.0, 11.0, 6.333333333333333, NaN, 6.0, 4.6, 6.0], [2.0, NaN, 2.0, NaN, 6.0, 0.0, 9.0, 3.0, 0.0, 13.0, NaN, NaN, 7.0, NaN, 0.0, NaN, 4.0, 11.0, 2.0, NaN, 21.0, 14.0, 6.0], [9.0, NaN, NaN, 1.0, 6.0, 4.0, NaN, 3.0, 20.0, 4.0, NaN, NaN, 11.0, 8.0, 6.0, NaN, 2.0, 1.0, 2.0, NaN, 1.0, 11.5, 3.0], [0.0, NaN, NaN, NaN, 0.0, 2.0, NaN, 4.0, NaN, 10.0, NaN, NaN, 4.0, 7.0, 4.5, NaN, 6.0, NaN, 8.0, 2.0, 13.0, 0.0, 6.0], [11.0, NaN, NaN, 0.0, 3.0, 3.0, 8.0, 7.0, NaN, NaN, NaN, NaN, 6.0, 15.0, 3.0, 3.0, 4.0, 3.0, 8.666666666666666, 1.0, 5.4, 1.0, 5.0], [NaN, NaN, NaN, 3.0, NaN, 4.0, 2.0, NaN, NaN, 12.0, 2.0, 2.0, 3.0, 4.0, 3.5, 1.0, 2.5, 28.0, 3.0, 4.0, 3.0, 1.0, 3.5], [7.0, NaN, NaN, 2.0, NaN, NaN, NaN, NaN, NaN, 7.0, 28.0, 10.0, 5.5, NaN, 2.0, 2.0, 1.0, 14.0, NaN, 7.0, 2.0, 0.0, 3.0], [2.0, NaN, NaN, NaN, 8.0, 4.0, 10.0, NaN, NaN, 8.0, 8.0, NaN, 1.0, 6.0, 9.0, 2.0, 1.5, 3.0, NaN, 2.666666666666667, 3.75, 3.0, 3.6666666666666665], [8.0, 1.0, NaN, NaN, 4.5, NaN, 0.0, 1.0, NaN, 4.0, NaN, NaN, 2.0, 8.0, NaN, 5.0, 1.0, 3.0, NaN, 8.0, NaN, 5.0, NaN], [4.0, 1.0, 3.0, 7.0, 2.0, NaN, 1.0, 4.0, NaN, 6.0, NaN, NaN, 5.0, 11.0, NaN, 7.0, 0.5, 0.0, NaN, 6.0, 6.25, NaN, 1.0], [1.0, 1.0, 2.0, NaN, 11.5, 8.0, 5.0, NaN, NaN, 5.0, NaN, 14.0, 9.0, 6.333333333333333, 4.0, 9.0, 1.5, NaN, NaN, 4.5, 3.333333333333333, NaN, 1.3333333333333333], [5.333333333333333, 0.5, 0.0, NaN, NaN, 2.0, 4.5, NaN, NaN, 5.0, NaN, 6.0, 9.0, 6.666666666666666, 1.5, 1.0, 1.0, 3.0, NaN, 3.0, 8.0, 6.0, 2.0], [5.5, 6.5, 10.5, 7.0, NaN, 3.0, 11.5, 0.0, NaN, 10.0, NaN, NaN, 6.0, 4.75, 4.0, NaN, 1.5, NaN, NaN, 6.5, 7.75, 2.5, 11.0], [4.0, NaN, 11.0, 2.0, 5.0, NaN, 5.0, 10.0, NaN, 7.0, NaN, NaN, 6.0, 14.5, 4.0, 6.0, 1.5, NaN, NaN, NaN, 5.666666666666666, 3.5, 5.666666666666666], [3.5, 6.0, 6.0, 2.0, 2.0, 9.0, 13.0, 0.0, NaN, 37.0, NaN, NaN, 4.0, 11.0, 9.0, 3.5, 2.0, 16.0, NaN, 7.5, 3.333333333333333, 5.0, 0.3333333333333333], [3.5, 0.0, 1.0, 1.0, 11.0, 3.0, 8.5, 14.0, NaN, 26.0, NaN, NaN, 8.5, 10.0, 3.0, 3.0, 5.0, 11.0, NaN, NaN, 14.333333333333332, 2.5, 6.5], [4.0, 10.0, 0.0, NaN, 3.0, 14.0, NaN, 7.0, NaN, NaN, NaN, NaN, 7.5, 6.0, 11.0, 4.0, 1.0, 6.0, NaN, NaN, 5.666666666666666, 1.0, 3.5], [3.0, 4.0, NaN, NaN, NaN, 11.0, 11.0, NaN, 31.0, NaN, NaN, NaN, 2.0, 10.0, 6.5, 3.0, 4.0, 19.0, NaN, 4.333333333333333, 4.0, 7.0, 3.0], [7.333333333333333, NaN, NaN, NaN, NaN, 14.5, 0.0, 3.0, 22.0, NaN, NaN, NaN, 1.0, NaN, 9.0, 2.0, 4.0, 7.0, 0.0, 6.0, 1.0, 5.0, 2.0], [2.0, NaN, NaN, 6.0, NaN, 12.0, 2.0, NaN, 8.0, NaN, NaN, NaN, NaN, 7.0, 7.0, 2.0, 3.0, 0.0, 0.0, 3.5, 13.0, 6.0, 2.5], [3.0, 1.0, NaN, 0.0, NaN, 5.0, NaN, 2.0, NaN, NaN, NaN, NaN, NaN, 8.5, 7.0, 2.333333333333333, 1.5, NaN, NaN, 1.0, 3.5, 7.666666666666665, 3.0], [1.0, 5.0, NaN, 9.0, 5.0, 2.0, NaN, 6.0, NaN, NaN, NaN, NaN, NaN, 3.5, NaN, 3.0, 1.0, NaN, NaN, 2.0, 5.5, 1.0, 1.0], [2.5, NaN, NaN, 0.0, 0.0, 6.0, NaN, 12.5, NaN, NaN, NaN, 2.0, 8.0, 7.5, NaN, 2.5, 0.0, 2.0, NaN, 3.0, 9.0, 4.0, 2.0], [0.0, 1.5, 3.0, 3.0, 4.0, NaN, NaN, 0.0, NaN, NaN, NaN, NaN, 10.0, 3.0, 2.0, 2.5, 1.0, NaN, NaN, 2.5, 7.0, 1.0, 2.0], [2.0, 14.0, 5.0, NaN, NaN, NaN, NaN, 2.0, NaN, NaN, NaN, NaN, 6.0, 5.0, 2.5, 0.0, 0.0, 1.0, NaN, 5.0, 2.0, 1.5, 4.0], [NaN, 9.0, 0.0, 9.0, NaN, NaN, NaN, NaN, NaN, NaN, 11.0, NaN, 9.0, NaN, 1.5, 2.5, NaN, 1.5, NaN, NaN, 0.0, 5.333333333333333, 2.0], [5.0, NaN, 4.0, NaN, NaN, NaN, NaN, 1.0, NaN, NaN, NaN, NaN, NaN, 9.0, 0.0, 2.0, 2.0, 2.0, NaN, 9.0, NaN, 0.0, 4.0], [4.0, NaN, 2.333333333333333, 12.0, NaN, NaN, NaN, 11.0, 18.0, NaN, NaN, NaN, NaN, NaN, 3.0, NaN, 3.0, NaN, NaN, 6.0, 4.0, 9.0, 4.5], [9.0, 2.0, 6.0, 11.0, 5.0, NaN, NaN, 11.0, 10.5, NaN, NaN, NaN, 6.0, 2.0, 0.5, 1.0, NaN, 1.0, NaN, 6.333333333333333, 3.0, 11.333333333333332, 10.333333333333332], [10.0, NaN, 5.0, 2.0, 7.0, NaN, NaN, 12.0, 12.0, NaN, 17.0, NaN, 4.0, 3.5, 3.0, 0.0, NaN, 1.0, NaN, 7.5, 6.0, 8.5, 9.666666666666666], [1.0, NaN, NaN, NaN, 7.0, NaN, NaN, 9.0, 8.0, NaN, NaN, NaN, 3.0, 6.0, 2.0, 5.0, 3.0, NaN, 2.0, 4.0, NaN, 7.0, 6.333333333333333], [7.0, NaN, NaN, NaN, 4.0, 7.0, NaN, 8.0, 22.5, NaN, 15.0, NaN, 7.0, 7.0, 2.0, 4.0, 4.0, 1.0, NaN, 5.5, 7.0, 8.0, 9.5], [4.0, 0.0, NaN, NaN, 0.0, 0.0, NaN, 18.0, 21.5, NaN, NaN, NaN, 0.0, 7.5, 2.0, 4.0, 1.0, 2.0, NaN, 2.666666666666667, 4.0, 5.5, 5.0], [0.0, NaN, 4.0, NaN, 3.0, NaN, NaN, 8.0, 6.0, NaN, 14.0, NaN, 14.0, 5.0, 1.0, NaN, 1.0, NaN, NaN, 5.5, 4.5, 7.0, 4.0], [1.0, 3.0, NaN, NaN, NaN, 4.0, NaN, 13.0, 6.0, 8.0, 4.0, NaN, 3.0, 5.5, 5.0, 1.0, 2.0, 6.666666666666666, NaN, 4.666666666666666, 6.5, NaN, NaN], [4.5, NaN, NaN, NaN, NaN, 3.5, NaN, 13.0, 10.0, 5.0, 2.0, NaN, 2.0, 6.0, 2.5, 12.0, 1.5, 2.333333333333333, NaN, 7.333333333333333, 11.0, 2.0, NaN], [6.0, 0.0, 5.0, NaN, NaN, 4.5, NaN, 9.0, NaN, 13.0, 1.0, NaN, NaN, 14.0, 1.5, 0.0, 4.0, 12.0, NaN, 6.0, 12.0, 4.2, NaN], [4.0, NaN, 7.5, NaN, NaN, 4.0, NaN, NaN, 16.0, 1.0, 21.0, NaN, NaN, 12.0, NaN, 3.0, 4.0, 4.0, NaN, 2.0, 10.5, 7.5, 10.0], [2.5, 0.0, 6.0, NaN, 2.0, 9.0, NaN, 10.0, NaN, NaN, NaN, NaN, NaN, 2.0, 8.0, 1.5, 2.0, 4.0, NaN, 2.666666666666667, 6.75, 7.0, NaN], [3.5, 6.0, 6.0, NaN, 1.0, 12.5, NaN, 8.0, 20.0, 24.0, 20.0, NaN, NaN, 22.0, 2.5, NaN, 2.0, NaN, NaN, 2.5, 6.5, 4.5, 4.0], [5.5, 3.0, 8.0, 1.0, NaN, 10.5, NaN, NaN, 1.0, 6.0, NaN, NaN, NaN, 10.0, NaN, NaN, 3.5, NaN, NaN, 4.0, 5.0, 3.0, 5.5], [3.0, 6.0, 4.0, 1.0, NaN, 10.5, NaN, 6.0, 27.0, NaN, NaN, NaN, NaN, NaN, NaN, NaN, 4.5, NaN, NaN, 2.5, 3.6666666666666665, 2.75, 4.0], [5.0, 1.0, 12.0, 2.0, NaN, 7.0, NaN, 1.0, NaN, NaN, NaN, NaN, NaN, NaN, 3.0, 0.0, 2.5, NaN, NaN, 11.333333333333332, 7.333333333333333, 3.6666666666666665, 6.666666666666666], [5.5, NaN, 13.0, 0.0, NaN, 2.0, NaN, NaN, 9.0, NaN, 18.0, NaN, NaN, NaN, 4.5, 3.5, 3.5, NaN, NaN, 8.0, 4.0, 4.0, 5.0], [5.5, 11.0, 16.0, NaN, NaN, 19.0, NaN, NaN, 2.0, NaN, NaN, NaN, NaN, NaN, 3.0, 4.0, 1.0, NaN, NaN, 10.6, 3.5, 1.0, 4.75], [3.0, 7.0, 1.0, 2.0, NaN, 17.0, NaN, NaN, 19.0, NaN, 16.5, NaN, NaN, NaN, 4.5, 3.5, 4.0, NaN, NaN, 9.4, 6.666666666666666, 9.0, 3.5], [NaN, 12.5, 3.0, 1.0, NaN, 0.0, NaN, NaN, 5.0, NaN, 17.5, NaN, NaN, NaN, 3.5, 4.0, 2.0, 15.0, NaN, 10.0, 7.0, 9.0, 2.0]], "x": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "18", "19", "20", "21", "22", "23"], "y": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        
+    </script>
+</body>
+</html>

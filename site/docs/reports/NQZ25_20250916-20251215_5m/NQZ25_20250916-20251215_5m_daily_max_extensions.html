@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Max Extensions - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Daily Max Extensions</h1>
+        <div class="subtitle">
+            NQ | 
+            RTH | 
+            5m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-09-16 - 2025-12-12 (75 sessions)
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Max Extension Up</div>
+            <div class="value">1613.2 ticks</div>
+            
+            <div class="description">Average: 473.3 ticks</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Max Extension Down</div>
+            <div class="value">2870.8 ticks</div>
+            
+            <div class="description">Average: 558.4 ticks</div>
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Max Extension Over Time</div>
+            
+            <div class="chart-subtitle">Up (blue) and Down (red) extensions</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <div class="insights-title">Data Preview</div>
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    
+                    <th>session_date</th>
+                    
+                    <th>max_extension_up_ticks</th>
+                    
+                    <th>max_extension_down_ticks</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    
+                    <td>2025-12-12</td>
+                    
+                    <td>147.833844</td>
+                    
+                    <td>1233.943328</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-11</td>
+                    
+                    <td>1126.048064</td>
+                    
+                    <td>824.8806</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-10</td>
+                    
+                    <td>818.472444</td>
+                    
+                    <td>421.402028</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-09</td>
+                    
+                    <td>310.016292</td>
+                    
+                    <td>368.71676</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-08</td>
+                    
+                    <td>260.862236</td>
+                    
+                    <td>575.244156</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-07</td>
+                    
+                    <td>61.954348</td>
+                    
+                    <td>89.205172</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-06</td>
+                    
+                    <td>0.666668</td>
+                    
+                    <td>0.333332</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-05</td>
+                    
+                    <td>550.758944</td>
+                    
+                    <td>437.046776</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-04</td>
+                    
+                    <td>316.673844</td>
+                    
+                    <td>458.431132</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-03</td>
+                    
+                    <td>450.03936</td>
+                    
+                    <td>745.515252</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-02</td>
+                    
+                    <td>572.783576</td>
+                    
+                    <td>509.337064</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-12-01</td>
+                    
+                    <td>644.440508</td>
+                    
+                    <td>458.921892</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-30</td>
+                    
+                    <td>163.333332</td>
+                    
+                    <td>194.666668</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-28</td>
+                    
+                    <td>368.467172</td>
+                    
+                    <td>154.170728</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-27</td>
+                    
+                    <td>98.570308</td>
+                    
+                    <td>103.684132</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-26</td>
+                    
+                    <td>634.517332</td>
+                    
+                    <td>256.214204</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-25</td>
+                    
+                    <td>1033.748924</td>
+                    
+                    <td>961.44198</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-24</td>
+                    
+                    <td>1072.71552</td>
+                    
+                    <td>445.469344</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-23</td>
+                    
+                    <td>199.44492</td>
+                    
+                    <td>206.55508</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-21</td>
+                    
+                    <td>1613.184608</td>
+                    
+                    <td>893.10372</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-20</td>
+                    
+                    <td>486.038416</td>
+                    
+                    <td>2870.835752</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-19</td>
+                    
+                    <td>1540.27168</td>
+                    
+                    <td>873.743312</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-18</td>
+                    
+                    <td>626.533156</td>
+                    
+                    <td>1130.786856</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-17</td>
+                    
+                    <td>430.5734</td>
+                    
+                    <td>1368.956368</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-16</td>
+                    
+                    <td>321.994812</td>
+                    
+                    <td>196.166264</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-14</td>
+                    
+                    <td>136.818172</td>
+                    
+                    <td>336.015844</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-13</td>
+                    
+                    <td>457.004148</td>
+                    
+                    <td>1323.789204</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-12</td>
+                    
+                    <td>345.109192</td>
+                    
+                    <td>626.782096</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-11</td>
+                    
+                    <td>415.469616</td>
+                    
+                    <td>473.23854</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-10</td>
+                    
+                    <td>719.195828</td>
+                    
+                    <td>372.104224</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-09</td>
+                    
+                    <td>148.911332</td>
+                    
+                    <td>163.33168</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-07</td>
+                    
+                    <td>909.374764</td>
+                    
+                    <td>1216.17634</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-06</td>
+                    
+                    <td>439.633432</td>
+                    
+                    <td>1224.120896</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-05</td>
+                    
+                    <td>1035.882976</td>
+                    
+                    <td>444.311236</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-04</td>
+                    
+                    <td>401.524532</td>
+                    
+                    <td>902.99254</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-03</td>
+                    
+                    <td>558.97954</td>
+                    
+                    <td>486.283256</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-11-02</td>
+                    
+                    <td>121.414092</td>
+                    
+                    <td>50.566036</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-31</td>
+                    
+                    <td>330.973092</td>
+                    
+                    <td>845.824352</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-30</td>
+                    
+                    <td>490.354984</td>
+                    
+                    <td>973.36474</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-29</td>
+                    
+                    <td>569.908348</td>
+                    
+                    <td>808.1494</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-28</td>
+                    
+                    <td>614.967156</td>
+                    
+                    <td>111.911292</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-27</td>
+                    
+                    <td>550.32938</td>
+                    
+                    <td>65.963552</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-26</td>
+                    
+                    <td>138.088324</td>
+                    
+                    <td>103.10686</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-24</td>
+                    
+                    <td>649.959792</td>
+                    
+                    <td>116.8529</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-23</td>
+                    
+                    <td>597.77242</td>
+                    
+                    <td>439.33588</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-22</td>
+                    
+                    <td>296.546452</td>
+                    
+                    <td>1212.48328</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-21</td>
+                    
+                    <td>282.829728</td>
+                    
+                    <td>276.622816</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-20</td>
+                    
+                    <td>594.896124</td>
+                    
+                    <td>142.887436</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-19</td>
+                    
+                    <td>73.316668</td>
+                    
+                    <td>250.043016</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2025-10-17</td>
+                    
+                    <td>1080.969116</td>
+                    
+                    <td>922.72916</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+    
+
+    
+    <div class="download-section">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+        
+        <a href="daily_max_extensions.csv" class="download-link" download>daily_max_extensions.csv</a>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Daily maximum price extensions from VWAP in ticks.</p>
+    </div>
+    
+
+    
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        
+        Plotly.newPlot('chart-1', [{"x": ["2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-28", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02", "2025-10-03", "2025-10-05", "2025-10-06", "2025-10-07", "2025-10-08", "2025-10-12", "2025-10-13", "2025-10-14", "2025-10-15", "2025-10-16", "2025-10-17", "2025-10-19", "2025-10-20", "2025-10-21", "2025-10-22", "2025-10-23", "2025-10-24", "2025-10-26", "2025-10-27", "2025-10-28", "2025-10-29", "2025-10-30", "2025-10-31", "2025-11-02", "2025-11-03", "2025-11-04", "2025-11-05", "2025-11-06", "2025-11-07", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-16", "2025-11-17", "2025-11-18", "2025-11-19", "2025-11-20", "2025-11-21", "2025-11-23", "2025-11-24", "2025-11-25", "2025-11-26", "2025-11-27", "2025-11-28", "2025-11-30", "2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07", "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12"], "y": [231.817648, 578.474964, 480.875496, 436.7855, 57.813728, 475.523368, 105.375696, 219.25754, 424.458716, 470.103468, 96.652828, 358.511068, 439.565264, 704.7501, 322.41882, 147.526768, 159.808236, 479.766636, 369.938424, 139.084944, 330.476548, 478.450804, 1035.283616, 635.57752, 507.225668, 1080.969116, 73.316668, 594.896124, 282.829728, 296.546452, 597.77242, 649.959792, 138.088324, 550.32938, 614.967156, 569.908348, 490.354984, 330.973092, 121.414092, 558.97954, 401.524532, 1035.882976, 439.633432, 909.374764, 148.911332, 719.195828, 415.469616, 345.109192, 457.004148, 136.818172, 321.994812, 430.5734, 626.533156, 1540.27168, 486.038416, 1613.184608, 199.44492, 1072.71552, 1033.748924, 634.517332, 98.570308, 368.467172, 163.333332, 644.440508, 572.783576, 450.03936, 316.673844, 550.758944, 0.666668, 61.954348, 260.862236, 310.016292, 818.472444, 1126.048064, 147.833844], "name": "Up", "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}, {"x": ["2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-28", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02", "2025-10-03", "2025-10-05", "2025-10-06", "2025-10-07", "2025-10-08", "2025-10-12", "2025-10-13", "2025-10-14", "2025-10-15", "2025-10-16", "2025-10-17", "2025-10-19", "2025-10-20", "2025-10-21", "2025-10-22", "2025-10-23", "2025-10-24", "2025-10-26", "2025-10-27", "2025-10-28", "2025-10-29", "2025-10-30", "2025-10-31", "2025-11-02", "2025-11-03", "2025-11-04", "2025-11-05", "2025-11-06", "2025-11-07", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-16", "2025-11-17", "2025-11-18", "2025-11-19", "2025-11-20", "2025-11-21", "2025-11-23", "2025-11-24", "2025-11-25", "2025-11-26", "2025-11-27", "2025-11-28", "2025-11-30", "2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05", "2025-12-06", "2025-12-07", "2025-12-08", "2025-12-09", "2025-12-10", "2025-12-11", "2025-12-12"], "y": [227.233412, 760.527012, 291.68118, 204.937468, 72.792196, 342.9814, 658.001664, 712.78534, 756.302964, 501.864884, 37.280192, 379.157516, 293.472192, 512.956132, 338.293112, 711.481156, 80.562232, 182.654912, 703.585316, 22.847932, 529.482256, 411.499192, 991.764356, 1190.158588, 1297.127128, 922.72916, 250.043016, 142.887436, 276.622816, 1212.48328, 439.33588, 116.8529, 103.10686, 65.963552, 111.911292, 808.1494, 973.36474, 845.824352, 50.566036, 486.283256, 902.99254, 444.311236, 1224.120896, 1216.17634, 163.33168, 372.104224, 473.23854, 626.782096, 1323.789204, 336.015844, 196.166264, 1368.956368, 1130.786856, 873.743312, 2870.835752, 893.10372, 206.55508, 445.469344, 961.44198, 256.214204, 103.684132, 154.170728, 194.666668, 458.921892, 509.337064, 745.515252, 458.431132, 437.046776, 0.333332, 89.205172, 575.244156, 368.71676, 421.402028, 824.8806, 1233.943328], "name": "Down", "type": "scatter", "mode": "lines+markers", "line": {"color": "#7b2cbf", "width": 2}, "marker": {"color": "#7b2cbf", "size": 4}}], {"xaxis": {"title": "Session Date", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "hovermode": "x unified", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        
+    </script>
+</body>
+</html>

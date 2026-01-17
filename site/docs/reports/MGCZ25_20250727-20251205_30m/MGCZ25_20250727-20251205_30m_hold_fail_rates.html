@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mgcz25 20250727-20251205 30M Hold Fail Rates - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS will be inlined here */
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Mgcz25 20250727-20251205 30M Hold Fail Rates</h1>
+        <div class="subtitle">
+            NQ | 
+            RTH | 
+            1m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Total Rows</div>
+            <div class="value">6</div>
+            
+            <div class="description">Records in dataset</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg total_events</div>
+            <div class="value">365.50</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg held_count</div>
+            <div class="value">273.50</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg failed_count</div>
+            <div class="value">55.83</div>
+            
+            <div class="description">Mean value</div>
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average total_events by event_type</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <div class="insights-title">Data Preview</div>
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    
+                    <th>event_type</th>
+                    
+                    <th>direction</th>
+                    
+                    <th>total_events</th>
+                    
+                    <th>held_count</th>
+                    
+                    <th>failed_count</th>
+                    
+                    <th>hold_rate</th>
+                    
+                    <th>fail_rate</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    
+                    <td>CROSS</td>
+                    
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>629</td>
+                    
+                    <td>428</td>
+                    
+                    <td>95</td>
+                    
+                    <td>0.6804451510333863</td>
+                    
+                    <td>0.1510333863275039</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>CROSS</td>
+                    
+                    <td>FROM_BELOW</td>
+                    
+                    <td>646</td>
+                    
+                    <td>470</td>
+                    
+                    <td>71</td>
+                    
+                    <td>0.7275541795665634</td>
+                    
+                    <td>0.109907120743034</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>PIERCE</td>
+                    
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>206</td>
+                    
+                    <td>162</td>
+                    
+                    <td>43</td>
+                    
+                    <td>0.7864077669902912</td>
+                    
+                    <td>0.2087378640776699</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>PIERCE</td>
+                    
+                    <td>FROM_BELOW</td>
+                    
+                    <td>186</td>
+                    
+                    <td>144</td>
+                    
+                    <td>42</td>
+                    
+                    <td>0.7741935483870968</td>
+                    
+                    <td>0.2258064516129032</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>TOUCH</td>
+                    
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>275</td>
+                    
+                    <td>232</td>
+                    
+                    <td>40</td>
+                    
+                    <td>0.8436363636363636</td>
+                    
+                    <td>0.1454545454545454</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>TOUCH</td>
+                    
+                    <td>FROM_BELOW</td>
+                    
+                    <td>251</td>
+                    
+                    <td>205</td>
+                    
+                    <td>44</td>
+                    
+                    <td>0.8167330677290836</td>
+                    
+                    <td>0.1752988047808764</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+    
+
+    
+    <div class="download-section">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+        
+        <a href="MGCZ25_20250727-20251205_30m_hold_fail_rates.csv" class="download-link" download>MGCZ25_20250727-20251205_30m_hold_fail_rates.csv</a>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Generic dashboard for MGCZ25_20250727-20251205_30m_hold_fail_rates.csv</p>
+    </div>
+    
+
+    
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        
+        Plotly.newPlot('chart-1', [{"marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef"]}, "type": "bar", "x": ["CROSS", "PIERCE", "TOUCH"], "y": [637.5, 196.0, 263.0]}], {"font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "xaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "event_type", "zeroline": false}, "yaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "total_events", "zeroline": false}}, plotlyConfig);
+        
+        
+    </script>
+</body>
+</html>

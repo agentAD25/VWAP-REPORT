@@ -1,0 +1,14 @@
+key,value
+session_type,RTH
+timezone,America/New_York
+vwap_resets_at_session_open,True
+include_premarket_volume_in_rth_vwap,False
+vwap_price_source,typical
+bands_enabled,True
+bands_sigma_levels,"[1, 2]"
+tolerance_mode,ticks
+tolerance_value,2.0
+reaction_windows_minutes,"[15, 30, 60, 90]"
+outcome_horizon_mode,fixed
+min_bucket_size,30
+trimmed_mean_pct,10

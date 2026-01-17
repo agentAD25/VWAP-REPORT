@@ -137,6 +137,16 @@ body {
     box-shadow: var(--shadow-panel);
     backdrop-filter: blur(10px);
     margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
 }
 
 .chart-title {
@@ -344,7 +354,7 @@ body {
             
             <div class="chart-subtitle">Up (blue) and Down (red) extensions</div>
             
-            <div id="chart-1" style="height: 400px;"></div>
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
     </div>
