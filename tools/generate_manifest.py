@@ -12,10 +12,13 @@ from pathlib import Path
 from collections import defaultdict
 
 # Reports directory (relative to this script)
-REPORTS_DIR = Path(__file__).parent.parent / "docs" / "reports"
-
-# Manifest output file
-MANIFEST_FILE = Path(__file__).parent.parent / "docs" / "manifest.json"
+# Check both docs/ and site/docs/ (for compatibility)
+if (Path(__file__).parent.parent / "docs" / "reports").exists():
+    REPORTS_DIR = Path(__file__).parent.parent / "docs" / "reports"
+    MANIFEST_FILE = Path(__file__).parent.parent / "docs" / "manifest.json"
+else:
+    REPORTS_DIR = Path(__file__).parent.parent / "site" / "docs" / "reports"
+    MANIFEST_FILE = Path(__file__).parent.parent / "site" / "docs" / "manifest.json"
 
 # Pattern to extract metadata from folder names
 # Format: CONTRACT_YYYYMMDD-YYYYMMDD_TIMEFRAME
@@ -76,11 +79,12 @@ def generate_manifest():
         timeframe = metadata['tf']
         date_range = metadata['date_range']
         
-        # Collect files in this folder
+        # Collect files in this folder and subfolders (especially dashboards/)
         png_files = []
         html_files = []
         csv_files = []
         
+        # Scan root folder files
         for file_path in folder_path.iterdir():
             if not file_path.is_file():
                 continue
@@ -97,6 +101,26 @@ def generate_manifest():
                 html_files.append(relative_path_str)
             elif ext == '.csv':
                 csv_files.append(relative_path_str)
+        
+        # Also scan dashboards/ subfolder if it exists
+        dashboards_path = folder_path / 'dashboards'
+        if dashboards_path.exists() and dashboards_path.is_dir():
+            for file_path in dashboards_path.iterdir():
+                if not file_path.is_file():
+                    continue
+                
+                # Get relative path from docs/ directory
+                # e.g., reports/NQU25_20250623-20250915_1m/dashboards/dashboard.html
+                relative_path = file_path.relative_to(REPORTS_DIR.parent)
+                relative_path_str = str(relative_path).replace('\\', '/')
+                
+                ext = file_path.suffix.lower()
+                if ext == '.png':
+                    png_files.append(relative_path_str)
+                elif ext == '.html':
+                    html_files.append(relative_path_str)
+                elif ext == '.csv':
+                    csv_files.append(relative_path_str)
         
         # Sort file lists by filename
         png_files.sort()
