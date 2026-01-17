@@ -258,7 +258,7 @@ function shouldExcludeReport(filename) {
 
 
 /**
- * Display HTML dashboard links (filtered to exclude specific reports)
+ * Display HTML dashboard links (filtered to exclude specific reports and match timeframe)
  */
 function displayHTMLDashboards(htmlFiles) {
     htmlLinks.innerHTML = '';
@@ -268,10 +268,25 @@ function displayHTMLDashboards(htmlFiles) {
         return;
     }
     
-    // Filter out excluded reports
+    // Filter out excluded reports AND ensure timeframe matches
     const filteredFiles = htmlFiles.filter(htmlPath => {
         const filename = htmlPath.split('/').pop();
-        return !shouldExcludeReport(filename);
+        
+        // First check if report should be excluded
+        if (shouldExcludeReport(filename)) {
+            return false;
+        }
+        
+        // Then check if timeframe matches the selected timeframe
+        // Pattern: filename should contain _TIMEFRAME_ (e.g., _1m_, _5m_, _15m_, _30m_)
+        if (currentSelection.timeframe) {
+            const timeframePattern = `_${currentSelection.timeframe}_`;
+            if (!filename.includes(timeframePattern)) {
+                return false;
+            }
+        }
+        
+        return true;
     });
     
     if (filteredFiles.length === 0) {
