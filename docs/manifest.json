@@ -1,4 +1,102 @@
 {
+  "MGCZ25": {
+    "1m": {
+      "20250727-20251205": {
+        "png": [
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_dashboard_all_events.png",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_dashboard_crosses.png"
+        ],
+        "html": [
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_dashboard_all_events.html",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_dashboard_crosses.html"
+        ],
+        "csv": [
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_daily_max_extensions.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_definitions_summary.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_extension_tail_metrics.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_oos_by_month.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_touches_per_day_distribution.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_vwap_events.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_vwap_performance_all_events.csv",
+          "reports/MGCZ25_20250727-20251205_1m/MGCZ25_20250727-20251205_1m_vwap_performance_crosses_only.csv"
+        ],
+        "start_date": "20250727",
+        "end_date": "20251205"
+      }
+    },
+    "5m": {
+      "20250727-20251205": {
+        "png": [
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_dashboard_all_events.png",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_dashboard_crosses.png"
+        ],
+        "html": [
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_dashboard_all_events.html",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_dashboard_crosses.html"
+        ],
+        "csv": [
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_daily_max_extensions.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_definitions_summary.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_extension_tail_metrics.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_oos_by_month.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_touches_per_day_distribution.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_vwap_events.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_vwap_performance_all_events.csv",
+          "reports/MGCZ25_20250727-20251205_5m/MGCZ25_20250727-20251205_5m_vwap_performance_crosses_only.csv"
+        ],
+        "start_date": "20250727",
+        "end_date": "20251205"
+      }
+    },
+    "15m": {
+      "20250727-20251205": {
+        "png": [
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_dashboard_all_events.png",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_dashboard_crosses.png"
+        ],
+        "html": [
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_dashboard_all_events.html",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_dashboard_crosses.html"
+        ],
+        "csv": [
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_daily_max_extensions.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_definitions_summary.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_extension_tail_metrics.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_oos_by_month.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_touches_per_day_distribution.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_vwap_events.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_vwap_performance_all_events.csv",
+          "reports/MGCZ25_20250727-20251205_15m/MGCZ25_20250727-20251205_15m_vwap_performance_crosses_only.csv"
+        ],
+        "start_date": "20250727",
+        "end_date": "20251205"
+      }
+    },
+    "30m": {
+      "20250727-20251205": {
+        "png": [
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_dashboard_all_events.png",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_dashboard_crosses.png"
+        ],
+        "html": [
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_dashboard_all_events.html",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_dashboard_crosses.html"
+        ],
+        "csv": [
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_daily_max_extensions.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_definitions_summary.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_extension_tail_metrics.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_oos_by_month.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_touches_per_day_distribution.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_vwap_events.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_vwap_performance_all_events.csv",
+          "reports/MGCZ25_20250727-20251205_30m/MGCZ25_20250727-20251205_30m_vwap_performance_crosses_only.csv"
+        ],
+        "start_date": "20250727",
+        "end_date": "20251205"
+      }
+    }
+  },
   "NQU25": {
     "1m": {
       "20250623-20250915": {
