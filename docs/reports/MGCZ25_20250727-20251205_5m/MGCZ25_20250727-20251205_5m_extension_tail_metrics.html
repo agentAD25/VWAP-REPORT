@@ -319,7 +319,7 @@ body {
         </div>
         
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
-            2025-07-27 - 2025-12-05 (84 sessions)
+            2025-07-27 - 2025-12-05 (85 sessions)
         </div>
         
     </div>
@@ -329,7 +329,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P95 Extension Up</div>
-            <div class="value">357.3 ticks</div>
+            <div class="value">351.2 ticks</div>
             
             <div class="description">95th percentile</div>
             
@@ -337,7 +337,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P99 Extension Up</div>
-            <div class="value">493.3 ticks</div>
+            <div class="value">479.6 ticks</div>
             
             <div class="description">99th percentile (outlier threshold)</div>
             
@@ -345,7 +345,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P95 Extension Down</div>
-            <div class="value">551.5 ticks</div>
+            <div class="value">534.1 ticks</div>
             
             <div class="description">95th percentile</div>
             
@@ -391,17 +391,17 @@ body {
                 
                 <tr>
                     
-                    <td>295.191718</td>
+                    <td>295.631042</td>
                     
-                    <td>357.258648</td>
+                    <td>351.2049099999999</td>
                     
-                    <td>493.34632399999913</td>
+                    <td>479.5863159999994</td>
                     
-                    <td>433.40183800000005</td>
+                    <td>415.6180540000004</td>
                     
-                    <td>551.4939460000002</td>
+                    <td>534.104836</td>
                     
-                    <td>699.0977531999993</td>
+                    <td>687.3231587999994</td>
                     
                 </tr>
                 
@@ -457,7 +457,7 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [295.191718, 357.258648, 493.34632399999913], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [433.40183800000005, 551.4939460000002, 699.0977531999993], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [295.631042, 351.2049099999999, 479.5863159999994], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [415.6180540000004, 534.104836, 687.3231587999994], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
         
     </script>

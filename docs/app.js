@@ -298,13 +298,25 @@ function displayHTMLDashboards(htmlFiles) {
     
     dashboardsSection.classList.remove('hidden');
     
+    // Deduplicate: track seen filenames to prevent duplicates
+    const seenFilenames = new Set();
+    
     filteredFiles.forEach(htmlPath => {
+        const fullFilename = htmlPath.split('/').pop();
+        
+        // Skip if we've already seen this exact filename
+        if (seenFilenames.has(fullFilename)) {
+            console.log(`Skipping duplicate: ${fullFilename}`);
+            return;
+        }
+        
+        seenFilenames.add(fullFilename);
+        
         const link = document.createElement('a');
         link.href = htmlPath;
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.className = 'dashboard-link';
-        const fullFilename = htmlPath.split('/').pop();
         link.textContent = cleanFilenameForDisplay(fullFilename);
         htmlLinks.appendChild(link);
     });

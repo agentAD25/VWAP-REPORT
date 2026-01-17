@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VWAP Report Dashboards - ALPHA DRIP</title>
+    <style>
+        /* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+
+
+
+
+
+
+
+
+
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .dashboard-card {
+            background: var(--bg-panel);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-md);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-panel);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-cyan);
+        }
+        
+        .dashboard-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+        }
+        
+        .dashboard-card h3 {
+            color: var(--text-accent);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+        
+        .dashboard-card .placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>VWAP Report Dashboards</h1>
+        <div class="subtitle">
+            NQ | RTH | 1m | Built by TonySnow | ALPHA DRIP
+        </div>
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            N/A
+        </div>
+    </div>
+    
+    <div class="panel">
+        <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
+        <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
+    </div>
+    
+    <div class="gallery">
+        
+        <a href="daily_max_extensions.html" class="dashboard-card" target="_blank">
+            
+            <div class="placeholder">No Preview Available</div>
+            
+            <h3>Daily Max Extensions</h3>
+        </a>
+        
+        <a href="extension_tail_metrics.html" class="dashboard-card" target="_blank">
+            
+            <div class="placeholder">No Preview Available</div>
+            
+            <h3>Extension Tail Metrics</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_dashboard_all_events.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_dashboard_all_events.png" alt="Mgcg25 20241124-20250128 1M Dashboard All Events" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Dashboard All Events</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_dashboard_crosses.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_dashboard_crosses.png" alt="Mgcg25 20241124-20250128 1M Dashboard Crosses" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Dashboard Crosses</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_definitions_summary.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_definitions_summary.png" alt="Mgcg25 20241124-20250128 1M Definitions Summary" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Definitions Summary</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_touches_per_day_distribution.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_touches_per_day_distribution.png" alt="Mgcg25 20241124-20250128 1M Touches Per Day Distribution" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Touches Per Day Distribution</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_vwap_events.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_vwap_events.png" alt="Mgcg25 20241124-20250128 1M Vwap Events" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Vwap Events</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_vwap_performance_all_events.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_vwap_performance_all_events.png" alt="Mgcg25 20241124-20250128 1M Vwap Performance All Events" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Vwap Performance All Events</h3>
+        </a>
+        
+        <a href="MGCG25_20241124-20250128_1m_vwap_performance_crosses_only.html" class="dashboard-card" target="_blank">
+            
+            <img src="MGCG25_20241124-20250128_1m_vwap_performance_crosses_only.png" alt="Mgcg25 20241124-20250128 1M Vwap Performance Crosses Only" loading="lazy">
+            
+            <h3>Mgcg25 20241124-20250128 1M Vwap Performance Crosses Only</h3>
+        </a>
+        
+        <a href="oos_by_month.html" class="dashboard-card" target="_blank">
+            
+            <div class="placeholder">No Preview Available</div>
+            
+            <h3>Oos By Month</h3>
+        </a>
+        
+    </div>
+</body>
+</html>
