@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regime Segment Grid - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Regime Segment Grid</h1>
+        <div class="subtitle">
+            MGC | 
+            RTH | 
+            1m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-07-27 - 2025-12-05 (84 sessions)
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Highest Reversion Probability</div>
+            <div class="value">100.0%</div>
+            
+            <div class="description">Touch: 11</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Best Median MFE</div>
+            <div class="value">134.0 ticks</div>
+            
+            <div class="description">Maximum favorable excursion</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Low Sample Size</div>
+            <div class="value">94.7%</div>
+            
+            <div class="description">Buckets with n < 30</div>
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Reversion Probability by Touch Sequence</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Median MFE by Touch Sequence</div>
+            
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <div class="insights-title">Data Preview</div>
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    
+                    <th>touch_sequence_number</th>
+                    
+                    <th>vwap_slope_bucket</th>
+                    
+                    <th>p_revert</th>
+                    
+                    <th>median_mfe</th>
+                    
+                    <th>sample_size</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.28125</td>
+                    
+                    <td>31.5</td>
+                    
+                    <td>32</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2881355932203389</td>
+                    
+                    <td>27.0</td>
+                    
+                    <td>59</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.2</td>
+                    
+                    <td>81.5</td>
+                    
+                    <td>10</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>45.5</td>
+                    
+                    <td>12</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>31.0</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>35.5</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>44.0</td>
+                    
+                    <td>9</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>10.0</td>
+                    
+                    <td>7</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>39.0</td>
+                    
+                    <td>7</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>36.5</td>
+                    
+                    <td>6</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>24.0</td>
+                    
+                    <td>9</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>45.5</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>63.0</td>
+                    
+                    <td>9</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.375</td>
+                    
+                    <td>45.0</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2333333333333333</td>
+                    
+                    <td>27.5</td>
+                    
+                    <td>60</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.4242424242424242</td>
+                    
+                    <td>21.0</td>
+                    
+                    <td>33</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>134.0</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.5</td>
+                    
+                    <td>43.5</td>
+                    
+                    <td>6</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>25.5</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>28.5</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>33.5</td>
+                    
+                    <td>12</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>19.0</td>
+                    
+                    <td>5</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>2.0</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>18.5</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.096774193548387</td>
+                    
+                    <td>31.0</td>
+                    
+                    <td>31</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.3454545454545454</td>
+                    
+                    <td>23.0</td>
+                    
+                    <td>55</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>27.5</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>28.0</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>4.5</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>36.0</td>
+                    
+                    <td>11</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>2.0</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>36.0</td>
+                    
+                    <td>18</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.25</td>
+                    
+                    <td>55.5</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.36</td>
+                    
+                    <td>29.0</td>
+                    
+                    <td>25</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.3488372093023255</td>
+                    
+                    <td>29.0</td>
+                    
+                    <td>43</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>41.5</td>
+                    
+                    <td>8</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>10.5</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>6.0</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>23.5</td>
+                    
+                    <td>10</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>26.0</td>
+                    
+                    <td>13</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.2</td>
+                    
+                    <td>27.0</td>
+                    
+                    <td>30</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2142857142857142</td>
+                    
+                    <td>28.0</td>
+                    
+                    <td>42</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.25</td>
+                    
+                    <td>46.5</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>25.0</td>
+                    
+                    <td>14</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>19.0</td>
+                    
+                    <td>11</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>23.0</td>
+                    
+                    <td>5</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>14.0</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>18.0</td>
+                    
+                    <td>10</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2571428571428571</td>
+                    
+                    <td>20.0</td>
+                    
+                    <td>35</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.32</td>
+                    
+                    <td>22.0</td>
+                    
+                    <td>25</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+    
+
+    
+    <div class="download-section">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+        
+        <a href="regime_segment_grid.csv" class="download-link" download>regime_segment_grid.csv</a>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Grid showing performance metrics across touch sequences and VWAP slope regimes.</p>
+    </div>
+    
+
+    
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        
+        Plotly.newPlot('chart-1', [{"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 20, 20, 20, 21, 21, 21, 22, 22, 22, 23, 23, 23, 24, 24, 24, 25, 25, 25, 26, 26, 26, 27, 27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 31, 31, 32, 32, 33, 34, 34, 35, 35, 36, 37, 37, 38, 38, 39, 39, 40, 41, 42, 43], "y": [0.28125, 0.0, 0.0, 0.0, 0.0, 0.4242424242424242, 0.096774193548387, 0.0, 0.0, 0.0, 0.0, 0.36, 0.2, 0.0, 0.0, 0.0, 0.0, 0.32, 0.3809523809523809, 0.0, 0.0, 0.0, 0.0, 0.25, 0.2857142857142857, 0.0, 0.0, 0.0, 0.0, 0.4782608695652173, 0.2272727272727272, 0.0, 0.0, 0.0, 0.0, 0.238095238095238, 0.25, 0.0, 0.0, 0.0, 0.0, 0.25, 0.3076923076923076, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.3333333333333333, 0.0, 0.4, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.125, 0.0, 0.0, 0.375, 0.0, 0.4, 0.0, 0.0, 0.25, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1666666666666666, 0.0, 0.0, 0.0, 0.0, 0.25, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 20, 20, 20, 21, 21, 21, 22, 22, 23, 23, 23, 24, 24, 25, 25, 25, 26, 26, 26, 27, 27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 30, 31, 31, 31, 32, 32, 32, 33, 33, 33, 34, 34, 34, 35, 36, 36, 37, 37, 38, 39, 40, 41, 42, 43, 44], "y": [0.2881355932203389, 0.0, 0.0, 0.0, 0.0, 0.2333333333333333, 0.3454545454545454, 0.0, 0.0, 0.0, 0.0, 0.3488372093023255, 0.2142857142857142, 0.0, 0.0, 0.0, 0.0, 0.2571428571428571, 0.2368421052631578, 0.0, 0.0, 0.0, 0.0, 0.2571428571428571, 0.3, 0.0, 0.0, 0.0, 0.0, 0.2258064516129032, 0.36, 0.0, 0.0, 0.0, 0.0, 0.1739130434782608, 0.1818181818181818, 0.0, 0.0, 0.0, 0.0, 0.375, 0.3157894736842105, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.375, 0.0, 0.2307692307692307, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.6, 0.0, 0.0, 0.1666666666666666, 0.0, 0.1111111111111111, 0.0, 0.0, 0.0, 0.0, 0.2857142857142857, 0.0, 0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.3333333333333333, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3333333333333333, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}, {"x": [1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11, 11, 12, 12, 13, 14, 15, 15, 16, 17, 18, 19, 19, 20, 21, 21, 22, 23, 24, 25, 26], "y": [0.2, 0.0, 0.0, 0.375, 0.0, 0.0, 0.0, 0.5, 0.0, 0.0, 0.25, 0.25, 0.0, 0.5, 0.0, 0.0, 0.2, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.5, 0.0, 0.5, 0.0, 0.0, 0.5, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        Plotly.newPlot('chart-2', [{"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 20, 20, 20, 21, 21, 21, 22, 22, 22, 23, 23, 23, 24, 24, 24, 25, 25, 25, 26, 26, 26, 27, 27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 31, 31, 32, 32, 33, 34, 34, 35, 35, 36, 37, 37, 38, 38, 39, 39, 40, 41, 42, 43], "y": [31.5, 31.0, 10.0, 39.0, 36.5, 21.0, 31.0, 19.0, 18.5, 27.5, 28.0, 29.0, 27.0, 6.0, 41.5, 23.0, 19.0, 22.0, 21.0, 17.0, 32.0, 22.0, 32.0, 22.0, 15.5, 33.0, 19.5, 24.0, 12.0, 23.0, 26.5, 23.5, 16.0, 12.0, 28.5, 20.0, 8.0, 17.5, 18.5, 12.0, 10.0, 23.5, 9.0, 11.5, 10.0, 10.0, 14.0, 7.0, 8.0, 16.0, 15.0, 13.0, 17.0, 13.0, 4.5, 19.0, 30.0, 6.0, 15.5, 8.0, 7.5, 28.0, 15.0, 16.0, 5.5, 11.0, 36.5, 5.0, 10.0, 36.5, 11.0, 9.0, 9.0, 29.0, 5.0, 6.5, 3.0, 11.0, 13.0, 14.5, 5.5, 9.5, 13.0, 6.0, 21.0, 4.5, 10.5, 12.0, 5.0, 10.0, 7.0, 2.5, 4.0, 3.0, 2.0, 9.5, 5.0, 5.0, 7.5, 9.0, 6.0, 9.0, 3.0, 5.0, 11.0, 6.5, 7.5, 11.0, 4.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 9, 10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 18, 18, 18, 19, 19, 19, 20, 20, 20, 21, 21, 21, 22, 22, 23, 23, 23, 24, 24, 25, 25, 25, 26, 26, 26, 27, 27, 27, 28, 28, 28, 29, 29, 29, 30, 30, 30, 31, 31, 31, 32, 32, 32, 33, 33, 33, 34, 34, 34, 35, 36, 36, 37, 37, 38, 39, 40, 41, 42, 43, 44], "y": [27.0, 45.5, 44.0, 63.0, 24.0, 27.5, 23.0, 33.5, 25.5, 36.0, 36.0, 29.0, 28.0, 23.5, 26.0, 18.0, 25.0, 20.0, 26.5, 30.0, 17.0, 19.0, 19.0, 18.0, 22.0, 41.0, 16.0, 17.0, 15.0, 22.0, 11.0, 25.0, 12.0, 24.0, 17.0, 11.0, 12.0, 9.0, 23.0, 15.0, 15.0, 14.0, 11.0, 11.0, 10.5, 12.0, 37.0, 16.0, 20.0, 15.5, 16.0, 15.0, 11.0, 4.0, 6.5, 10.0, 11.0, 8.0, 8.0, 19.0, 4.5, 7.5, 23.5, 8.0, 6.5, 8.0, 32.0, 9.0, 11.0, 5.0, 7.5, 2.0, 24.0, 6.5, 19.0, 21.0, 9.0, 13.0, 20.5, 4.0, 18.5, 6.0, 9.0, 13.0, 5.5, 14.0, 7.0, 6.0, 16.0, 12.0, 12.0, 16.0, 1.0, 23.0, 14.0, 6.5, 8.0, 16.0, 19.0, 9.0, 11.0, 19.0, 0.0, 12.0, 30.0, 5.0, 12.0, 1.0, 4.0, 4.0, 5.0, 6.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}, {"x": [1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 6, 6, 6, 7, 7, 8, 8, 9, 10, 10, 11, 11, 12, 12, 13, 14, 15, 15, 16, 17, 18, 19, 19, 20, 21, 21, 22, 23, 24, 25, 26], "y": [81.5, 35.5, 134.0, 45.0, 45.5, 28.5, 2.0, 43.5, 2.0, 4.5, 55.5, 46.5, 10.5, 21.0, 14.0, 7.0, 43.0, 30.0, 31.0, 56.5, 50.0, 123.0, 50.0, 10.0, 30.0, 86.0, 42.0, 83.0, 39.5, 54.0, 24.0, 18.5, 35.5, 17.5, 51.0, 51.0, 37.0, 4.0, 73.0, 46.0, 49.0, 35.0, 20.0, 19.0], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        
+    </script>
+</body>
+</html>
