@@ -1,0 +1,1 @@
+date,timestamp,event_type,level,direction,touch_sequence_number,vwap,stdev,event_price,distance_to_vwap_ticks,mfe_5m_ticks,mae_5m_ticks,max_up_extension_ticks,max_down_extension_ticks,session_type,bars_type,touch_tolerance_ticks
