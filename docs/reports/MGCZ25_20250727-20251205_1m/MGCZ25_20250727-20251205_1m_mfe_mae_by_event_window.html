@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Max Extensions - ALPHA DRIP</title>
+    <title>MFE/MAE by Event Window - ALPHA DRIP</title>
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
         /* Theme CSS */
@@ -310,7 +310,7 @@ body {
 </head>
 <body>
     <div class="header">
-        <h1>Daily Max Extensions</h1>
+        <h1>MFE/MAE by Event Window</h1>
         <div class="subtitle">
             MGC | 
             RTH | 
@@ -328,18 +328,26 @@ body {
     <div class="takeaways">
         
         <div class="takeaway-card">
-            <div class="label">Max Extension Up</div>
-            <div class="value">624.1 ticks</div>
+            <div class="label">Best Window (MFE)</div>
+            <div class="value">30 min</div>
             
-            <div class="description">Average: 149.0 ticks</div>
+            <div class="description">Median MFE: 47.0 ticks</div>
             
         </div>
         
         <div class="takeaway-card">
-            <div class="label">Max Extension Down</div>
-            <div class="value">811.0 ticks</div>
+            <div class="label">MFE/MAE Asymmetry</div>
+            <div class="value">0.93x</div>
             
-            <div class="description">Average: 182.6 ticks</div>
+            <div class="description">Ratio of favorable to adverse excursion</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">9,855</div>
+            
+            <div class="description">Across all windows</div>
             
         </div>
         
@@ -350,11 +358,15 @@ body {
     <div class="dashboard-container">
         
         <div class="chart-container">
-            <div class="chart-title">Max Extension Over Time</div>
-            
-            <div class="chart-subtitle">Up (blue) and Down (red) extensions</div>
+            <div class="chart-title">Median MFE by Window</div>
             
             <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Median MAE by Window</div>
+            
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
     </div>
@@ -367,11 +379,17 @@ body {
             <thead>
                 <tr>
                     
-                    <th>session_date</th>
+                    <th>window_minutes</th>
                     
-                    <th>max_extension_up_ticks</th>
+                    <th>event_type</th>
                     
-                    <th>max_extension_down_ticks</th>
+                    <th>direction</th>
+                    
+                    <th>median_mfe</th>
+                    
+                    <th>median_mae</th>
+                    
+                    <th>sample_size</th>
                     
                 </tr>
             </thead>
@@ -379,501 +397,481 @@ body {
                 
                 <tr>
                     
-                    <td>2025-12-05</td>
+                    <td>1.0</td>
                     
-                    <td>108.33333</td>
+                    <td>CROSS</td>
                     
-                    <td>329.71429</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>12.0</td>
                     
-                    <td>2025-12-04</td>
+                    <td>22.0</td>
                     
-                    <td>57.92857</td>
-                    
-                    <td>76.47222</td>
+                    <td>572</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-12-03</td>
+                    <td>1.0</td>
                     
-                    <td>4.4</td>
+                    <td>CROSS</td>
                     
-                    <td>7.6</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>10.0</td>
                     
-                    <td>2025-12-02</td>
+                    <td>22.0</td>
                     
-                    <td>31.68981</td>
-                    
-                    <td>246.72727</td>
+                    <td>588</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-12-01</td>
+                    <td>1.0</td>
                     
-                    <td>80.67391</td>
+                    <td>PIERCE</td>
                     
-                    <td>116.84211</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>10.0</td>
                     
-                    <td>2025-11-30</td>
+                    <td>10.0</td>
                     
-                    <td>nan</td>
-                    
-                    <td>nan</td>
+                    <td>162</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-28</td>
+                    <td>1.0</td>
                     
-                    <td>207.75152</td>
+                    <td>PIERCE</td>
                     
-                    <td>84.50476</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>11.0</td>
                     
-                    <td>2025-11-27</td>
+                    <td>10.0</td>
                     
-                    <td>6.40523</td>
-                    
-                    <td>66.64394</td>
+                    <td>178</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-21</td>
+                    <td>1.0</td>
                     
-                    <td>296.50969</td>
+                    <td>TOUCH</td>
                     
-                    <td>217.54689</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>9.0</td>
                     
-                    <td>2025-11-20</td>
+                    <td>9.5</td>
                     
-                    <td>194.61576</td>
-                    
-                    <td>362.99106</td>
+                    <td>224</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-19</td>
+                    <td>1.0</td>
                     
-                    <td>139.43462</td>
+                    <td>TOUCH</td>
                     
-                    <td>446.71661</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>10.0</td>
                     
-                    <td>2025-11-18</td>
+                    <td>10.0</td>
                     
-                    <td>187.72732</td>
-                    
-                    <td>239.02043</td>
+                    <td>247</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-17</td>
+                    <td>3.0</td>
                     
-                    <td>114.81232</td>
+                    <td>CROSS</td>
                     
-                    <td>539.32227</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>16.0</td>
                     
-                    <td>2025-11-16</td>
+                    <td>25.0</td>
                     
-                    <td>0.0</td>
-                    
-                    <td>0.0</td>
+                    <td>588</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-14</td>
+                    <td>3.0</td>
                     
-                    <td>356.27384</td>
+                    <td>PIERCE</td>
                     
-                    <td>124.85493</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>15.0</td>
                     
-                    <td>2025-11-13</td>
+                    <td>13.0</td>
                     
-                    <td>122.85704</td>
-                    
-                    <td>513.2351</td>
+                    <td>178</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-12</td>
+                    <td>3.0</td>
                     
-                    <td>361.19788</td>
+                    <td>PIERCE</td>
                     
-                    <td>48.75746</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>16.0</td>
                     
-                    <td>2025-11-11</td>
+                    <td>14.0</td>
                     
-                    <td>169.30913</td>
-                    
-                    <td>231.57906</td>
+                    <td>162</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-10</td>
+                    <td>3.0</td>
                     
-                    <td>254.51759</td>
+                    <td>TOUCH</td>
                     
-                    <td>80.26712</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>13.0</td>
                     
-                    <td>2025-11-09</td>
+                    <td>15.0</td>
                     
-                    <td>0.0</td>
-                    
-                    <td>0.0</td>
+                    <td>247</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-07</td>
+                    <td>3.0</td>
                     
-                    <td>306.99774</td>
+                    <td>CROSS</td>
                     
-                    <td>94.54038</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>17.0</td>
                     
-                    <td>2025-11-06</td>
+                    <td>27.0</td>
                     
-                    <td>109.61118</td>
-                    
-                    <td>198.68554</td>
+                    <td>572</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-05</td>
+                    <td>3.0</td>
                     
-                    <td>134.71644</td>
+                    <td>TOUCH</td>
                     
-                    <td>131.95393</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>13.0</td>
                     
-                    <td>2025-11-04</td>
+                    <td>12.5</td>
                     
-                    <td>276.82035</td>
-                    
-                    <td>199.9793</td>
+                    <td>224</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-11-03</td>
+                    <td>5.0</td>
                     
-                    <td>155.32786</td>
+                    <td>CROSS</td>
                     
-                    <td>203.52887</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>21.0</td>
                     
-                    <td>2025-11-02</td>
+                    <td>30.0</td>
                     
-                    <td>nan</td>
-                    
-                    <td>nan</td>
+                    <td>572</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-31</td>
+                    <td>5.0</td>
                     
-                    <td>88.06046</td>
+                    <td>PIERCE</td>
                     
-                    <td>432.53543</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>17.0</td>
                     
-                    <td>2025-10-30</td>
+                    <td>15.5</td>
                     
-                    <td>305.47168</td>
-                    
-                    <td>80.60597</td>
+                    <td>178</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-29</td>
+                    <td>5.0</td>
                     
-                    <td>117.52492</td>
+                    <td>TOUCH</td>
                     
-                    <td>600.18065</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>15.5</td>
                     
-                    <td>2025-10-28</td>
+                    <td>16.0</td>
                     
-                    <td>256.85371</td>
-                    
-                    <td>105.86843</td>
+                    <td>224</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-27</td>
+                    <td>5.0</td>
                     
-                    <td>128.26467</td>
+                    <td>CROSS</td>
                     
-                    <td>308.17595</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>20.0</td>
                     
-                    <td>2025-10-26</td>
+                    <td>27.0</td>
                     
-                    <td>nan</td>
-                    
-                    <td>nan</td>
+                    <td>588</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-24</td>
+                    <td>5.0</td>
                     
-                    <td>237.461</td>
+                    <td>TOUCH</td>
                     
-                    <td>187.35726</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>15.0</td>
                     
-                    <td>2025-10-23</td>
+                    <td>18.0</td>
                     
-                    <td>109.83347</td>
-                    
-                    <td>231.39958</td>
+                    <td>247</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-22</td>
+                    <td>5.0</td>
                     
-                    <td>624.0664</td>
+                    <td>PIERCE</td>
                     
-                    <td>434.70145</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>18.5</td>
                     
-                    <td>2025-10-21</td>
+                    <td>15.0</td>
                     
-                    <td>196.81733</td>
-                    
-                    <td>810.9564</td>
+                    <td>162</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-20</td>
+                    <td>15.0</td>
                     
-                    <td>452.0663</td>
+                    <td>PIERCE</td>
                     
-                    <td>160.77041</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>31.5</td>
                     
-                    <td>2025-10-19</td>
+                    <td>22.5</td>
                     
-                    <td>0.0</td>
-                    
-                    <td>0.0</td>
+                    <td>162</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-17</td>
+                    <td>15.0</td>
                     
-                    <td>120.4851</td>
+                    <td>TOUCH</td>
                     
-                    <td>608.24557</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>25.0</td>
                     
-                    <td>2025-10-16</td>
+                    <td>28.0</td>
                     
-                    <td>371.61822</td>
-                    
-                    <td>80.25292</td>
+                    <td>247</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-15</td>
+                    <td>15.0</td>
                     
-                    <td>163.77917</td>
+                    <td>CROSS</td>
                     
-                    <td>181.2664</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>32.5</td>
                     
-                    <td>2025-10-14</td>
+                    <td>41.0</td>
                     
-                    <td>246.62673</td>
-                    
-                    <td>51.34159</td>
+                    <td>572</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-13</td>
+                    <td>15.0</td>
                     
-                    <td>201.87821</td>
+                    <td>PIERCE</td>
                     
-                    <td>100.46712</td>
+                    <td>FROM_ABOVE</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>25.5</td>
                     
-                    <td>2025-10-12</td>
+                    <td>25.0</td>
                     
-                    <td>nan</td>
-                    
-                    <td>nan</td>
+                    <td>178</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-10</td>
+                    <td>15.0</td>
                     
-                    <td>294.31307</td>
+                    <td>TOUCH</td>
                     
-                    <td>205.12249</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>25.5</td>
                     
-                    <td>2025-10-09</td>
+                    <td>21.0</td>
                     
-                    <td>49.87978</td>
-                    
-                    <td>663.77397</td>
+                    <td>224</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-08</td>
+                    <td>15.0</td>
                     
-                    <td>166.96445</td>
+                    <td>CROSS</td>
                     
-                    <td>138.74327</td>
+                    <td>FROM_BELOW</td>
                     
-                </tr>
-                
-                <tr>
+                    <td>33.0</td>
                     
-                    <td>2025-10-07</td>
+                    <td>38.0</td>
                     
-                    <td>120.88377</td>
-                    
-                    <td>179.39165</td>
+                    <td>588</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-06</td>
+                    <td>30.0</td>
                     
-                    <td>205.04602</td>
+                    <td>PIERCE</td>
                     
-                    <td>51.26945</td>
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>30.5</td>
+                    
+                    <td>35.5</td>
+                    
+                    <td>178</td>
                     
                 </tr>
                 
                 <tr>
                     
-                    <td>2025-10-05</td>
+                    <td>30.0</td>
                     
-                    <td>0.0</td>
+                    <td>CROSS</td>
                     
-                    <td>0.0</td>
+                    <td>FROM_BELOW</td>
+                    
+                    <td>47.0</td>
+                    
+                    <td>47.0</td>
+                    
+                    <td>588</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>30.0</td>
+                    
+                    <td>CROSS</td>
+                    
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>43.0</td>
+                    
+                    <td>52.5</td>
+                    
+                    <td>572</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>30.0</td>
+                    
+                    <td>PIERCE</td>
+                    
+                    <td>FROM_BELOW</td>
+                    
+                    <td>45.5</td>
+                    
+                    <td>29.0</td>
+                    
+                    <td>162</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>30.0</td>
+                    
+                    <td>TOUCH</td>
+                    
+                    <td>FROM_ABOVE</td>
+                    
+                    <td>32.0</td>
+                    
+                    <td>35.0</td>
+                    
+                    <td>247</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>30.0</td>
+                    
+                    <td>TOUCH</td>
+                    
+                    <td>FROM_BELOW</td>
+                    
+                    <td>35.0</td>
+                    
+                    <td>27.0</td>
+                    
+                    <td>224</td>
                     
                 </tr>
                 
@@ -887,7 +885,7 @@ body {
     <div class="download-section">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
         
-        <a href="daily_max_extensions.csv" class="download-link" download>daily_max_extensions.csv</a>
+        <a href="mfe_mae_by_event_window.csv" class="download-link" download>mfe_mae_by_event_window.csv</a>
         
     </div>
     
@@ -895,7 +893,7 @@ body {
     
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
-        <p class="text-muted">Daily maximum price extensions from VWAP in ticks.</p>
+        <p class="text-muted">Performance metrics across different time windows after VWAP events.</p>
     </div>
     
 
@@ -929,7 +927,9 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": ["2025-07-27", "2025-07-28", "2025-07-29", "2025-07-30", "2025-07-31", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-28", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02", "2025-10-03", "2025-10-05", "2025-10-06", "2025-10-07", "2025-10-08", "2025-10-09", "2025-10-10", "2025-10-12", "2025-10-13", "2025-10-14", "2025-10-15", "2025-10-16", "2025-10-17", "2025-10-19", "2025-10-20", "2025-10-21", "2025-10-22", "2025-10-23", "2025-10-24", "2025-10-26", "2025-10-27", "2025-10-28", "2025-10-29", "2025-10-30", "2025-10-31", "2025-11-02", "2025-11-03", "2025-11-04", "2025-11-05", "2025-11-06", "2025-11-07", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-16", "2025-11-17", "2025-11-18", "2025-11-19", "2025-11-20", "2025-11-21", "2025-11-27", "2025-11-28", "2025-11-30", "2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05"], "y": [0.0, 63.22282, 135.35648, 54.30828, 11.98456, 249.07254, 146.17932, 110.2421, 117.38382, 0.0, 116.72738, 102.29284, 43.93741, 111.44924, 39.05821, NaN, NaN, 201.65555, 59.16624, 239.08653, 68.31472, 169.43082, NaN, 198.375, 100.21161, 20.68625, 240.92479, 175.62946, 0.0, 78.98623, 197.36841, 64.39887, 105.89848, 116.85959, 0.0, 205.04602, 120.88377, 166.96445, 49.87978, 294.31307, NaN, 201.87821, 246.62673, 163.77917, 371.61822, 120.4851, 0.0, 452.0663, 196.81733, 624.0664, 109.83347, 237.461, NaN, 128.26467, 256.85371, 117.52492, 305.47168, 88.06046, NaN, 155.32786, 276.82035, 134.71644, 109.61118, 306.99774, 0.0, 254.51759, 169.30913, 361.19788, 122.85704, 356.27384, 0.0, 114.81232, 187.72732, 139.43462, 194.61576, 296.50969, 6.40523, 207.75152, NaN, 80.67391, 31.68981, 4.4, 57.92857, 108.33333], "name": "Up", "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}, {"x": ["2025-07-27", "2025-07-28", "2025-07-29", "2025-07-30", "2025-07-31", "2025-09-02", "2025-09-03", "2025-09-04", "2025-09-05", "2025-09-07", "2025-09-08", "2025-09-09", "2025-09-10", "2025-09-11", "2025-09-12", "2025-09-13", "2025-09-14", "2025-09-15", "2025-09-16", "2025-09-17", "2025-09-18", "2025-09-19", "2025-09-21", "2025-09-22", "2025-09-23", "2025-09-24", "2025-09-25", "2025-09-26", "2025-09-28", "2025-09-29", "2025-09-30", "2025-10-01", "2025-10-02", "2025-10-03", "2025-10-05", "2025-10-06", "2025-10-07", "2025-10-08", "2025-10-09", "2025-10-10", "2025-10-12", "2025-10-13", "2025-10-14", "2025-10-15", "2025-10-16", "2025-10-17", "2025-10-19", "2025-10-20", "2025-10-21", "2025-10-22", "2025-10-23", "2025-10-24", "2025-10-26", "2025-10-27", "2025-10-28", "2025-10-29", "2025-10-30", "2025-10-31", "2025-11-02", "2025-11-03", "2025-11-04", "2025-11-05", "2025-11-06", "2025-11-07", "2025-11-09", "2025-11-10", "2025-11-11", "2025-11-12", "2025-11-13", "2025-11-14", "2025-11-16", "2025-11-17", "2025-11-18", "2025-11-19", "2025-11-20", "2025-11-21", "2025-11-27", "2025-11-28", "2025-11-30", "2025-12-01", "2025-12-02", "2025-12-03", "2025-12-04", "2025-12-05"], "y": [0.0, 135.74957, 44.91689, 280.16484, 94.75487, 48.83438, 94.01631, 139.42414, 168.83237, 0.0, 29.20487, 258.23049, 120.24896, 51.05896, 86.27612, NaN, NaN, 56.08217, 141.26245, 360.28632, 141.89174, 29.67156, NaN, 59.91828, 230.94641, 286.55902, 92.04309, 97.94494, 0.0, 78.94655, 81.07223, 163.3344, 371.8367, 145.42481, 0.0, 51.26945, 179.39165, 138.74327, 663.77397, 205.12249, NaN, 100.46712, 51.34159, 181.2664, 80.25292, 608.24557, 0.0, 160.77041, 810.9564, 434.70145, 231.39958, 187.35726, NaN, 308.17595, 105.86843, 600.18065, 80.60597, 432.53543, NaN, 203.52887, 199.9793, 131.95393, 198.68554, 94.54038, 0.0, 80.26712, 231.57906, 48.75746, 513.2351, 124.85493, 0.0, 539.32227, 239.02043, 446.71661, 362.99106, 217.54689, 66.64394, 84.50476, NaN, 116.84211, 246.72727, 7.6, 76.47222, 329.71429], "name": "Down", "type": "scatter", "mode": "lines+markers", "line": {"color": "#7b2cbf", "width": 2}, "marker": {"color": "#7b2cbf", "size": 4}}], {"xaxis": {"title": "Session Date", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "hovermode": "x unified", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [12.0, 11.0, 10.0, 15.0, 13.0, 17.0, 17.0, 21.0, 15.0, 32.5, 25.0, 25.5, 43.0, 30.5, 32.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [10.0, 10.0, 9.0, 16.0, 13.0, 16.0, 18.5, 20.0, 15.5, 33.0, 25.5, 31.5, 47.0, 45.5, 35.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        
+        Plotly.newPlot('chart-2', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [22.0, 10.0, 10.0, 13.0, 15.0, 27.0, 15.5, 30.0, 18.0, 41.0, 28.0, 25.0, 52.5, 35.5, 35.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [22.0, 10.0, 9.5, 14.0, 12.5, 25.0, 15.0, 27.0, 16.0, 38.0, 21.0, 22.5, 47.0, 29.0, 27.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
         
     </script>
