@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Apply NQ-format (full CSS, MGC|tf subtitle, insights-table, chart 400px, remove Downloads) to MGCZ24 hold_fail_rates."""
+"""Apply NQ-format (full CSS, MGC|tf subtitle, insights-table, chart 400px, remove Downloads) to MGCZ24 hold_fail_rates. Fix title/h1: Mgcz24->MGCZ24, 1M->1m."""
 import re
 from pathlib import Path
 
-REPORTS = Path(__file__).parent.parent / "docs" / "reports"
+BASE = Path(__file__).parent.parent
+REPORTS_DIRS = [BASE / "docs" / "reports", BASE / "site" / "docs" / "reports"]
 FOLDERS = ["MGCZ24_20240725-20241122_1m", "MGCZ24_20240725-20241122_5m", "MGCZ24_20240725-20241122_15m", "MGCZ24_20240725-20241122_30m"]
 
 CSS = r'''    <style>
@@ -195,30 +196,36 @@ CSS = r'''    <style>
 SUB_INSTR = "            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP"
 
 def main():
-    for folder in FOLDERS:
-        m = re.search(r'_(\d+m)$', folder)
-        tf = m.group(1) if m else "1m"
-        base = f"MGCZ24_20240725-20241122_{tf}_hold_fail_rates"
-        for sub in ["", "dashboards"]:
-            p = (REPORTS / folder / "dashboards" / f"{base}.html") if sub else (REPORTS / folder / f"{base}.html")
-            if not p.exists():
-                continue
-            s = p.read_text(encoding="utf-8")
-            # 1) CSS
-            s = re.sub(r'    <style>\s*/\* Theme CSS will be inlined here \*/ \s*</style>\s*</head>', CSS, s, count=1)
-            # 2) subtitle NQ -> MGC, 1m -> tf
-            s = re.sub(r'<div class="subtitle">\s*NQ \| \s*RTH \| \s*\d+m \| \s*Built by TonySnow \| ALPHA DRIP\s*</div>',
-                       f'<div class="subtitle">\n            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP\n        </div>', s, count=1)
-            # 3) chart
-            s = s.replace('style="height: 450px; width: 100%; margin: 0 auto;"', 'style="height: 400px;"')
-            # 4) panel -> insights-table, table
-            s = s.replace('<div class="panel">\n        <div class="insights-title">Data Preview</div>\n        <table class="data-table" id="dataTable">',
-                          '<div class="insights-table">\n        <div class="insights-title">Data Preview</div>\n        <table id="dataTable">')
-            # 5) remove Downloads block (match the CSV filename for this tf)
-            s = re.sub(r'\s*</div>\s*\n\s*\n\s*\n\s*<div class="download-section">\s*<h3[^>]*>Downloads</h3>.*?<a href="[^"]*hold_fail_rates\.csv"[^>]*>.*?</a>\s*</div>\s*\n\s*\n\s*\n\s*<div class="panel">\s*<h3[^>]*>Notes</h3>',
-                       '\n    </div>\n\n    <div class="panel">\n        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>', s, flags=re.DOTALL)
-            p.write_text(s, encoding="utf-8")
-            print("Updated:", p.relative_to(REPORTS.parent))
+    for REPORTS in REPORTS_DIRS:
+        if not REPORTS.exists():
+            continue
+        for folder in FOLDERS:
+            m = re.search(r'_(\d+m)$', folder)
+            tf = m.group(1) if m else "1m"
+            base = f"MGCZ24_20240725-20241122_{tf}_hold_fail_rates"
+            for sub in ["", "dashboards"]:
+                p = (REPORTS / folder / "dashboards" / f"{base}.html") if sub else (REPORTS / folder / f"{base}.html")
+                if not p.exists():
+                    continue
+                s = p.read_text(encoding="utf-8")
+                # 1) CSS
+                s = re.sub(r'    <style>\s*/\* Theme CSS will be inlined here \*/ \s*</style>\s*</head>', CSS, s, count=1)
+                # 2) subtitle NQ -> MGC, 1m -> tf
+                s = re.sub(r'<div class="subtitle">\s*NQ \| \s*RTH \| \s*\d+m \| \s*Built by TonySnow \| ALPHA DRIP\s*</div>',
+                           f'<div class="subtitle">\n            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP\n        </div>', s, count=1)
+                # 3) chart
+                s = s.replace('style="height: 450px; width: 100%; margin: 0 auto;"', 'style="height: 400px;"')
+                # 4) panel -> insights-table, table
+                s = s.replace('<div class="panel">\n        <div class="insights-title">Data Preview</div>\n        <table class="data-table" id="dataTable">',
+                              '<div class="insights-table">\n        <div class="insights-title">Data Preview</div>\n        <table id="dataTable">')
+                # 5) remove Downloads block (match the CSV filename for this tf)
+                s = re.sub(r'\s*</div>\s*\n\s*\n\s*\n\s*<div class="download-section">\s*<h3[^>]*>Downloads</h3>.*?<a href="[^"]*hold_fail_rates\.csv"[^>]*>.*?</a>\s*</div>\s*\n\s*\n\s*\n\s*<div class="panel">\s*<h3[^>]*>Notes</h3>',
+                           '\n    </div>\n\n    <div class="panel">\n        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>', s, flags=re.DOTALL)
+                # 6) title/h1: Mgcz24 -> MGCZ24, 1M/5M/15M/30M -> 1m/5m/15m/30m (from .title() on stem)
+                s = s.replace("Mgcz24", "MGCZ24")
+                s = re.sub(r"\b(\d+)M\b", r"\1m", s)
+                p.write_text(s, encoding="utf-8")
+                print("Updated:", p.relative_to(BASE))
 
 if __name__ == "__main__":
     main()
