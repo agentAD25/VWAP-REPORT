@@ -268,7 +268,7 @@ function displayHTMLDashboards(htmlFiles) {
         return;
     }
     
-    // Filter out excluded reports AND ensure timeframe matches
+    // Filter out excluded reports, wrong-contract files, and ensure timeframe matches
     const filteredFiles = htmlFiles.filter(htmlPath => {
         const filename = htmlPath.split('/').pop();
         
@@ -277,19 +277,26 @@ function displayHTMLDashboards(htmlFiles) {
             return false;
         }
         
+        // Ensure the file belongs to the selected contract (exclude wrongly-placed files from other contracts)
+        // Pattern: CONTRACT_YYYYMMDD-YYYYMMDD_1m_ or .html/.csv at end
+        const otherContractMatch = filename.match(/^([A-Z0-9]+)_\d{8}-\d{8}_\d+m(?:_|\.)/);
+        if (otherContractMatch && otherContractMatch[1] !== currentSelection.contract) {
+            return false;
+        }
+        
         // Then check if timeframe matches the selected timeframe
-        // Check both the filename AND the folder path for timeframe pattern
-        // Pattern: _TIMEFRAME_ (e.g., _1m_, _5m_, _15m_, _30m_)
+        // If filename has explicit timeframe (e.g. MGCZ25_..._30m_dashboard.html), use that; else use path.
         if (currentSelection.timeframe) {
-            const timeframePattern = `_${currentSelection.timeframe}_`;
-            // Check filename first (for prefixed files like MGCQ24_20240529-20240724_1m_daily_max_extensions.html)
-            const filenameHasTimeframe = filename.includes(timeframePattern);
-            // Check folder path (for short-named files like daily_max_extensions.html in MGCQ24_20240529-20240724_1m/)
-            const pathHasTimeframe = htmlPath.includes(timeframePattern);
+            const tfInFilename = filename.match(/_(\d+m)_/);
+            const fileTimeframe = tfInFilename ? tfInFilename[1] : null;
+            const pathHasTimeframe = htmlPath.includes(`_${currentSelection.timeframe}_`);
             
-            if (!filenameHasTimeframe && !pathHasTimeframe) {
-                // Debug: log filtered out files
-                console.log(`Filtered out (timeframe mismatch): ${htmlPath} (looking for ${timeframePattern})`);
+            const matches = fileTimeframe
+                ? (fileTimeframe === currentSelection.timeframe)
+                : pathHasTimeframe;
+            
+            if (!matches) {
+                console.log(`Filtered out (timeframe mismatch): ${htmlPath} (file tf: ${fileTimeframe || 'path'}, selected: ${currentSelection.timeframe})`);
                 return false;
             }
         }

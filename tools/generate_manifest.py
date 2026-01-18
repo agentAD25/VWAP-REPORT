@@ -24,6 +24,23 @@ else:
 # Format: CONTRACT_YYYYMMDD-YYYYMMDD_TIMEFRAME
 FOLDER_PATTERN = re.compile(r'^(?P<contract>[A-Z0-9]+)_(?P<start>\d{8})-(?P<end>\d{8})_(?P<tf>\d+m)$')
 
+# Pattern to detect another contract's prefix in a filename (CONTRACT_YYYYMMDD-YYYYMMDD_1m_)
+# Used to exclude wrongly-placed files from other contracts.
+CONTRACT_PREFIX_IN_FILENAME = re.compile(r'^([A-Z0-9]+)_\d{8}-\d{8}_\d+m(?:_|\.)')
+
+
+def file_belongs_to_folder(filename: str, folder_contract: str) -> bool:
+    """
+    Return True if this file belongs to the folder's contract.
+    - If the filename has no contract prefix (e.g. daily_max_extensions.html), it belongs.
+    - If the filename has a contract prefix (X_YYYYMMDD-YYYYMMDD_1m_... or .csv/.html),
+      X must equal folder_contract; otherwise it was wrongly copied from another contract.
+    """
+    m = CONTRACT_PREFIX_IN_FILENAME.match(filename)
+    if not m:
+        return True  # short name or no prefix, belongs to this folder
+    return m.group(1) == folder_contract
+
 
 def parse_folder_name(folder_name):
     """
@@ -84,9 +101,11 @@ def generate_manifest():
         html_files = []
         csv_files = []
         
-        # Scan root folder files
+        # Scan root folder files (only include files that belong to this contract)
         for file_path in folder_path.iterdir():
             if not file_path.is_file():
+                continue
+            if not file_belongs_to_folder(file_path.name, contract):
                 continue
             
             # Get relative path from docs/ directory
@@ -102,11 +121,13 @@ def generate_manifest():
             elif ext == '.csv':
                 csv_files.append(relative_path_str)
         
-        # Also scan dashboards/ subfolder if it exists
+        # Also scan dashboards/ subfolder if it exists (only include files for this contract)
         dashboards_path = folder_path / 'dashboards'
         if dashboards_path.exists() and dashboards_path.is_dir():
             for file_path in dashboards_path.iterdir():
                 if not file_path.is_file():
+                    continue
+                if not file_belongs_to_folder(file_path.name, contract):
                     continue
                 
                 # Get relative path from docs/ directory
