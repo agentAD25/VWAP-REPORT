@@ -23,6 +23,9 @@ MGCZ24_FOLDERS = [
 # Filename has CONTRACT_YYYYMMDD-YYYYMMDD_TF_ or .csv/.png
 PREFIX = re.compile(r'^([A-Z0-9]+)_\d{8}-\d{8}_(\d+m)(?:_|\.)')
 
+# Reports whose HTML must come from dashboards (root can have stale 0/NaN). Copy dashboards->root too.
+ROOT_FROM_DASHBOARDS = {"daily_max_extensions", "extension_tail_metrics", "oos_by_month"}
+
 
 def file_wrong_contract(name: str) -> bool:
     m = PREFIX.match(name)
@@ -68,7 +71,7 @@ def main():
                     p.unlink()
                     print(f"  Removed: {folder}/dashboards/{p.name}")
 
-        # 3) Copy from local root: MGCZ24_*_Xm_* only (and .json, short names if we want)
+        # 3) Copy from local root: MGCZ24_*_Xm_* only. Skip HTMLs for ROOT_FROM_DASHBOARDS (use dashboards->root instead).
         for p in local.iterdir():
             if not p.is_file():
                 continue
@@ -76,6 +79,11 @@ def main():
                 continue
             ext = p.suffix.lower()
             if ext not in ('.html', '.csv', '.png', '.json'):
+                continue
+            if ext == '.html' and (
+                p.stem in ROOT_FROM_DASHBOARDS
+                or any(p.stem == f"{folder}_{s}" for s in ROOT_FROM_DASHBOARDS)
+            ):
                 continue
             shutil.copy2(p, web / p.name)
             print(f"  Copied root: {p.name}")
@@ -98,6 +106,16 @@ def main():
                     continue
                 shutil.copy2(p, dpath / p.name)
                 print(f"  Copied dash: {p.name}")
+
+        # 5) For ROOT_FROM_DASHBOARDS: overwrite web root from local dashboards (canonical; root can be stale 0/NaN)
+        prefix = folder  # e.g. MGCZ24_20240725-20241122_1m
+        for slug in ROOT_FROM_DASHBOARDS:
+            for src_name in (f"{prefix}_{slug}.html", f"{slug}.html"):
+                src = ld / src_name
+                if not src.exists():
+                    continue
+                shutil.copy2(src, web / src_name)
+                print(f"  Dash->root: {src_name}")
 
     print("MGCZ24 sync done.")
 

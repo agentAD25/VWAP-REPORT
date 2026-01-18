@@ -80,6 +80,13 @@ try {
     Write-Host "Continuing with deployment..." -ForegroundColor Yellow
 }
 
+# Step 1b2: MGCZ24 root-from-dashboards (fix 0/NaN in daily_max_extensions, extension_tail_metrics, oos_by_month)
+Write-Host "Step 1b2: MGCZ24 root-from-dashboards fix..." -ForegroundColor Yellow
+try {
+    py tools\fix_mgcz24_root_from_dashboards.py
+    if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ MGCZ24 root fix applied" -ForegroundColor Green }
+} catch { Write-Host "  ⚠ MGCZ24 fix skipped" -ForegroundColor Yellow }
+
 Write-Host ""
 
 # Step 1c: Generate manifest
