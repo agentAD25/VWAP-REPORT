@@ -5,226 +5,41 @@ update_hold_fail_rates_visual.py
 Copies all hold_fail_rates.html files and updates them to match
 the dashboard_all_events.html visual style.
 Creates new files in a 'visual update' folder structure.
+
+Uses nq_format_helpers.replace_placeholder_css_with_nq_theme
+for CSS replacement (single shared implementation).
 """
 
 import re
+import sys
 from pathlib import Path
 import shutil
+
+_tools = Path(__file__).resolve().parent
+if str(_tools) not in sys.path:
+    sys.path.insert(0, str(_tools))
+
+from nq_format_helpers import NQ_THEME_CSS_INNER, replace_placeholder_css_with_nq_theme
 
 # Reports directory (where HTML files are hosted)
 REPORTS_DIR = Path(__file__).parent.parent / "site" / "docs" / "reports"
 VISUAL_UPDATE_DIR = Path(__file__).parent.parent / "site" / "docs" / "reports_visual_update"
 
 
-def get_dashboard_css():
-    """Return the CSS from dashboard_all_events.html"""
-    return """        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
-            color: #ffffff;
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: rgba(0, 100, 200, 0.1);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 150, 255, 0.3);
-        }
-
-        .header h1 {
-            font-size: 2.5em;
-            background: linear-gradient(135deg, #00b4d8 0%, #0077b6 50%, #90e0ef 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(0, 180, 216, 0.5);
-        }
-
-        .header .subtitle {
-            color: #90e0ef;
-            font-size: 1.1em;
-        }
-
-        .takeaways {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .takeaway-card {
-            background: rgba(15, 20, 35, 0.8);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            text-align: center;
-        }
-
-        .takeaway-card .label {
-            color: #7dd3fc;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-
-        .takeaway-card .value {
-            color: #90e0ef;
-            font-size: 2em;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .takeaway-card .description {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.85em;
-        }
-
-        .dashboard-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .chart-container {
-            background: rgba(15, 20, 35, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            max-width: 800px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        #chart-1 {
-            margin: 0 auto;
-            display: block;
-            width: 100%;
-        }
-
-        .chart-title {
-            font-size: 1.3em;
-            margin-bottom: 20px;
-            color: #90e0ef;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .chart-subtitle {
-            font-size: 0.9em;
-            color: #7dd3fc;
-            text-align: center;
-            margin-bottom: 15px;
-        }
-
-        .insights-table {
-            background: rgba(15, 20, 35, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-        }
-
-        .insights-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #90e0ef;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        th {
-            background: linear-gradient(135deg, #0077b6 0%, #00b4d8 100%);
-            color: #ffffff;
-            padding: 15px;
-            text-align: left;
-            font-weight: 600;
-            border: 1px solid rgba(0, 180, 216, 0.3);
-        }
-
-        td {
-            padding: 12px 15px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            color: #e0f7fa;
-        }
-
-        tr:nth-child(even) {
-            background: rgba(0, 100, 200, 0.1);
-        }
-
-        tr:hover {
-            background: rgba(0, 150, 255, 0.2);
-            transition: background 0.3s;
-        }
-
-        .panel {
-            background: rgba(15, 20, 35, 0.8);
-            border-radius: 15px;
-            padding: 25px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            margin-bottom: 30px;
-        }
-
-        .panel h3 {
-            color: #90e0ef;
-            margin-bottom: 15px;
-            font-size: 1.2em;
-        }
-
-        .panel .text-muted {
-            color: rgba(255, 255, 255, 0.6);
-        }"""
-
-
 def update_hold_fail_rates_html(html_content, filename):
     """
     Update hold_fail_rates.html to match dashboard_all_events.html styling.
+    CSS replace uses shared nq_format_helpers.replace_placeholder_css_with_nq_theme.
     """
-    # Replace the style section with the dashboard CSS
-    css = get_dashboard_css()
-    
-    # Replace the empty style tag with full CSS (for files that haven't been updated yet)
-    html_content = re.sub(
-        r'<style>\s*/\* Theme CSS will be inlined here \*/\s*</style>',
-        f'<style>\n{css}\n    </style>',
-        html_content,
-        flags=re.DOTALL
-    )
-    
-    # Also replace existing style sections (for files that have already been updated)
-    # Match any style tag and replace with our CSS
-    html_content = re.sub(
-        r'<style>.*?</style>',
-        f'<style>\n{css}\n    </style>',
-        html_content,
-        flags=re.DOTALL
-    )
+    # 1) CSS: shared helper (placeholder or already-themed); fallback: any <style> block
+    html_content, status = replace_placeholder_css_with_nq_theme(html_content)
+    if status == "not_found":
+        html_content = re.sub(
+            r"<style>.*?</style>",
+            f"<style>\n{NQ_THEME_CSS_INNER}\n    </style>",
+            html_content,
+            flags=re.DOTALL,
+        )
     
     # Update the table container from .panel to .insights-table for the data preview
     # Find the panel containing "Data Preview" and change it to insights-table

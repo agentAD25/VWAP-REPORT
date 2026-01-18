@@ -1,17 +1,15 @@
 #!/usr/bin/env python3
-# DEPRECATED: Superseded by apply_hold_fail_nq_format_all.py (all contracts/timeframes).
-# Apply NQ-format (full CSS, MGC|tf subtitle, insights-table, chart 400px, remove Downloads)
-# to MGCZ24 hold_fail_rates. Fix title/h1: Mgcz24->MGCZ24, 1M->1m.
-# Kept for reference only; not run from deploy.ps1.
+"""
+Shared helpers for NQ-format hold_fail_rates: single place for CSS replace logic
+and NQ dark-theme. Used by apply_hold_fail_nq_format_all.py (and can be used by
+update_hold_fail_rates_visual.py or other scripts to avoid duplicated regexes).
+"""
+
 import re
-from pathlib import Path
 
-BASE = Path(__file__).parent.parent
-REPORTS_DIRS = [BASE / "docs" / "reports", BASE / "site" / "docs" / "reports"]
-FOLDERS = ["MGCZ24_20240725-20241122_1m", "MGCZ24_20240725-20241122_5m", "MGCZ24_20240725-20241122_15m", "MGCZ24_20240725-20241122_30m"]
-
-CSS = r'''    <style>
-        * {
+# Inner CSS only (no <style> wrapper). Full replacement block is built in
+# replace_placeholder_css_with_nq_theme.
+NQ_THEME_CSS_INNER = """        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -193,42 +191,69 @@ CSS = r'''    <style>
         .panel .text-muted {
             color: rgba(255, 255, 255, 0.6);
         }
-    </style>
-</head>'''
+"""
 
-SUB_INSTR = "            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP"
+# Full block to replace: <style>...placeholder...</style></head>
+NQ_THEME_CSS_BLOCK = "    <style>\n" + NQ_THEME_CSS_INNER + "    </style>\n</head>"
 
-def main():
-    for REPORTS in REPORTS_DIRS:
-        if not REPORTS.exists():
-            continue
-        for folder in FOLDERS:
-            m = re.search(r'_(\d+m)$', folder)
-            tf = m.group(1) if m else "1m"
-            base = f"MGCZ24_20240725-20241122_{tf}_hold_fail_rates"
-            for sub in ["", "dashboards"]:
-                p = (REPORTS / folder / "dashboards" / f"{base}.html") if sub else (REPORTS / folder / f"{base}.html")
-                if not p.exists():
-                    continue
-                s = p.read_text(encoding="utf-8")
-                # 1) CSS: replace placeholder with full NQ dark-theme (allow newline after comment; was \*/ \s* which required space)
-                s = re.sub(r'    <style>\s*/\* Theme CSS will be inlined here \*/\s*</style>\s*</head>', CSS, s, count=1)
-                # 2) subtitle NQ -> MGC, 1m -> tf
-                s = re.sub(r'<div class="subtitle">\s*NQ \| \s*RTH \| \s*\d+m \| \s*Built by TonySnow \| ALPHA DRIP\s*</div>',
-                           f'<div class="subtitle">\n            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP\n        </div>', s, count=1)
-                # 3) chart
-                s = s.replace('style="height: 450px; width: 100%; margin: 0 auto;"', 'style="height: 400px;"')
-                # 4) panel -> insights-table, table
-                s = s.replace('<div class="panel">\n        <div class="insights-title">Data Preview</div>\n        <table class="data-table" id="dataTable">',
-                              '<div class="insights-table">\n        <div class="insights-title">Data Preview</div>\n        <table id="dataTable">')
-                # 5) remove Downloads block (match the CSV filename for this tf)
-                s = re.sub(r'\s*</div>\s*\n\s*\n\s*\n\s*<div class="download-section">\s*<h3[^>]*>Downloads</h3>.*?<a href="[^"]*hold_fail_rates\.csv"[^>]*>.*?</a>\s*</div>\s*\n\s*\n\s*\n\s*<div class="panel">\s*<h3[^>]*>Notes</h3>',
-                           '\n    </div>\n\n    <div class="panel">\n        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>', s, flags=re.DOTALL)
-                # 6) title/h1: Mgcz24 -> MGCZ24, 1M/5M/15M/30M -> 1m/5m/15m/30m (from .title() on stem)
-                s = s.replace("Mgcz24", "MGCZ24")
-                s = re.sub(r"\b(\d+)M\b", r"\1m", s)
-                p.write_text(s, encoding="utf-8")
-                print("Updated:", p.relative_to(BASE))
+# Robust patterns: allow newline/whitespace after */ and before </style>
+_CSS_PATTERN_PRIMARY = re.compile(
+    r"    <style>\s*/\* Theme CSS will be inlined here \*/\s*</style>\s*</head>"
+)
+_CSS_PATTERN_FALLBACK = re.compile(
+    r"<style>\s*/\* Theme CSS will be inlined here \*/\s*</style>\s*</head>"
+)
 
-if __name__ == "__main__":
-    main()
+# Sentinels: already has NQ theme inlined
+_CSS_ALREADY_1 = "#0a0e27"
+_CSS_ALREADY_2 = "linear-gradient(135deg, #0a0e27"
+_PLACEHOLDER = "/* Theme CSS will be inlined here */"
+
+
+def replace_placeholder_css_with_nq_theme(html: str) -> tuple[str, str]:
+    """
+    Replace the placeholder style block with the full NQ dark-theme CSS.
+
+    Returns:
+        (new_html, status) where status is:
+        - "replaced": placeholder was found and replaced
+        - "already": placeholder not present but NQ theme is (no-op, no warn)
+        - "not_found": placeholder not found and no NQ theme -> caller should warn
+
+    Uses 1–2 robust regexes; idempotent when already replaced.
+    """
+    # Try primary (4-space indent) then fallback (any <style>)
+    if _CSS_PATTERN_PRIMARY.search(html):
+        out = _CSS_PATTERN_PRIMARY.sub(NQ_THEME_CSS_BLOCK, html, count=1)
+        return (out, "replaced")
+    if _CSS_PATTERN_FALLBACK.search(html):
+        out = _CSS_PATTERN_FALLBACK.sub(NQ_THEME_CSS_BLOCK, html, count=1)
+        return (out, "replaced")
+
+    # Placeholder absent: treat as "already" if NQ theme is present
+    if _PLACEHOLDER not in html:
+        if _CSS_ALREADY_1 in html or _CSS_ALREADY_2 in html:
+            return (html, "already")
+    return (html, "not_found")
+
+
+def contract_to_instrument(contract: str) -> str:
+    """Map contract symbol (e.g. NQU25, MGCZ24) to subtitle instrument (NQ, MGC, …)."""
+    u = (contract or "").upper()
+    if u.startswith("NQ"):
+        return "NQ"
+    if u.startswith("MGC"):
+        return "MGC"
+    if u.startswith("ES"):
+        return "ES"
+    if u.startswith("MES"):
+        return "MES"
+    if u.startswith("RTY"):
+        return "RTY"
+    if u.startswith("YM"):
+        return "YM"
+    if u.startswith("6E"):
+        return "6E"
+    if u.startswith("CL"):
+        return "CL"
+    return contract[:3] if len(contract) >= 3 else (contract or "?")

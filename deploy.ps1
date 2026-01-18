@@ -87,12 +87,12 @@ try {
     if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ MGCZ24 root fix applied" -ForegroundColor Green }
 } catch { Write-Host "  ⚠ MGCZ24 fix skipped" -ForegroundColor Yellow }
 
-# Step 1b3: MGCZ24 hold_fail_rates NQ-format (MGC|tf subtitle, Mgcz24->MGCZ24, 1M->1m in title/h1)
-Write-Host "Step 1b3: MGCZ24 hold_fail_rates NQ-format..." -ForegroundColor Yellow
+# Step 1b3: Hold fail rates NQ-format (all contracts/timeframes: CSS, subtitle, insights-table, chart 400px, remove Downloads, title casing)
+Write-Host "Step 1b3: Hold fail rates NQ-format (all contracts/timeframes)..." -ForegroundColor Yellow
 try {
-    py tools\apply_hold_fail_nq_format_mgcz24.py
-    if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ MGCZ24 hold_fail_rates format applied" -ForegroundColor Green }
-} catch { Write-Host "  ⚠ MGCZ24 hold_fail format skipped" -ForegroundColor Yellow }
+    py tools\apply_hold_fail_nq_format_all.py
+    if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ Hold fail rates NQ-format applied" -ForegroundColor Green }
+} catch { Write-Host "  ⚠ Hold fail rates NQ-format skipped" -ForegroundColor Yellow }
 
 Write-Host ""
 
