@@ -208,8 +208,8 @@ def main():
                 if not p.exists():
                     continue
                 s = p.read_text(encoding="utf-8")
-                # 1) CSS
-                s = re.sub(r'    <style>\s*/\* Theme CSS will be inlined here \*/ \s*</style>\s*</head>', CSS, s, count=1)
+                # 1) CSS: replace placeholder with full NQ dark-theme (allow newline after comment; was \*/ \s* which required space)
+                s = re.sub(r'    <style>\s*/\* Theme CSS will be inlined here \*/\s*</style>\s*</head>', CSS, s, count=1)
                 # 2) subtitle NQ -> MGC, 1m -> tf
                 s = re.sub(r'<div class="subtitle">\s*NQ \| \s*RTH \| \s*\d+m \| \s*Built by TonySnow \| ALPHA DRIP\s*</div>',
                            f'<div class="subtitle">\n            MGC | \n            RTH | \n            {tf} | \n            Built by TonySnow | ALPHA DRIP\n        </div>', s, count=1)
