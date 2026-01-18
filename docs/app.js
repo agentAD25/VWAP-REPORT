@@ -278,12 +278,18 @@ function displayHTMLDashboards(htmlFiles) {
         }
         
         // Then check if timeframe matches the selected timeframe
-        // Pattern: filename should contain _TIMEFRAME_ (e.g., _1m_, _5m_, _15m_, _30m_)
+        // Check both the filename AND the folder path for timeframe pattern
+        // Pattern: _TIMEFRAME_ (e.g., _1m_, _5m_, _15m_, _30m_)
         if (currentSelection.timeframe) {
             const timeframePattern = `_${currentSelection.timeframe}_`;
-            if (!filename.includes(timeframePattern)) {
+            // Check filename first (for prefixed files like MGCQ24_20240529-20240724_1m_daily_max_extensions.html)
+            const filenameHasTimeframe = filename.includes(timeframePattern);
+            // Check folder path (for short-named files like daily_max_extensions.html in MGCQ24_20240529-20240724_1m/)
+            const pathHasTimeframe = htmlPath.includes(timeframePattern);
+            
+            if (!filenameHasTimeframe && !pathHasTimeframe) {
                 // Debug: log filtered out files
-                console.log(`Filtered out (timeframe mismatch): ${filename} (looking for ${timeframePattern})`);
+                console.log(`Filtered out (timeframe mismatch): ${htmlPath} (looking for ${timeframePattern})`);
                 return false;
             }
         }
