@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extension Tail Metrics - ALPHA DRIP</title>
+    <title>Out-of-Sample by Month - ALPHA DRIP</title>
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
         /* Theme CSS */
@@ -310,112 +310,43 @@ body {
 </head>
 <body>
     <div class="header">
-        <h1>Extension Tail Metrics</h1>
+        <h1>Out-of-Sample by Month</h1>
         <div class="subtitle">
-            MGC | 
+            NQ | 
             RTH | 
             1m | 
             Built by TonySnow | ALPHA DRIP
         </div>
         
-        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
-            2025-07-27 - 2025-12-05 (85 sessions)
-        </div>
-        
     </div>
 
-    
-    <div class="takeaways">
-        
-        <div class="takeaway-card">
-            <div class="label">P95 Extension Up</div>
-            <div class="value">351.2 ticks</div>
-            
-            <div class="description">95th percentile</div>
-            
-        </div>
-        
-        <div class="takeaway-card">
-            <div class="label">P99 Extension Up</div>
-            <div class="value">479.6 ticks</div>
-            
-            <div class="description">99th percentile (outlier threshold)</div>
-            
-        </div>
-        
-        <div class="takeaway-card">
-            <div class="label">P95 Extension Down</div>
-            <div class="value">534.1 ticks</div>
-            
-            <div class="description">95th percentile</div>
-            
-        </div>
-        
-    </div>
     
 
     
     <div class="dashboard-container">
         
         <div class="chart-container">
-            <div class="chart-title">Percentile Extensions</div>
+            <div class="chart-title">Monthly Event Counts</div>
             
             <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Touches Per Day by Month</div>
+            
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
     </div>
     
 
     
-    <div class="panel">
-        <div class="insights-title">Data Preview</div>
-        <table class="data-table" id="dataTable">
-            <thead>
-                <tr>
-                    
-                    <th>p90_up</th>
-                    
-                    <th>p95_up</th>
-                    
-                    <th>p99_up</th>
-                    
-                    <th>p90_down</th>
-                    
-                    <th>p95_down</th>
-                    
-                    <th>p99_down</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr>
-                    
-                    <td>295.631042</td>
-                    
-                    <td>351.2049099999999</td>
-                    
-                    <td>479.5863159999994</td>
-                    
-                    <td>415.6180540000004</td>
-                    
-                    <td>534.104836</td>
-                    
-                    <td>687.3231587999994</td>
-                    
-                </tr>
-                
-            </tbody>
-        </table>
-        
-    </div>
-    
 
     
     <div class="download-section">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
         
-        <a href="extension_tail_metrics.csv" class="download-link" download>extension_tail_metrics.csv</a>
+        <a href="oos_by_month.csv" class="download-link" download>oos_by_month.csv</a>
         
     </div>
     
@@ -423,7 +354,7 @@ body {
     
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
-        <p class="text-muted">Tail distribution metrics for price extensions (P90, P95, P99).</p>
+        <p class="text-muted">Monthly out-of-sample performance metrics and stability analysis.</p>
     </div>
     
 
@@ -457,7 +388,9 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [295.631042, 351.2049099999999, 479.5863159999994], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [415.6180540000004, 534.104836, 687.3231587999994], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["2025-07-01 00:00:00-04:00", "2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [178, 871, 643, 482, 19], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        Plotly.newPlot('chart-2', [{"x": ["2025-07-01 00:00:00-04:00", "2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [51.050279329608934, 49.00687285223368, 35.1953488372093, 36.037267080745345, 5.35], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf", "#9d4edd"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
         
     </script>
