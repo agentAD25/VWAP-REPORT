@@ -26,20 +26,27 @@ FOLDER_PATTERN = re.compile(r'^(?P<contract>[A-Z0-9]+)_(?P<start>\d{8})-(?P<end>
 
 # Pattern to detect another contract's prefix in a filename (CONTRACT_YYYYMMDD-YYYYMMDD_1m_)
 # Used to exclude wrongly-placed files from other contracts.
-CONTRACT_PREFIX_IN_FILENAME = re.compile(r'^([A-Z0-9]+)_\d{8}-\d{8}_\d+m(?:_|\.)')
+CONTRACT_PREFIX_IN_FILENAME = re.compile(r'^([A-Z0-9]+)_\d{8}-\d{8}_(\d+m)(?:_|\.)')
+
+# Pattern to detect explicit timeframe in a prefixed filename (e.g. _15m_ or _1m.html)
+TIMEFRAME_IN_FILENAME = re.compile(r'_(\d+m)(?:_|\.)')
 
 
-def file_belongs_to_folder(filename: str, folder_contract: str) -> bool:
+def file_belongs_to_folder(filename: str, folder_contract: str, folder_tf: str = None) -> bool:
     """
-    Return True if this file belongs to the folder's contract.
+    Return True if this file belongs to the folder's contract (and timeframe if folder_tf given).
     - If the filename has no contract prefix (e.g. daily_max_extensions.html), it belongs.
-    - If the filename has a contract prefix (X_YYYYMMDD-YYYYMMDD_1m_... or .csv/.html),
-      X must equal folder_contract; otherwise it was wrongly copied from another contract.
+    - If the filename has a contract prefix (X_YYYYMMDD-YYYYMMDD_Xm_... or .csv/.html),
+      X must equal folder_contract. If folder_tf is given, the Xm in the prefix must equal folder_tf.
     """
     m = CONTRACT_PREFIX_IN_FILENAME.match(filename)
     if not m:
         return True  # short name or no prefix, belongs to this folder
-    return m.group(1) == folder_contract
+    if m.group(1) != folder_contract:
+        return False
+    if folder_tf and m.lastindex >= 2 and m.group(2) != folder_tf:
+        return False  # explicit timeframe in filename does not match folder
+    return True
 
 
 def parse_folder_name(folder_name):
@@ -101,11 +108,11 @@ def generate_manifest():
         html_files = []
         csv_files = []
         
-        # Scan root folder files (only include files that belong to this contract)
+        # Scan root folder files (only include files that belong to this contract and timeframe)
         for file_path in folder_path.iterdir():
             if not file_path.is_file():
                 continue
-            if not file_belongs_to_folder(file_path.name, contract):
+            if not file_belongs_to_folder(file_path.name, contract, timeframe):
                 continue
             
             # Get relative path from docs/ directory
@@ -127,7 +134,7 @@ def generate_manifest():
             for file_path in dashboards_path.iterdir():
                 if not file_path.is_file():
                     continue
-                if not file_belongs_to_folder(file_path.name, contract):
+                if not file_belongs_to_folder(file_path.name, contract, timeframe):
                     continue
                 
                 # Get relative path from docs/ directory
