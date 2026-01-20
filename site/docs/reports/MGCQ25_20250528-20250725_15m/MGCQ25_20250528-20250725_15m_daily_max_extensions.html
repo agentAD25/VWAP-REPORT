@@ -242,31 +242,6 @@ body {
     color: var(--warning);
 }
 
-/* Links & Downloads */
-.download-section {
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.download-link {
-    color: var(--accent-cyan);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-right: var(--spacing-sm);
-    transition: all 0.3s;
-}
-
-.download-link:hover {
-    background: rgba(0, 180, 216, 0.2);
-    border-color: var(--accent-cyan);
-}
-
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -296,16 +271,6 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -324,7 +289,6 @@ body {
         
     </div>
 
-    
     <div class="takeaways">
         
         <div class="takeaway-card">
@@ -344,9 +308,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="dashboard-container">
         
         <div class="chart-container">
@@ -358,9 +320,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="panel">
         <div class="insights-title">Data Preview</div>
         <table class="data-table" id="dataTable">
@@ -881,25 +841,11 @@ body {
         </table>
         
     </div>
-    
 
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="daily_max_extensions.csv" class="download-link" download>daily_max_extensions.csv</a>
-        
-    </div>
-    
-
-    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Daily maximum price extensions from VWAP in ticks.</p>
     </div>
-    
-
-    
 
     <script>
         // Plotly chart rendering
@@ -928,10 +874,8 @@ body {
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
-        
         Plotly.newPlot('chart-1', [{"x": ["2025-05-28", "2025-05-29", "2025-05-30", "2025-06-01", "2025-06-02", "2025-06-03", "2025-06-04", "2025-06-05", "2025-06-06", "2025-06-08", "2025-06-09", "2025-06-10", "2025-06-11", "2025-06-12", "2025-06-13", "2025-06-15", "2025-06-16", "2025-06-17", "2025-06-18", "2025-06-19", "2025-06-20", "2025-06-22", "2025-06-23", "2025-06-24", "2025-06-25", "2025-06-26", "2025-06-27", "2025-06-28", "2025-06-29", "2025-06-30", "2025-07-01", "2025-07-02", "2025-07-03", "2025-07-04", "2025-07-06", "2025-07-07", "2025-07-08", "2025-07-09", "2025-07-10", "2025-07-11", "2025-07-13", "2025-07-14", "2025-07-15", "2025-07-16", "2025-07-17", "2025-07-18", "2025-07-19", "2025-07-20", "2025-07-21", "2025-07-22", "2025-07-23", "2025-07-24", "2025-07-25"], "y": [175.66462, 316.1747, 121.0234, 149.35986, 364.80273, 177.06247, 275.85434, 250.34675, 42.39459, 85.4575, 180.72795, 222.83875, 330.99962, 567.64342, 222.76838, 215.71102, 30.53848, 125.33095, 109.22302, 165.36199, 218.6534, 219.03938, 242.34356, 167.3273, 153.78594, 103.8097, 45.08342, 0.0, 165.56804, 295.289, 191.45719, 232.36152, 108.21404, 40.56598, 52.30767, 313.98048, 65.5377, 251.10265, 160.25675, 234.42253, 89.16066, 116.24348, 53.59392, 366.77508, 171.02457, 148.30567, 0.0, 87.60858, 307.96368, 291.67542, 81.5084, 84.66563, 25.0132], "name": "Up", "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}, {"x": ["2025-05-28", "2025-05-29", "2025-05-30", "2025-06-01", "2025-06-02", "2025-06-03", "2025-06-04", "2025-06-05", "2025-06-06", "2025-06-08", "2025-06-09", "2025-06-10", "2025-06-11", "2025-06-12", "2025-06-13", "2025-06-15", "2025-06-16", "2025-06-17", "2025-06-18", "2025-06-19", "2025-06-20", "2025-06-22", "2025-06-23", "2025-06-24", "2025-06-25", "2025-06-26", "2025-06-27", "2025-06-28", "2025-06-29", "2025-06-30", "2025-07-01", "2025-07-02", "2025-07-03", "2025-07-04", "2025-07-06", "2025-07-07", "2025-07-08", "2025-07-09", "2025-07-10", "2025-07-11", "2025-07-13", "2025-07-14", "2025-07-15", "2025-07-16", "2025-07-17", "2025-07-18", "2025-07-19", "2025-07-20", "2025-07-21", "2025-07-22", "2025-07-23", "2025-07-24", "2025-07-25"], "y": [513.0144, 138.15833, 242.70468, 51.00289, 26.44996, 236.06305, 129.69867, 383.37446, 372.43211, 155.08487, 193.65688, 130.98782, 196.11793, 279.01006, 155.29292, 122.63709, 333.46495, 218.65429, 235.6624, 200.27051, 93.0336, 202.75517, 387.61313, 269.94889, 139.82997, 339.5087, 295.39922, 0.0, 280.28903, 122.13926, 151.68005, 95.34195, 338.20435, 82.00129, 183.82677, 129.92617, 319.98392, 93.12595, 126.05502, 61.24444, 103.84371, 212.2138, 289.54418, 146.56796, 197.78412, 47.35048, 0.0, 38.35178, 36.78477, 61.09336, 372.90281, 189.36863, 188.87832], "name": "Down", "type": "scatter", "mode": "lines+markers", "line": {"color": "#7b2cbf", "width": 2}, "marker": {"color": "#7b2cbf", "size": 4}}], {"xaxis": {"title": "Session Date", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "hovermode": "x unified", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
-        
-        
+
     </script>
 </body>
 </html>

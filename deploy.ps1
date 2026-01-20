@@ -1,9 +1,16 @@
 # deploy.ps1
 # PowerShell script to help deploy VWAP Reports Gallery to GitHub Pages
+#
+# -Contract: "all" (default) stages everything. Use one contract (e.g. "MGCQ25") to stage
+#   only that contract's report folders + manifest + tools + deploy.ps1 for smaller pushes.
+#   Helps avoid timeouts or failures on large git add/push.
 
 param(
     [string]$GitHubUsername = "",
-    [string]$RepositoryName = "vwap-reports-gallery"
+    [string]$RepositoryName = "vwap-reports-gallery",
+    [string]$Contract = "all",
+    [switch]$NoPush,
+    [string]$CommitMessage = ""
 )
 
 Write-Host "========================================" -ForegroundColor Cyan
@@ -14,21 +21,21 @@ Write-Host ""
 # Check if git is installed
 try {
     $gitVersion = git --version
-    Write-Host "✓ Git found: $gitVersion" -ForegroundColor Green
+    Write-Host "[ok] Git found: $gitVersion" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Git is not installed or not in PATH" -ForegroundColor Red
+    Write-Host "[x] Git is not installed or not in PATH" -ForegroundColor Red
     Write-Host "Please install Git from https://git-scm.com/" -ForegroundColor Yellow
     exit 1
 }
 
 # Check if we're in the right directory
 if (-not (Test-Path "site\docs\index.html")) {
-    Write-Host "✗ Error: index.html not found in site\docs\" -ForegroundColor Red
+    Write-Host "[x] Error: index.html not found in site\docs\" -ForegroundColor Red
     Write-Host "Please run this script from the 'website hosting' directory" -ForegroundColor Yellow
     exit 1
 }
 
-Write-Host "✓ Found website files" -ForegroundColor Green
+Write-Host "[ok] Found website files" -ForegroundColor Green
 Write-Host ""
 
 # Step 1: Sync reports
@@ -36,15 +43,22 @@ Write-Host "Step 1: Syncing reports from source..." -ForegroundColor Yellow
 try {
     py tools\sync_reports.py
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "✗ Error syncing reports" -ForegroundColor Red
+        Write-Host "[x] Error syncing reports" -ForegroundColor Red
         exit 1
     }
-    Write-Host "✓ Reports synced" -ForegroundColor Green
+    Write-Host "[ok] Reports synced" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Error running sync script" -ForegroundColor Red
+    Write-Host "[x] Error running sync script" -ForegroundColor Red
     Write-Host "Make sure Python is installed and in PATH" -ForegroundColor Yellow
     exit 1
 }
+
+# Step 1a2: MGCQ25 sync to match MGCZ24 (hold_fail, heatmap, mfe_mae, regime; remove cross-contamination in docs+site)
+Write-Host "Step 1a2: MGCQ25 sync to match MGCZ24..." -ForegroundColor Yellow
+try {
+    py tools\sync_mgcq25_to_match_mgcz24.py
+    if ($LASTEXITCODE -eq 0) { Write-Host "  [ok] MGCQ25 sync done" -ForegroundColor Green }
+} catch { Write-Host "  [!] MGCQ25 sync skipped" -ForegroundColor Yellow }
 
 Write-Host ""
 
@@ -54,29 +68,29 @@ try {
     # Update hold_fail_rates styling
     py tools\update_hold_fail_rates_visual.py
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "⚠ Warning: Error updating hold_fail_rates visual" -ForegroundColor Yellow
+        Write-Host "[!] Warning: Error updating hold_fail_rates visual" -ForegroundColor Yellow
     } else {
-        Write-Host "  ✓ Hold fail rates styling updated" -ForegroundColor Green
+        Write-Host "  [ok] Hold fail rates styling updated" -ForegroundColor Green
     }
     
     py tools\apply_visual_updates_to_webpage.py
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "⚠ Warning: Error applying visual updates" -ForegroundColor Yellow
+        Write-Host "[!] Warning: Error applying visual updates" -ForegroundColor Yellow
     } else {
-        Write-Host "  ✓ Visual updates applied to webpage" -ForegroundColor Green
+        Write-Host "  [ok] Visual updates applied to webpage" -ForegroundColor Green
     }
     
     # Remove Downloads sections
     py tools\remove_downloads_sections.py
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "⚠ Warning: Error removing Downloads sections" -ForegroundColor Yellow
+        Write-Host "[!] Warning: Error removing Downloads sections" -ForegroundColor Yellow
     } else {
-        Write-Host "  ✓ Downloads sections removed" -ForegroundColor Green
+        Write-Host "  [ok] Downloads sections removed" -ForegroundColor Green
     }
     
-    Write-Host "✓ Visual updates applied" -ForegroundColor Green
+    Write-Host "[ok] Visual updates applied" -ForegroundColor Green
 } catch {
-    Write-Host "⚠ Warning: Error applying visual updates" -ForegroundColor Yellow
+    Write-Host "[!] Warning: Error applying visual updates" -ForegroundColor Yellow
     Write-Host "Continuing with deployment..." -ForegroundColor Yellow
 }
 
@@ -84,15 +98,15 @@ try {
 Write-Host "Step 1b2: MGCZ24 root-from-dashboards fix..." -ForegroundColor Yellow
 try {
     py tools\fix_mgcz24_root_from_dashboards.py
-    if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ MGCZ24 root fix applied" -ForegroundColor Green }
-} catch { Write-Host "  ⚠ MGCZ24 fix skipped" -ForegroundColor Yellow }
+    if ($LASTEXITCODE -eq 0) { Write-Host "  [ok] MGCZ24 root fix applied" -ForegroundColor Green }
+} catch { Write-Host "  [!] MGCZ24 fix skipped" -ForegroundColor Yellow }
 
 # Step 1b3: Hold fail rates NQ-format (all contracts/timeframes: CSS, subtitle, insights-table, chart 400px, remove Downloads, title casing)
 Write-Host "Step 1b3: Hold fail rates NQ-format (all contracts/timeframes)..." -ForegroundColor Yellow
 try {
     py tools\apply_hold_fail_nq_format_all.py
-    if ($LASTEXITCODE -eq 0) { Write-Host "  ✓ Hold fail rates NQ-format applied" -ForegroundColor Green }
-} catch { Write-Host "  ⚠ Hold fail rates NQ-format skipped" -ForegroundColor Yellow }
+    if ($LASTEXITCODE -eq 0) { Write-Host "  [ok] Hold fail rates NQ-format applied" -ForegroundColor Green }
+} catch { Write-Host "  [!] Hold fail rates NQ-format skipped" -ForegroundColor Yellow }
 
 Write-Host ""
 
@@ -101,12 +115,12 @@ Write-Host "Step 1c: Generating manifest..." -ForegroundColor Yellow
 try {
     py tools\generate_manifest.py
     if ($LASTEXITCODE -ne 0) {
-        Write-Host "✗ Error generating manifest" -ForegroundColor Red
+        Write-Host "[x] Error generating manifest" -ForegroundColor Red
         exit 1
     }
-    Write-Host "✓ Manifest generated" -ForegroundColor Green
+    Write-Host "[ok] Manifest generated" -ForegroundColor Green
 } catch {
-    Write-Host "✗ Error generating manifest" -ForegroundColor Red
+    Write-Host "[x] Error generating manifest" -ForegroundColor Red
     Write-Host "Make sure Python is installed and in PATH" -ForegroundColor Yellow
     exit 1
 }
@@ -117,17 +131,28 @@ Write-Host ""
 if (-not (Test-Path ".git")) {
     Write-Host "Step 2: Initializing git repository..." -ForegroundColor Yellow
     git init
-    Write-Host "✓ Git repository initialized" -ForegroundColor Green
+    Write-Host "[ok] Git repository initialized" -ForegroundColor Green
 } else {
     Write-Host "Step 2: Git repository already exists" -ForegroundColor Green
 }
 
 Write-Host ""
 
-# Step 3: Add files
+# Step 3: Add files (chunk by contract if -Contract is set to reduce push size)
 Write-Host "Step 3: Staging files..." -ForegroundColor Yellow
-git add .
-Write-Host "✓ Files staged" -ForegroundColor Green
+if ($Contract -and $Contract -ne "all") {
+    if (Test-Path "docs/reports") {
+        Get-ChildItem -Path "docs/reports" -Directory -Filter "$($Contract)_*" -ErrorAction SilentlyContinue | ForEach-Object { git add "docs/reports/$($_.Name)" }
+    }
+    if (Test-Path "site/docs/reports") {
+        Get-ChildItem -Path "site/docs/reports" -Directory -Filter "$($Contract)_*" -ErrorAction SilentlyContinue | ForEach-Object { git add "site/docs/reports/$($_.Name)" }
+    }
+    @("docs/manifest.json", "tools", "deploy.ps1", ".gitignore", "DEPLOY_ONE_CONTRACT.md") | Where-Object { Test-Path $_ } | ForEach-Object { git add $_ }
+    Write-Host "  Staged contract: $Contract (+ manifest, tools, deploy.ps1)" -ForegroundColor Cyan
+} else {
+    git add .
+}
+Write-Host "[ok] Files staged" -ForegroundColor Green
 Write-Host ""
 
 # Step 4: Check for uncommitted changes
@@ -139,13 +164,17 @@ if ($status) {
         $GitHubUsername = Read-Host "Enter your GitHub username"
     }
     
-    $commitMessage = Read-Host "Enter commit message (or press Enter for default)"
+    if ([string]::IsNullOrWhiteSpace($CommitMessage)) {
+        $commitMessage = Read-Host "Enter commit message (or press Enter for default)"
+    } else {
+        $commitMessage = $CommitMessage
+    }
     if ([string]::IsNullOrWhiteSpace($commitMessage)) {
         $commitMessage = "Update VWAP reports"
     }
     
     git commit -m $commitMessage
-    Write-Host "✓ Changes committed" -ForegroundColor Green
+    Write-Host "[ok] Changes committed" -ForegroundColor Green
 } else {
     Write-Host "Step 4: No changes to commit" -ForegroundColor Green
 }
@@ -176,12 +205,17 @@ if ($LASTEXITCODE -ne 0) {
     git branch -M main 2>$null
 }
 
-# Push to GitHub
-Write-Host "Pushing to GitHub..." -ForegroundColor Cyan
-git push -u origin main
+# Push to GitHub (skip if -NoPush: run everything then push manually)
+if ($NoPush) {
+    Write-Host "Skipping push (-NoPush). Run: git push -u origin main" -ForegroundColor Yellow
+} else {
+    Write-Host "Pushing to GitHub..." -ForegroundColor Cyan
+    git push -u origin main
+}
 
-if ($LASTEXITCODE -eq 0) {
-    Write-Host "✓ Successfully pushed to GitHub!" -ForegroundColor Green
+if ($NoPush -or $LASTEXITCODE -eq 0) {
+    if ($NoPush) { Write-Host "[ok] Staging and commit done. Run: git push -u origin main" -ForegroundColor Green }
+    else { Write-Host "[ok] Successfully pushed to GitHub!" -ForegroundColor Green }
     Write-Host ""
     Write-Host "========================================" -ForegroundColor Cyan
     Write-Host "Next Steps:" -ForegroundColor Yellow
@@ -199,11 +233,16 @@ if ($LASTEXITCODE -eq 0) {
         Write-Host "https://$username.github.io/$repoName/" -ForegroundColor Green
     }
 } else {
-    Write-Host "✗ Error pushing to GitHub" -ForegroundColor Red
+    Write-Host "[x] Error pushing to GitHub" -ForegroundColor Red
     Write-Host "Make sure:" -ForegroundColor Yellow
     Write-Host "  - Repository exists on GitHub" -ForegroundColor White
     Write-Host "  - You have push access" -ForegroundColor White
     Write-Host "  - You're authenticated (use GitHub CLI or SSH keys)" -ForegroundColor White
+    Write-Host ""
+    Write-Host "If the push is too large or times out, try one contract:" -ForegroundColor Yellow
+    Write-Host "  .\deploy.ps1 -Contract MGCQ25" -ForegroundColor Cyan
+    Write-Host "  .\deploy.ps1 -Contract MGCZ24" -ForegroundColor Cyan
+    Write-Host "  (Then run again for other contracts, or -Contract all for the rest)" -ForegroundColor Gray
 }
 
 Write-Host "========================================" -ForegroundColor Cyan

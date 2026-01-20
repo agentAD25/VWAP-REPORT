@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-01-17T18:15:33.601089",
+  "date_range": {
+    "start_date": "2025-05-28",
+    "end_date": "2025-07-25",
+    "total_sessions": 53
+  },
+  "upCross": {
+    "total": 878,
+    "avgTicks": 13.792710706150341,
+    "maxTicks": 54.0,
+    "avgPerformance": 13.792710706150341,
+    "maxPerformance": 54.0
+  },
+  "downCross": {
+    "total": 883,
+    "avgTicks": 15.328425821064553,
+    "maxTicks": 70.3599999999999,
+    "avgPerformance": 15.328425821064553,
+    "maxPerformance": 70.3599999999999
+  },
+  "event_type_filter": "CROSS"
+}

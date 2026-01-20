@@ -29,3 +29,7 @@ desktop.ini
 
 # Don't ignore the site/docs directory - that's what we're deploying!
 # site/docs/
+
+# Staging/output only; not part of live site (reduces push size)
+docs/reports_visual_update/
+site/docs/reports_visual_update/
