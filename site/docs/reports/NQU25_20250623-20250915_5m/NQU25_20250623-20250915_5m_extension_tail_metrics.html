@@ -242,31 +242,6 @@ body {
     color: var(--warning);
 }
 
-/* Links & Downloads */
-.download-section {
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.download-link {
-    color: var(--accent-cyan);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-right: var(--spacing-sm);
-    transition: all 0.3s;
-}
-
-.download-link:hover {
-    background: rgba(0, 180, 216, 0.2);
-    border-color: var(--accent-cyan);
-}
-
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -296,16 +271,6 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -324,7 +289,6 @@ body {
         
     </div>
 
-    
     <div class="takeaways">
         
         <div class="takeaway-card">
@@ -352,9 +316,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="dashboard-container">
         
         <div class="chart-container">
@@ -364,9 +326,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="panel">
         <div class="insights-title">Data Preview</div>
         <table class="data-table" id="dataTable">
@@ -409,25 +369,11 @@ body {
         </table>
         
     </div>
-    
 
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="extension_tail_metrics.csv" class="download-link" download>extension_tail_metrics.csv</a>
-        
-    </div>
-    
-
-    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Tail distribution metrics for price extensions (P90, P95, P99).</p>
     </div>
-    
-
-    
 
     <script>
         // Plotly chart rendering
@@ -456,10 +402,8 @@ body {
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
-        
         Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [694.1588620000001, 765.9597524, 1207.90826852], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [739.6406244, 945.7697578, 1116.1786374799997], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
-        
-        
+
     </script>
 </body>
 </html>
