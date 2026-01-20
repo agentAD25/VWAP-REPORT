@@ -242,31 +242,6 @@ body {
     color: var(--warning);
 }
 
-/* Links & Downloads */
-.download-section {
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.download-link {
-    color: var(--accent-cyan);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-right: var(--spacing-sm);
-    transition: all 0.3s;
-}
-
-.download-link:hover {
-    background: rgba(0, 180, 216, 0.2);
-    border-color: var(--accent-cyan);
-}
-
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -296,16 +271,6 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -324,7 +289,6 @@ body {
         
     </div>
 
-    
     <div class="takeaways">
         
         <div class="takeaway-card">
@@ -344,9 +308,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="dashboard-container">
         
         <div class="chart-container">
@@ -356,27 +318,11 @@ body {
         </div>
         
     </div>
-    
 
-    
-
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="heatmap_time_of_day_x_reaction.csv" class="download-link" download>heatmap_time_of_day_x_reaction.csv</a>
-        
-    </div>
-    
-
-    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
     </div>
-    
-
-    
 
     <script>
         // Plotly chart rendering
@@ -405,10 +351,8 @@ body {
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
-        
         Plotly.newPlot('chart-1', [{"z": [[NaN, NaN, NaN, 29.333333333333332, 50.4, 78.0, 7.333333333333333, 19.0, 14.166666666666666, 9.0, 150.0, NaN, 4.0, 19.0, 14.0, NaN], [NaN, NaN, NaN, 34.6, 35.0, 22.0, 8.5, 105.66666666666666, 36.5, 4.0, 12.5, NaN, NaN, 65.0, NaN, NaN], [NaN, NaN, NaN, 36.25, 13.25, 126.0, 7.5, 28.6, 13.0, NaN, NaN, NaN, NaN, 10.0, 24.0, 18.0], [NaN, NaN, NaN, 37.416666666666664, 27.25, NaN, 17.0, 11.333333333333332, 33.5, NaN, NaN, NaN, 63.0, NaN, NaN, 14.0], [NaN, NaN, NaN, 23.142857142857142, 38.0, NaN, 21.285714285714285, 10.0, 23.0, NaN, 59.0, NaN, 15.0, 148.0, 0.0, 4.0], [NaN, NaN, NaN, 57.44444444444445, 26.666666666666664, NaN, 33.75, 10.0, 17.25, 3.5, 0.0, NaN, 67.0, NaN, NaN, NaN], [NaN, NaN, NaN, 31.0, 23.0, 19.5, 17.8, 13.0, 25.857142857142858, 11.0, NaN, NaN, NaN, NaN, 17.0, NaN], [NaN, NaN, NaN, 23.125, 27.5, 11.0, 25.75, 14.333333333333332, 11.0, NaN, 46.0, NaN, 32.0, NaN, 23.5, NaN], [NaN, NaN, NaN, 47.285714285714285, 30.75, 14.5, 28.375, 18.6, 9.0, 7.0, 48.0, NaN, 34.0, NaN, 20.0, NaN], [NaN, NaN, NaN, 29.285714285714285, 47.25, 11.666666666666666, 14.0, 16.6, 8.0, NaN, 45.666666666666664, NaN, 44.0, NaN, NaN, NaN], [NaN, NaN, NaN, 36.5, 19.8, 13.0, 4.0, 12.8, 6.333333333333333, 5.0, 68.0, NaN, 43.0, NaN, NaN, NaN], [NaN, NaN, NaN, 17.375, 29.0, 28.0, 12.8, 24.333333333333332, 11.25, 17.0, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, NaN, 27.5, 28.142857142857142, 39.25, 5.25, 30.0, 32.666666666666664, 26.5, 7.0, NaN, NaN, NaN, 3.0, NaN], [NaN, NaN, NaN, 37.83333333333333, 20.0, 11.5, 20.0, 21.625, 16.5, 12.5, NaN, NaN, NaN, NaN, 2.0, NaN], [NaN, 0.0, NaN, 40.0, 27.5, 18.5, 21.833333333333332, 13.285714285714285, 17.666666666666664, 23.0, NaN, NaN, NaN, NaN, 8.0, NaN], [NaN, NaN, NaN, 22.0, 15.0, 24.5, 9.0, 20.6, 6.2, 9.0, NaN, NaN, 4.0, NaN, 6.0, NaN], [NaN, NaN, NaN, 24.4, 27.8, 37.0, 27.0, 13.0, 13.75, 9.666666666666666, NaN, NaN, 3.0, NaN, 6.0, NaN], [0.0, NaN, NaN, 29.285714285714285, 34.142857142857146, 21.6, 12.833333333333332, 38.25, 19.0, 10.0, NaN, NaN, 2.0, NaN, NaN, NaN], [NaN, NaN, NaN, 33.33333333333333, 17.333333333333332, 20.0, 16.75, 11.0, 20.57142857142857, 14.5, NaN, NaN, 19.0, NaN, NaN, NaN], [NaN, NaN, NaN, 56.166666666666664, 40.5, 20.166666666666664, 9.5, 32.0, 11.25, 5.0, NaN, NaN, 2.0, NaN, NaN, NaN], [NaN, NaN, NaN, 22.0, 24.333333333333332, 17.142857142857142, 8.0, 20.5, 17.5, 14.0, NaN, NaN, 5.0, NaN, 2.5, NaN], [NaN, NaN, NaN, 19.57142857142857, 28.25, 25.5, 22.0, 32.0, 11.166666666666666, 2.666666666666667, NaN, NaN, 2.0, NaN, 1.0, NaN], [NaN, NaN, NaN, 45.2, 11.666666666666666, 9.75, 15.2, 13.666666666666666, 5.5, 35.0, NaN, NaN, 9.0, NaN, 13.0, NaN], [NaN, NaN, NaN, 34.77777777777778, NaN, 16.333333333333332, 18.2, 27.25, 17.2, 16.5, NaN, NaN, 70.0, NaN, 3.0, NaN], [NaN, NaN, NaN, 32.875, 16.25, 15.5, 11.0, 19.25, 8.8, 4.0, NaN, NaN, NaN, NaN, 9.0, NaN], [NaN, NaN, NaN, 36.166666666666664, 20.0, 17.6, 33.25, 33.0, 28.0, 3.5, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, NaN, 40.166666666666664, 18.75, 25.25, 26.833333333333332, 15.666666666666666, 10.5, 4.0, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, NaN, 26.88888888888889, 15.0, 47.2, 21.25, 4.0, 10.666666666666666, NaN, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, NaN, 32.5, 26.0, 14.0, 24.285714285714285, 3.0, 15.333333333333332, 5.0, 35.0, NaN, 0.0, NaN, 1.0, NaN], [NaN, NaN, NaN, 22.75, 24.333333333333332, 32.75, 10.666666666666666, NaN, 21.666666666666664, 46.0, 82.0, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, NaN, 21.166666666666664, 31.0, 7.0, 21.75, 30.666666666666664, 23.8, 7.0, 51.0, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 64.5, 36.166666666666664, 14.0, 80.75, 14.8, 13.0, 7.0, NaN, NaN, NaN, NaN, NaN, 0.0, NaN], [NaN, NaN, 44.192307692307686, 35.0, 25.25, 24.75, 22.0, 12.333333333333332, 19.166666666666664, NaN, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 43.75, 37.81818181818181, 33.4, 41.666666666666664, 8.0, 20.0, 11.75, NaN, 2.0, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 45.68181818181817, 25.0, 40.6, 31.5, 5.666666666666666, 22.25, 7.5, NaN, 26.0, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 45.23076923076923, 31.666666666666664, 7.0, 24.0, 20.0, 18.5, 6.0, NaN, NaN, NaN, NaN, NaN, 5.0, NaN], [NaN, NaN, 32.57142857142857, 33.5, 18.0, 20.0, 7.0, 16.666666666666664, 13.666666666666666, 21.0, NaN, NaN, NaN, 29.0, 12.0, NaN], [NaN, NaN, 29.444444444444443, 24.666666666666664, 69.0, 14.0, 8.333333333333332, 9.166666666666666, 21.0, 20.0, NaN, NaN, NaN, 15.0, NaN, NaN], [NaN, NaN, 47.705882352941174, 33.55555555555556, 16.75, 34.0, 6.6, 3.0, 17.25, NaN, NaN, NaN, NaN, 15.0, 4.0, NaN], [NaN, NaN, 46.52380952380952, 30.0, 34.75, 35.5, 16.5, 11.5, 9.666666666666666, 20.0, NaN, NaN, NaN, NaN, 7.0, NaN], [NaN, NaN, 37.23809523809524, 15.666666666666666, 21.428571428571427, 8.0, 14.5, 20.0, 5.0, 56.0, 188.0, 0.0, NaN, NaN, 0.0, NaN], [NaN, NaN, 35.65, 24.25, 20.75, 111.0, 10.666666666666666, 14.0, 24.0, 39.0, 189.0, NaN, NaN, 11.0, 8.0, NaN], [NaN, NaN, 40.92857142857143, 46.25, 21.4, 11.5, 2.0, 9.25, 12.0, NaN, 14.0, NaN, NaN, 47.0, NaN, NaN], [NaN, NaN, 21.0, 21.2, 16.0, 13.4, 21.0, 9.25, 17.333333333333332, 19.0, 176.0, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 50.83333333333333, 47.75, 11.8, 9.25, 12.0, 6.333333333333333, 13.333333333333332, NaN, NaN, NaN, NaN, 11.0, NaN, NaN], [NaN, NaN, 36.07692307692308, 34.625, 35.0, 29.75, 6.0, 5.333333333333333, 5.75, NaN, NaN, NaN, NaN, 9.0, NaN, NaN], [NaN, NaN, 48.35294117647059, 51.7, 24.0, 15.666666666666666, 18.0, 19.0, 8.6, NaN, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 33.36363636363637, 29.0, 16.5, 6.0, 9.33333333333333, 11.6, 8.333333333333332, NaN, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 38.92307692307692, 33.666666666666664, 24.6, 19.333333333333332, 23.666666666666664, 6.2, 8.25, 16.0, NaN, NaN, NaN, 10.0, NaN, NaN], [NaN, NaN, 51.05882352941176, 16.875, 9.166666666666666, 16.333333333333332, 33.5, 13.0, 4.333333333333333, 10.0, NaN, NaN, NaN, 24.0, NaN, NaN], [NaN, NaN, 38.692307692307686, 28.166666666666664, 15.25, 12.6, 15.5, 27.0, 16.0, NaN, NaN, NaN, NaN, NaN, NaN, NaN], [NaN, NaN, 57.0, 27.8, 15.888888888888888, 58.666666666666664, 25.0, 42.5, 8.8, NaN, NaN, NaN, NaN, 10.0, 5.0, NaN], [NaN, NaN, 29.57142857142857, 28.142857142857142, 35.0, 16.6, 27.0, 6.666666666666666, 18.4, NaN, NaN, NaN, NaN, 13.5, NaN, NaN], [NaN, NaN, 41.307692307692314, 26.0, 12.0, 3.0, 14.5, 8.0, 5.0, NaN, NaN, NaN, NaN, 25.0, 2.0, NaN], [NaN, NaN, 18.666666666666664, 32.0, 15.2, 21.666666666666664, 9.0, 5.0, 22.333333333333332, NaN, NaN, NaN, NaN, 27.0, 17.0, NaN], [NaN, NaN, 46.692307692307686, 27.2, 14.0, 25.0, 17.25, 4.0, 10.8, NaN, NaN, NaN, NaN, 84.0, NaN, NaN], [NaN, NaN, 30.7, 43.0, 28.5, NaN, 27.333333333333332, 6.0, 7.0, NaN, NaN, 26.0, NaN, 15.0, NaN, NaN], [NaN, NaN, 84.28571428571428, 44.090909090909086, 49.666666666666664, 20.25, 9.5, 11.333333333333332, 9.75, 15.5, NaN, 12.0, NaN, 64.0, NaN, NaN], [NaN, NaN, 28.727272727272727, 22.857142857142858, 13.5, 8.25, 18.5, 10.0, 13.666666666666666, 14.0, NaN, 3.0, NaN, NaN, NaN, NaN], [NaN, NaN, 30.666666666666664, 11.0, 50.0, 11.75, 15.0, 6.0, 7.166666666666666, 8.0, NaN, NaN, 30.0, 22.0, NaN, NaN]], "x": ["0", "2", "9", "10", "11", "12", "13", "14", "15", "16", "18", "19", "20", "21", "22", "23"], "y": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
-        
-        
+
     </script>
 </body>
 </html>

@@ -242,31 +242,6 @@ body {
     color: var(--warning);
 }
 
-/* Links & Downloads */
-.download-section {
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.download-link {
-    color: var(--accent-cyan);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-right: var(--spacing-sm);
-    transition: all 0.3s;
-}
-
-.download-link:hover {
-    background: rgba(0, 180, 216, 0.2);
-    border-color: var(--accent-cyan);
-}
-
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -296,16 +271,6 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -324,9 +289,6 @@ body {
         
     </div>
 
-    
-
-    
     <div class="dashboard-container">
         
         <div class="chart-container">
@@ -342,27 +304,11 @@ body {
         </div>
         
     </div>
-    
 
-    
-
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="oos_by_month.csv" class="download-link" download>oos_by_month.csv</a>
-        
-    </div>
-    
-
-    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Monthly out-of-sample performance metrics and stability analysis.</p>
     </div>
-    
-
-    
 
     <script>
         // Plotly chart rendering
@@ -391,12 +337,10 @@ body {
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
-        
         Plotly.newPlot('chart-1', [{"x": ["2025-07-01 00:00:00-04:00", "2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [178, 745, 580, 449, 19], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
         Plotly.newPlot('chart-2', [{"x": ["2025-07-01 00:00:00-04:00", "2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [51.050279329608934, 46.03333333333333, 35.40410958904109, 37.01548672566372, 5.35], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf", "#9d4edd"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
-        
-        
+
     </script>
 </body>
 </html>
