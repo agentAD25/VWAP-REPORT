@@ -242,31 +242,6 @@ body {
     color: var(--warning);
 }
 
-/* Links & Downloads */
-.download-section {
-    margin-top: var(--spacing-lg);
-    padding: var(--spacing-md);
-    background: var(--bg-card);
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-}
-
-.download-link {
-    color: var(--accent-cyan);
-    text-decoration: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    display: inline-block;
-    margin-right: var(--spacing-sm);
-    transition: all 0.3s;
-}
-
-.download-link:hover {
-    background: rgba(0, 180, 216, 0.2);
-    border-color: var(--accent-cyan);
-}
-
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -296,16 +271,6 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
     </style>
 </head>
 <body>
@@ -320,7 +285,6 @@ body {
         
     </div>
 
-    
     <div class="takeaways">
         
         <div class="takeaway-card">
@@ -348,9 +312,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="dashboard-container">
         
         <div class="chart-container">
@@ -366,9 +328,7 @@ body {
         </div>
         
     </div>
-    
 
-    
     <div class="panel">
         <div class="insights-title">Data Preview</div>
         <table class="data-table" id="dataTable">
@@ -875,25 +835,11 @@ body {
         </table>
         
     </div>
-    
 
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="mfe_mae_by_event_window.csv" class="download-link" download>mfe_mae_by_event_window.csv</a>
-        
-    </div>
-    
-
-    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Performance metrics across different time windows after VWAP events.</p>
     </div>
-    
-
-    
 
     <script>
         // Plotly chart rendering
@@ -922,12 +868,10 @@ body {
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
-        
         Plotly.newPlot('chart-1', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [3.0, 4.0, 4.0, 6.0, 5.0, 5.0, 7.0, 7.0, 7.0, 11.0, 10.0, 11.0, 15.0, 15.0, 14.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [3.0, 4.0, 4.0, 6.0, 5.0, 5.0, 7.0, 7.0, 7.0, 12.0, 11.0, 12.0, 17.0, 17.0, 17.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
         Plotly.newPlot('chart-2', [{"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [7.0, 4.0, 4.0, 6.0, 5.0, 9.0, 7.0, 10.0, 7.0, 14.0, 11.0, 12.0, 20.0, 17.0, 16.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["1", "1", "1", "3", "3", "3", "5", "5", "5", "15", "15", "15", "30", "30", "30"], "y": [8.0, 3.0, 4.0, 5.0, 5.0, 9.0, 7.0, 10.0, 7.0, 15.0, 10.0, 11.0, 18.0, 15.0, 13.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["1", "3", "5", "15", "30"]}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
-        
-        
+
     </script>
 </body>
 </html>
