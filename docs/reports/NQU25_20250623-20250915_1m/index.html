@@ -135,6 +135,16 @@ body {
     box-shadow: var(--shadow-panel);
     backdrop-filter: blur(10px);
     margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
 }
 
 .chart-title {
@@ -230,6 +240,31 @@ body {
     color: var(--warning);
 }
 
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
 /* Grid Layouts */
 .grid-2 {
     display: grid;
@@ -259,6 +294,17 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
+
+
+
+
+
+
+
+
+
+
+        
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -340,14 +386,14 @@ body {
         
         <a href="NQU25_20250623-20250915_1m_dashboard_all_events.html" class="dashboard-card" target="_blank">
             
-            <div class="placeholder">No Preview Available</div>
+            <img src="NQU25_20250623-20250915_1m_dashboard_all_events.png" alt="Nqu25 20250623-20250915 1M Dashboard All Events" loading="lazy">
             
             <h3>Nqu25 20250623-20250915 1M Dashboard All Events</h3>
         </a>
         
         <a href="NQU25_20250623-20250915_1m_dashboard_crosses.html" class="dashboard-card" target="_blank">
             
-            <div class="placeholder">No Preview Available</div>
+            <img src="NQU25_20250623-20250915_1m_dashboard_crosses.png" alt="Nqu25 20250623-20250915 1M Dashboard Crosses" loading="lazy">
             
             <h3>Nqu25 20250623-20250915 1M Dashboard Crosses</h3>
         </a>

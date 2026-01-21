@@ -21,6 +21,7 @@
         
     </div>
 
+    
     <div class="takeaways">
         
         <div class="takeaway-card">
@@ -56,17 +57,21 @@
         </div>
         
     </div>
+    
 
+    
     <div class="dashboard-container">
         
         <div class="chart-container">
             <div class="chart-title">Average Total VWAP Touches by Cross Type</div>
             
-            <div id="chart-1" style="height: 400px;"></div>
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
     </div>
+    
 
+    
     <div class="panel">
         <div class="insights-title">Data Preview</div>
         <table class="data-table" id="dataTable">
@@ -125,11 +130,25 @@
         </table>
         
     </div>
+    
 
+    
+    <div class="download-section">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+        
+        <a href="NQU25_20250623-20250915_1m_vwap_performance_crosses_only.csv" class="download-link" download>NQU25_20250623-20250915_1m_vwap_performance_crosses_only.csv</a>
+        
+    </div>
+    
+
+    
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
         <p class="text-muted">Generic dashboard for NQU25_20250623-20250915_1m_vwap_performance_crosses_only.csv</p>
     </div>
+    
+
+    
 
     <script>
         // Plotly chart rendering
@@ -158,8 +177,10 @@
             colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
         };
 
+        
         Plotly.newPlot('chart-1', [{"marker": {"color": ["#00b4d8", "#0077b6"]}, "type": "bar", "x": ["Down Cross", "Up Cross"], "y": [1246.0, 1268.0]}], {"font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "xaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "Cross Type", "zeroline": false}, "yaxis": {"gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "title": "Total VWAP Touches", "zeroline": false}}, plotlyConfig);
-
+        
+        
     </script>
 </body>
 </html>

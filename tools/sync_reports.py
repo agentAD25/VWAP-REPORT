@@ -16,7 +16,8 @@ import re
 SOURCE_DIR = Path(r"D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_reports")
 
 # Target directory (where we copy to)
-TARGET_DIR = Path(__file__).parent.parent / "site" / "docs" / "reports"
+# Changed to docs/reports (GitHub Pages serves from /docs, manifest scans docs/reports)
+TARGET_DIR = Path(__file__).parent.parent / "docs" / "reports"
 
 # Allowed file extensions
 ALLOWED_EXTENSIONS = {'.png', '.html', '.csv'}
