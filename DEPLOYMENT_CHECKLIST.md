@@ -11,6 +11,7 @@
 ### Step 2: Sync Reports from Source ✅
 - [x] Run `py tools\sync_reports.py` to get latest reports
 - [x] Verify new reports were copied
+- **MNQ / new instruments:** Canonical folders must have a `dashboards/` subfolder (sync copies root + dashboards/ HTML). If only 2 HTML in root, run `LOCAL DATABASE\queries\20260201\20260201_regenerate_mnq_dashboards.py` (or equivalent) then sync. See `20260201_MNQ_MISSING_DASHBOARDS_FIX.md`.
 
 ### Step 3: Apply Visual Updates ✅
 - [x] Run `py tools\update_hold_fail_rates_visual.py` to update styling
