@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Out-of-Sample by Month - ALPHA DRIP</title>
+    <title>Time of Day x Reaction Heatmap - ALPHA DRIP</title>
     <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
         /* Theme CSS */
@@ -309,8 +309,19 @@ body {
     </style>
 </head>
 <body>
+<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+
+
     <div class="header">
-        <h1>Out-of-Sample by Month</h1>
+        <h1>Time of Day x Reaction Heatmap</h1>
         <div class="subtitle">
             MNQ | 
             RTH | 
@@ -318,43 +329,56 @@ body {
             Built by TonySnow | ALPHA DRIP
         </div>
         
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-09-15 - 2025-12-12 (63 sessions)
+        </div>
+        
     </div>
 
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Best Time (Reaction)</div>
+            <div class="value">14:27</div>
+            
+            <div class="description">Reaction: 492.0</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">1,800</div>
+            
+            <div class="description">Across all time buckets</div>
+            
+        </div>
+        
+    </div>
     
 
     
     <div class="dashboard-container">
         
         <div class="chart-container">
-            <div class="chart-title">Monthly Event Counts</div>
+            <div class="chart-title">Average Reaction Size by Time of Day</div>
             
             <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
         </div>
         
-        <div class="chart-container">
-            <div class="chart-title">Average Touches Per Day by Month</div>
-            
-            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
-        </div>
-        
     </div>
     
 
     
 
     
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="oos_by_month.csv" class="download-link" download>oos_by_month.csv</a>
-        
-    </div>
+    
     
 
     
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
-        <p class="text-muted">Monthly out-of-sample performance metrics and stability analysis.</p>
+        <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
     </div>
     
 
@@ -388,9 +412,7 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [1349, 1940, 1552, 1130], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
-        
-        Plotly.newPlot('chart-2', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [109.63899184581172, 82.54432989690721, 71.58687258687259, 119.65870910698496], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"z": [[NaN, 171.31428571428572, 112.6774193548387, 75.125, 48.45454545454545, 52.166666666666664, 89.41176470588235, 108.05882352941175], [NaN, 143.06666666666666, 184.75, 80.0, 87.0, 88.4, 110.25, NaN], [NaN, 101.8, 217.66666666666663, 81.0, 114.33333333333331, 57.5, 51.0, NaN], [NaN, 105.6, 98.0, 114.33333333333331, 106.0, 492.0, 265.0, NaN], [NaN, 130.83333333333331, 50.5, 52.0, 98.0, NaN, 70.5, NaN], [NaN, 162.5, 138.33333333333331, 126.66666666666666, 89.33333333333333, 29.0, 93.0, NaN], [NaN, 110.27906976744185, 58.0, 77.1, 73.05882352941175, 124.93333333333332, 50.47058823529412, NaN], [238.34615384615384, 180.41176470588235, 60.0, 97.33333333333331, 42.75, 69.0, 226.375, NaN], [322.0, 35.0, 126.0, 288.0, 131.0, 179.75, 275.0, NaN], [179.0, 94.33333333333331, 43.0, NaN, 45.33333333333333, 88.5, 95.0, NaN], [221.22222222222223, 154.33333333333331, 106.5, 120.0, NaN, 65.5, 164.0, NaN], [178.8, 32.0, 147.5, 29.0, 7.0, 137.0, 62.0, NaN]], "x": ["9", "10", "11", "12", "13", "14", "15", "16"], "y": ["0", "25", "26", "27", "28", "29", "30", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
         
     </script>

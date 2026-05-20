@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VWAP Report Dashboards - ALPHA DRIP</title>
     <style>
-        /* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+﻿/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
 :root {
     /* Background Colors */
     --bg-primary: #0a0e27;
@@ -294,43 +294,27 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
-        
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-        
-        .dashboard-card {
-            background: var(--bg-panel);
-            border-radius: var(--radius-lg);
             padding: var(--spacing-md);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-panel);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
         }
-        
+        .dashboard-card {
+            display: block;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
         .dashboard-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--accent-cyan);
         }
-        
         .dashboard-card img {
             width: 100%;
             height: 200px;
@@ -339,13 +323,11 @@ body {
             margin-bottom: var(--spacing-sm);
             border: 1px solid var(--border-color);
         }
-        
         .dashboard-card h3 {
             color: var(--text-accent);
             margin-bottom: var(--spacing-xs);
             font-size: var(--font-size-lg);
         }
-        
         .dashboard-card .placeholder {
             width: 100%;
             height: 200px;
@@ -360,135 +342,87 @@ body {
     </style>
 </head>
 <body>
+<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+<div class="vwap-complete-session-policy" role="note" aria-label="Session sample policy">
+  <p><strong>Complete-session sample (63 sessions).</strong> Dashboards and aggregates in this
+  report use <strong>only</strong> verified full New York <strong>RTH</strong> sessions
+  (2025-09-14 through 2025-12-12 calendar window): each included session has exactly
+  <strong>13</strong> thirty-minute bars on the bar-<strong>close</strong> lattice with first close
+  <strong>10:00</strong> ET and last close <strong>16:00</strong> ET (strict 09:30&ndash;16:00 ET window).
+  Partial, holiday-short, or incomplete sessions are <strong>excluded</strong> from these calculations.</p>
+  <ul>
+    <li><strong>Historical / not real-time</strong> &mdash; research output only; not a live quote or execution feed.</li>
+    <li><strong>No public machine-readable event export</strong> &mdash; public HTML-first packages omit CSV/JSON extracts
+    and do not publish <code>vwap_events</code> or bar lattices online.</li>
+  </ul>
+</div>
+<div class="vwap-public-disclosure-nt8" role="note">
+  <p><strong>NT8 certification scope:</strong> Internal regression certification against NinjaTrader ParityBars is
+  <strong>CONDITIONAL PASS</strong> for a specific alignment mode (<code>report timestamp_et + 1 minute == NT8 Timestamp</code>)
+  and stated fixture/date scope only. This page does <strong>not</strong> claim exact OHLC parity at tick granularity,
+  exchange alignment, vendor endorsement, or reproducibility outside that certified bundle.</p>
+</div>
+
+
     <div class="header">
         <h1>VWAP Report Dashboards</h1>
         <div class="subtitle">
-            MNQ | RTH | 30m | Built by TonySnow | ALPHA DRIP
+            MNQZ | RTH | 30m | Built by TonySnow | ALPHA DRIP
         </div>
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
-            N/A
+            2025-09-14 - 2025-12-12
         </div>
     </div>
-    
     <div class="panel">
         <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
         <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
     </div>
-    
     <div class="gallery">
         
         <a href="MNQZ25_20250914-20251212_30m_daily_max_extensions.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Daily Max Extensions</h3>
+            <img src="MNQZ25_20250914-20251212_30m_daily_max_extensions.png" alt="Max Extensions" loading="lazy">
+            <h3>Max Extensions</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_dashboard_all_events.html" class="dashboard-card" target="_blank">
-            
-            <img src="MNQZ25_20250914-20251212_30m_dashboard_all_events.png" alt="Mnqz25 20250914-20251212 30M Dashboard All Events" loading="lazy">
-            
-            <h3>Mnqz25 20250914-20251212 30M Dashboard All Events</h3>
+            <img src="MNQZ25_20250914-20251212_30m_dashboard_all_events.png" alt="All Events" loading="lazy">
+            <h3>All Events</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_dashboard_crosses.html" class="dashboard-card" target="_blank">
-            
-            <img src="MNQZ25_20250914-20251212_30m_dashboard_crosses.png" alt="Mnqz25 20250914-20251212 30M Dashboard Crosses" loading="lazy">
-            
-            <h3>Mnqz25 20250914-20251212 30M Dashboard Crosses</h3>
+            <img src="MNQZ25_20250914-20251212_30m_dashboard_crosses.png" alt="Crosses" loading="lazy">
+            <h3>Crosses</h3>
         </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_definitions_summary.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Definitions Summary</h3>
-        </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_extension_tail_metrics.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Extension Tail Metrics</h3>
+            <img src="MNQZ25_20250914-20251212_30m_extension_tail_metrics.png" alt="Tail Metrics" loading="lazy">
+            <h3>Tail Metrics</h3>
         </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_first_touch_time_distribution.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M First Touch Time Distribution</h3>
-        </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_heatmap_time_of_day_x_reaction.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Heatmap Time Of Day X Reaction</h3>
+            <img src="MNQZ25_20250914-20251212_30m_heatmap_time_of_day_x_reaction.png" alt="Time Of Day X Reaction" loading="lazy">
+            <h3>Time Of Day X Reaction</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_hold_fail_rates.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Hold Fail Rates</h3>
+            <img src="MNQZ25_20250914-20251212_30m_hold_fail_rates.png" alt="Fail Rates" loading="lazy">
+            <h3>Fail Rates</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_mfe_mae_by_event_window.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Mfe Mae By Event Window</h3>
+            <img src="MNQZ25_20250914-20251212_30m_mfe_mae_by_event_window.png" alt="Mae By Event Window" loading="lazy">
+            <h3>Mae By Event Window</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_oos_by_month.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Oos By Month</h3>
+            <img src="MNQZ25_20250914-20251212_30m_oos_by_month.png" alt="By Month" loading="lazy">
+            <h3>By Month</h3>
         </a>
-        
         <a href="MNQZ25_20250914-20251212_30m_regime_segment_grid.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Regime Segment Grid</h3>
+            <img src="MNQZ25_20250914-20251212_30m_regime_segment_grid.png" alt="Segment Grid" loading="lazy">
+            <h3>Segment Grid</h3>
         </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_touch_sequence_stats.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Touch Sequence Stats</h3>
-        </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_touches_per_day_distribution.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Touches Per Day Distribution</h3>
-        </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_vwap_events.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Vwap Events</h3>
-        </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_vwap_performance_all_events.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Vwap Performance All Events</h3>
-        </a>
-        
-        <a href="MNQZ25_20250914-20251212_30m_vwap_performance_crosses_only.html" class="dashboard-card" target="_blank">
-            
-            <div class="placeholder">No Preview Available</div>
-            
-            <h3>Mnqz25 20250914-20251212 30M Vwap Performance Crosses Only</h3>
-        </a>
-        
     </div>
 </body>
 </html>
