@@ -2153,43 +2153,44 @@
   },
   "MNQH25": {
     "1m": {
-      "20241215-20250314": {
+      "20241216-20250314": {
         "png": [
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_dashboard_all_events.png",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_dashboard_crosses.png"
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_daily_max_extensions.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_dashboard_all_events.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_dashboard_crosses.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_extension_tail_metrics.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_hold_fail_rates.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_mfe_mae_by_event_window.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_oos_by_month.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_regime_segment_grid.png",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/index.png"
         ],
         "html": [
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_daily_max_extensions.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_dashboard_all_events.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_dashboard_crosses.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_definitions_summary.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_extension_tail_metrics.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_first_touch_time_distribution.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_heatmap_time_of_day_x_reaction.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_hold_fail_rates.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_mfe_mae_by_event_window.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_oos_by_month.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_regime_segment_grid.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_touch_sequence_stats.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_touches_per_day_distribution.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_vwap_events.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_vwap_performance_all_events.html",
-          "reports/MNQH25_20241215-20250314_1m/MNQH25_20241215-20250314_1m_vwap_performance_crosses_only.html",
-          "reports/MNQH25_20241215-20250314_1m/index.html"
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_daily_max_extensions.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_dashboard_all_events.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_dashboard_crosses.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_extension_tail_metrics.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_hold_fail_rates.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_mfe_mae_by_event_window.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_oos_by_month.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/MNQH25_20241216-20250314_1m_regime_segment_grid.html",
+          "reports/MNQH25_20241216-20250314_1m/dashboards/index.html"
         ],
         "csv": [],
-        "start_date": "20241215",
+        "start_date": "20241216",
         "end_date": "20250314",
-        "start": "20241215",
+        "start": "20241216",
         "end": "20250314",
         "contract": "MNQH25",
         "timeframe": "1m",
-        "date_range": "20241215-20250314",
-        "dashboard_index": "reports/MNQH25_20241215-20250314_1m/index.html",
-        "canonical": false,
-        "status": "LEGACY_CORRUPT_SUPPRESS",
-        "active": false,
-        "public_safe": false
+        "date_range": "20241216-20250314",
+        "dashboard_index": "reports/MNQH25_20241216-20250314_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
       }
     },
     "5m": {

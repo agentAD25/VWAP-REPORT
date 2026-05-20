@@ -181,9 +181,19 @@
     </style>
 </head>
 <body>
+<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+
     <div class="header">
         <h1>VWAP Performance Dashboard</h1>
-        <div class="subtitle">MNQ | RTH | Crosses Only | Built by TonySnow | ALPHA DRIP</div>
+        <div class="subtitle">MNQ | RTH | All Events | Built by TonySnow | ALPHA DRIP</div>
     </div>
 
     <div class="dashboard-container">
@@ -296,27 +306,35 @@
 
         // Embedded dashboard data
         const embeddedDashboardData = {
-  "generated_at": "2026-02-03T18:57:35.319739",
+  "generated_at": "2026-05-19T09:40:54",
+  "source": "internal_parquet_research_dataset",
   "date_range": {
-    "start_date": "2024-12-15",
+    "start_date": "2024-12-16",
     "end_date": "2025-03-14",
-    "total_sessions": 80
+    "total_sessions": 59
   },
   "upCross": {
-    "total": 300,
-    "avgTicks": 52.86333333333334,
-    "maxTicks": 235.7599999999993,
-    "avgPerformance": 52.86333333333334,
-    "maxPerformance": 235.7599999999993
+    "total": 552,
+    "avgTicks": 81.7626811594203,
+    "maxTicks": 390.13000000000034,
+    "avgPerformance": 81.7626811594203,
+    "maxPerformance": 390.13000000000034
   },
   "downCross": {
-    "total": 311,
-    "avgTicks": 64.68810289389067,
-    "maxTicks": 287.9999999999991,
-    "avgPerformance": 64.68810289389067,
-    "maxPerformance": 287.9999999999991
+    "total": 561,
+    "avgTicks": 89.98039215686275,
+    "maxTicks": 374.5999999999999,
+    "avgPerformance": 89.98039215686275,
+    "maxPerformance": 374.5999999999999
   },
-  "event_type_filter": "CROSS"
+  "event_type_filter": "ALL",
+  "mfe_column_used": "mfe_5m_ticks",
+  "complete_session_policy": {
+    "bars_per_session": 390,
+    "first_close_et": "09:31:00",
+    "last_close_et": "16:00:00",
+    "strict_rth": true
+  }
 };
 
         function loadData() {

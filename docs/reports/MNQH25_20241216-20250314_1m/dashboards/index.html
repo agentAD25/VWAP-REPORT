@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extension Tail Metrics - ALPHA DRIP</title>
-    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <title>VWAP Report Dashboards - ALPHA DRIP</title>
     <style>
-        /* Theme CSS */
-/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+﻿/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
 :root {
     /* Background Colors */
     --bg-primary: #0a0e27;
@@ -296,166 +294,135 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
-
-
-
-
-
-
-
-
-
-
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--spacing-md);
+            padding: var(--spacing-md);
+        }
+        .dashboard-card {
+            display: block;
+            background: var(--bg-panel);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-md);
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .dashboard-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-cyan);
+        }
+        .dashboard-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--spacing-sm);
+            border: 1px solid var(--border-color);
+        }
+        .dashboard-card h3 {
+            color: var(--text-accent);
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-size-lg);
+        }
+        .dashboard-card .placeholder {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin-bottom: var(--spacing-sm);
+        }
     </style>
 </head>
 <body>
+<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+<div class="vwap-complete-session-policy" role="note" aria-label="Session sample policy">
+  <p><strong>Complete-session sample (59 sessions).</strong> Dashboards and aggregates in this
+  report use <strong>only</strong> verified full New York <strong>RTH</strong> sessions
+  (2024-12-16 through 2025-03-14 calendar window): each included session has exactly
+  <strong>390</strong> one-minute bars on the bar-<strong>close</strong> lattice with first close
+  <strong>09:31</strong> ET and last close <strong>16:00</strong> ET (strict 09:30&ndash;16:00 ET window).
+  Partial, holiday-short, or incomplete sessions are <strong>excluded</strong> from these calculations.</p>
+  <ul>
+    <li><strong>Historical / not real-time</strong> &mdash; research output only; not a live quote or execution feed.</li>
+    <li><strong>No public machine-readable event export</strong> &mdash; public HTML-first packages omit CSV/JSON extracts
+    and do not publish <code>vwap_events</code> or bar lattices online.</li>
+  </ul>
+</div>
+<div class="vwap-public-disclosure-nt8" role="note">
+  <p><strong>NT8 certification scope:</strong> Internal regression certification against NinjaTrader ParityBars is
+  <strong>CONDITIONAL PASS</strong> for a specific alignment mode (<code>report timestamp_et + 1 minute == NT8 Timestamp</code>)
+  and stated fixture/date scope only. This page does <strong>not</strong> claim exact OHLC parity at tick granularity,
+  exchange alignment, vendor endorsement, or reproducibility outside that certified bundle.</p>
+</div>
+
+
     <div class="header">
-        <h1>Extension Tail Metrics</h1>
+        <h1>VWAP Report Dashboards</h1>
         <div class="subtitle">
-            MNQ | 
-            RTH | 
-            1m | 
-            Built by TonySnow | ALPHA DRIP
+            MNQH | RTH | 1m | Built by TonySnow | ALPHA DRIP
         </div>
-        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2024-12-16 - 2025-03-14
+        </div>
     </div>
-
-    
-    <div class="takeaways">
-        
-        <div class="takeaway-card">
-            <div class="label">P95 Extension Up</div>
-            <div class="value">702.9 ticks</div>
-            
-            <div class="description">95th percentile</div>
-            
-        </div>
-        
-        <div class="takeaway-card">
-            <div class="label">P99 Extension Up</div>
-            <div class="value">932.9 ticks</div>
-            
-            <div class="description">99th percentile (outlier threshold)</div>
-            
-        </div>
-        
-        <div class="takeaway-card">
-            <div class="label">P95 Extension Down</div>
-            <div class="value">900.8 ticks</div>
-            
-            <div class="description">95th percentile</div>
-            
-        </div>
-        
-    </div>
-    
-
-    
-    <div class="dashboard-container">
-        
-        <div class="chart-container">
-            <div class="chart-title">Percentile Extensions</div>
-            
-            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
-        </div>
-        
-    </div>
-    
-
-    
     <div class="panel">
-        <div class="insights-title">Data Preview</div>
-        <table class="data-table" id="dataTable">
-            <thead>
-                <tr>
-                    
-                    <th>p90_up</th>
-                    
-                    <th>p95_up</th>
-                    
-                    <th>p99_up</th>
-                    
-                    <th>p90_down</th>
-                    
-                    <th>p95_down</th>
-                    
-                    <th>p99_down</th>
-                    
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr>
-                    
-                    <td>624.3946356</td>
-                    
-                    <td>702.8521989999997</td>
-                    
-                    <td>932.9204972800002</td>
-                    
-                    <td>602.1597264</td>
-                    
-                    <td>900.7663381999996</td>
-                    
-                    <td>1266.5846458400033</td>
-                    
-                </tr>
-                
-            </tbody>
-        </table>
-        
+        <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
+        <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
     </div>
-    
-
-    
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
+    <div class="gallery">
         
-        <a href="extension_tail_metrics.csv" class="download-link" download>extension_tail_metrics.csv</a>
-        
+        <a href="MNQH25_20241216-20250314_1m_daily_max_extensions.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_daily_max_extensions.png" alt="Max Extensions" loading="lazy">
+            <h3>Max Extensions</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_dashboard_all_events.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_dashboard_all_events.png" alt="All Events" loading="lazy">
+            <h3>All Events</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_dashboard_crosses.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_dashboard_crosses.png" alt="Crosses" loading="lazy">
+            <h3>Crosses</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_extension_tail_metrics.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_extension_tail_metrics.png" alt="Tail Metrics" loading="lazy">
+            <h3>Tail Metrics</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.png" alt="Time Of Day X Reaction" loading="lazy">
+            <h3>Time Of Day X Reaction</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_hold_fail_rates.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_hold_fail_rates.png" alt="Fail Rates" loading="lazy">
+            <h3>Fail Rates</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_mfe_mae_by_event_window.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_mfe_mae_by_event_window.png" alt="Mae By Event Window" loading="lazy">
+            <h3>Mae By Event Window</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_oos_by_month.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_oos_by_month.png" alt="By Month" loading="lazy">
+            <h3>By Month</h3>
+        </a>
+        <a href="MNQH25_20241216-20250314_1m_regime_segment_grid.html" class="dashboard-card" target="_blank">
+            <img src="MNQH25_20241216-20250314_1m_regime_segment_grid.png" alt="Segment Grid" loading="lazy">
+            <h3>Segment Grid</h3>
+        </a>
     </div>
-    
-
-    
-    <div class="panel">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
-        <p class="text-muted">Tail distribution metrics for price extensions (P90, P95, P99).</p>
-    </div>
-    
-
-    
-
-    <script>
-        // Plotly chart rendering
-        
-        const plotlyConfig = {
-            displayModeBar: true,
-            displaylogo: false,
-            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
-            responsive: true
-        };
-
-        const plotlyLayout = {
-            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
-            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
-            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
-            xaxis: {
-                gridcolor: 'rgba(0, 150, 255, 0.1)',
-                linecolor: 'rgba(0, 150, 255, 0.3)',
-                zeroline: false
-            },
-            yaxis: {
-                gridcolor: 'rgba(0, 150, 255, 0.1)',
-                linecolor: 'rgba(0, 150, 255, 0.3)',
-                zeroline: false
-            },
-            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
-        };
-
-        
-        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [624.3946356, 702.8521989999997, 932.9204972800002], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [602.1597264, 900.7663381999996, 1266.5846458400033], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
-        
-        
-    </script>
 </body>
 </html>
