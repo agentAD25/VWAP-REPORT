@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-Resumable batch public report rollout for MNQ 2025 H/M/U contracts (VWAP-REPORT only).
+Resumable batch public report rollout for MNQ 2025 contracts (VWAP-REPORT only).
 
 Packages from supabase internal bundles, syncs into docs/reports/, validates public safety,
 and checkpoints state under out/audits/vwap_report_rollout_20260520/.
+
+Supports H/M/U bridge bundles and MNQZ25 post-backfill internal bundles (1m/15m/30m only).
 """
 
 from __future__ import annotations
@@ -26,10 +28,8 @@ AUDIT_DIR = REPO_ROOT / "out" / "audits" / "vwap_report_rollout_20260520"
 STATE_FILE = AUDIT_DIR / "rollout_state.json"
 
 SUPABASE_ROOT = REPO_ROOT.parent / "supabase-opti-database"
-BUNDLE_ROOT = (
-    SUPABASE_ROOT
-    / "LOCAL DATABASE/out/vwap_reports_internal_regen/hmu_existing_report_stack_bridge_dryrun_20260519"
-)
+REGEN_ROOT = SUPABASE_ROOT / "LOCAL DATABASE/out/vwap_reports_internal_regen"
+BUNDLE_ROOT = REGEN_ROOT / "hmu_existing_report_stack_bridge_dryrun_20260519"
 CANON_ROOT = (
     SUPABASE_ROOT
     / "LOCAL DATABASE/out/vwap_strategy_research/mnq_2025_all_tf_canonicalization_20260518_170931"
@@ -37,9 +37,13 @@ CANON_ROOT = (
 PACKAGER = SUPABASE_ROOT / "scripts/package_vwap_public_sample_from_bundle.py"
 SYNC_TOOL = REPO_ROOT / "tools/sync_public_report_bundle.py"
 
-BATCH_APPROVAL_PREFIX = "GO_ROLLOUT_PUBLIC_REPORTS_MNQM25_MNQU25_CERTIFIED_"
+BATCH_APPROVAL_PREFIXES = (
+    "GO_ROLLOUT_PUBLIC_REPORTS_MNQM25_MNQU25_CERTIFIED_",
+    "GO_ROLLOUT_PUBLIC_REPORTS_MNQZ25_1M_15M_30M_CERTIFIED_",
+)
 FOLDER_PATTERN = re.compile(r"^(?P<contract>[A-Z0-9]+)_(?P<start>\d{8})-(?P<end>\d{8})_(?P<tf>\d+m)$")
-PROTECTED_CONTRACTS = frozenset({"MNQZ25", "MNQH25"})
+BATCH_BLOCKED_CONTRACTS = frozenset({"MNQH25"})
+PROTECTED_BASELINE_CONTRACTS = frozenset({"MNQZ25", "MNQH25"})
 BLOCKED_SUFFIXES = {".csv", ".json", ".parquet", ".txt"}
 
 CORE_PUBLIC_STEMS = (
@@ -69,6 +73,9 @@ CONTRACT_META: dict[str, dict[str, Any]] = {
         "sessions": 63,
         "iso_start": "2025-03-17",
         "iso_end": "2025-06-13",
+        "timeframes": ("1m", "5m", "15m", "30m"),
+        "bundle_root": BUNDLE_ROOT,
+        "source_profile": "hmu_bridge",
     },
     "MNQU25": {
         "start": "20250616",
@@ -77,6 +84,22 @@ CONTRACT_META: dict[str, dict[str, Any]] = {
         "sessions": 40,
         "iso_start": "2025-06-16",
         "iso_end": "2025-09-12",
+        "timeframes": ("1m", "5m", "15m", "30m"),
+        "bundle_root": BUNDLE_ROOT,
+        "source_profile": "hmu_bridge",
+    },
+    "MNQZ25": {
+        "start": "20250914",
+        "end": "20251212",
+        "legacy_start": "20250914",
+        "sessions": 63,
+        "iso_start": "2025-09-14",
+        "iso_end": "2025-12-12",
+        "timeframes": ("1m", "15m", "30m"),
+        "bundle_root": REGEN_ROOT,
+        "bundle_suffix": "_rth_complete_sessions_post_backfill_20260518_151357",
+        "source_profile": "mnqz25_post_backfill",
+        "one_minute_gate_status": "MNQZ25_1M_OPEN_LATTICE_FIXED_CONFIRMED",
     },
 }
 
@@ -93,10 +116,12 @@ class Target:
     sessions: int
     bars_per_session: int
     bundle_name: str
+    bundle_root: Path
     target_folder: str
     legacy_folder: str
     staging_slug: str
     sync_approval: str
+    source_profile: str = "hmu_bridge"
 
     @property
     def key(self) -> str:
@@ -104,7 +129,7 @@ class Target:
 
     @property
     def internal_bundle(self) -> Path:
-        return BUNDLE_ROOT / self.bundle_name
+        return self.bundle_root / self.bundle_name
 
     @property
     def staging_dir(self) -> Path:
@@ -125,8 +150,11 @@ def build_targets(contracts: list[str]) -> list[Target]:
         if contract not in CONTRACT_META:
             raise ValueError(f"Unknown contract: {contract}")
         meta = CONTRACT_META[contract]
-        for tf in TIMEFRAMES:
+        tfs = meta.get("timeframes", TIMEFRAMES)
+        suffix = meta.get("bundle_suffix", "")
+        for tf in tfs:
             bars, _, _ = LATTICE[tf]
+            short = f"{contract}_{meta['start']}-{meta['end']}_{tf}"
             targets.append(
                 Target(
                     contract=contract,
@@ -136,11 +164,13 @@ def build_targets(contracts: list[str]) -> list[Target]:
                     legacy_start=meta["legacy_start"],
                     sessions=meta["sessions"],
                     bars_per_session=bars,
-                    bundle_name=f"{contract}_{meta['start']}-{meta['end']}_{tf}",
-                    target_folder=f"{contract}_{meta['start']}-{meta['end']}_{tf}",
+                    bundle_name=f"{short}{suffix}",
+                    bundle_root=meta.get("bundle_root", BUNDLE_ROOT),
+                    target_folder=short,
                     legacy_folder=f"{contract}_{meta['legacy_start']}-{meta['end']}_{tf}",
                     staging_slug=f"vwap-{contract.lower()}-{tf}-historical-sample-20260520",
                     sync_approval=f"GO_REPLACE_PUBLIC_REPORT_{contract}_{tf.upper()}_CERTIFIED_20260520",
+                    source_profile=meta.get("source_profile", "hmu_bridge"),
                 )
             )
     return targets
@@ -173,13 +203,71 @@ def _sha256_inventory(files: list[str]) -> str:
 
 
 def validate_batch_approval(approval: str) -> None:
-    if not approval.startswith(BATCH_APPROVAL_PREFIX) or len(approval) <= len(BATCH_APPROVAL_PREFIX):
+    if not any(
+        approval.startswith(prefix) and len(approval) > len(prefix)
+        for prefix in BATCH_APPROVAL_PREFIXES
+    ):
         raise ValueError(
-            f"Invalid batch approval. Required prefix: {BATCH_APPROVAL_PREFIX}<tag>"
+            "Invalid batch approval. Required prefix one of: "
+            + ", ".join(f"{p}<tag>" for p in BATCH_APPROVAL_PREFIXES)
         )
 
 
+def validate_mnqz25_post_backfill_source(target: Target) -> dict[str, Any]:
+    bundle = target.internal_bundle
+    failures: list[str] = []
+    row: dict[str, Any] = {
+        "bundle": str(bundle),
+        "timeframe": target.timeframe,
+        "source_profile": "mnqz25_post_backfill",
+        "manifest_sessions": target.sessions,
+        "public_export": False,
+        "machine_readable_exports": "internal_only",
+        "db_writes": False,
+    }
+
+    if not bundle.is_dir():
+        failures.append("bundle_missing")
+        row["gate"] = "SOURCE_BLOCKED"
+        row["failures"] = failures
+        return row
+
+    dashboards = bundle / "dashboards"
+    if not dashboards.is_dir() or not (dashboards / "index.html").is_file():
+        failures.append("missing_dashboards_index")
+
+    for stem in CORE_PUBLIC_STEMS:
+        if not list(dashboards.glob(f"*{stem}*.html")):
+            failures.append(f"missing_core_dashboard_{stem}")
+
+    rp_candidates = list(bundle.glob(f"*{target.timeframe}*report_params.json")) + list(
+        bundle.glob("report_params.json")
+    )
+    if rp_candidates:
+        rp = json.loads(rp_candidates[0].read_text(encoding="utf-8"))
+        if rp.get("public_export") is True:
+            failures.append("public_export_true")
+        if rp.get("machine_readable_exports") not in ("internal_only", None, False, ""):
+            failures.append("machine_readable_not_internal")
+
+    row["canonical_dataset"] = str(
+        CANON_ROOT / target.contract / f"research_dataset_{target.timeframe}"
+    )
+    row["canonical_dataset_optional"] = True
+    row["lattice_audit_ref"] = (
+        "scoped_1m15m30m_backfill_write_20260518_150018/post_write_1m_lattice_check.csv"
+        if target.timeframe == "1m"
+        else f"scoped_1m15m30m_backfill_dryrun_20260518_144124/backfill_{target.timeframe}_lattice_check.csv"
+    )
+
+    row["gate"] = "SOURCE_OK" if not failures else "SOURCE_BLOCKED"
+    row["failures"] = failures
+    return row
+
+
 def validate_source_bundle(target: Target) -> dict[str, Any]:
+    if target.source_profile == "mnqz25_post_backfill":
+        return validate_mnqz25_post_backfill_source(target)
     bundle = target.internal_bundle
     failures: list[str] = []
     row: dict[str, Any] = {"bundle": str(bundle), "timeframe": target.timeframe}
@@ -242,7 +330,11 @@ def find_legacy_candidates(target: Target) -> list[str]:
     )
     names = [p.name for p in candidates]
     expected = target.legacy_folder
-    if expected not in names and (REPORTS_DIR / expected).is_dir():
+    if (
+        expected not in names
+        and expected != target.target_folder
+        and (REPORTS_DIR / expected).is_dir()
+    ):
         names.append(expected)
     return sorted(set(names))
 
@@ -340,6 +432,10 @@ def run_packager(target: Target, *, dry_run: bool) -> dict[str, Any]:
         raise FileNotFoundError(f"Packager missing: {PACKAGER}")
 
     meta = CONTRACT_META[target.contract]
+    gate_status = meta.get(
+        "one_minute_gate_status", "ONE_MINUTE_OPEN_LATTICE_FIXED_CONFIRMED"
+    )
+    canon_lineage = CANON_ROOT / target.contract / f"research_dataset_{target.timeframe}"
     cmd = [
         sys.executable,
         str(PACKAGER),
@@ -363,13 +459,13 @@ def run_packager(target: Target, *, dry_run: bool) -> dict[str, Any]:
         str(target.bars_per_session),
         "--generate-screenshots",
         "--force-clean-target",
-        "--canonical-parquet-lineage",
-        str(CANON_ROOT / target.contract / f"research_dataset_{target.timeframe}"),
         "--internal-bundle-lineage",
         str(target.internal_bundle),
         "--one-minute-gate-status",
-        "ONE_MINUTE_OPEN_LATTICE_FIXED_CONFIRMED",
+        gate_status,
     ]
+    if canon_lineage.is_dir():
+        cmd.extend(["--canonical-parquet-lineage", str(canon_lineage)])
     proc = subprocess.run(cmd, cwd=SUPABASE_ROOT, capture_output=True, text=True)
     if proc.returncode != 0:
         raise RuntimeError(f"packager_failed:{proc.stderr or proc.stdout}")
@@ -387,8 +483,33 @@ def run_packager(target: Target, *, dry_run: bool) -> dict[str, Any]:
     }
 
 
+def _public_folder_legacy_state(target: Target) -> dict[str, Any]:
+    sys.path.insert(0, str(REPO_ROOT / "tools"))
+    from sync_public_report_bundle import (  # noqa: WPS433
+        _folder_has_csv_exports,
+        _folder_is_legacy_corrupt,
+    )
+
+    folder = REPORTS_DIR / target.target_folder
+    if not folder.is_dir():
+        return {"exists": False, "legacy_corrupt": False, "would_purge_legacy_root_files": False}
+    has_dash_ix = (folder / "dashboards" / "index.html").is_file()
+    has_root_csv = _folder_has_csv_exports(folder)
+    would_purge = has_root_csv or not has_dash_ix
+    return {
+        "exists": True,
+        "legacy_corrupt": _folder_is_legacy_corrupt(folder, target.target_folder),
+        "in_place_upgrade": folder.name == target.target_folder,
+        "would_purge_legacy_root_files": would_purge,
+        "has_root_csv": has_root_csv,
+        "has_dashboards_index": has_dash_ix,
+        "has_root_index": (folder / "index.html").is_file(),
+    }
+
+
 def run_sync(target: Target, *, dry_run: bool) -> dict[str, Any]:
     legacy = find_legacy_candidates(target)
+    pub_state = _public_folder_legacy_state(target)
     if dry_run:
         staging_inv = _inventory(target.staging_dir / "dashboards") if (target.staging_dir / "dashboards").is_dir() else []
         return {
@@ -396,6 +517,8 @@ def run_sync(target: Target, *, dry_run: bool) -> dict[str, Any]:
             "would_sync_from": str(target.staging_dir),
             "target_folder": target.target_folder,
             "legacy_folders_to_delete": legacy,
+            "public_folder_state": pub_state,
+            "would_purge_legacy_root_files": pub_state.get("would_purge_legacy_root_files", False),
             "would_copy_files": staging_inv,
             "sync_approval": target.sync_approval,
         }
@@ -676,7 +799,7 @@ def commit_contract(contract: str, message: str) -> dict[str, Any]:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Batch MNQ H/M/U public report rollout")
+    p = argparse.ArgumentParser(description="Batch MNQ public report rollout (H/M/U bridge, MNQZ25 post-backfill)")
     p.add_argument("--contract", action="append", dest="contracts")
     p.add_argument("--all-remaining", action="store_true")
     p.add_argument("--dry-run", action="store_true")
@@ -705,8 +828,8 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     for c in contracts:
-        if c in PROTECTED_CONTRACTS:
-            print(f"Refusing to rollout protected contract: {c}", file=sys.stderr)
+        if c in BATCH_BLOCKED_CONTRACTS:
+            print(f"Refusing to rollout blocked contract: {c}", file=sys.stderr)
             return 2
 
     targets: list[Target] = []
