@@ -3059,27 +3059,28 @@
     "15m": {
       "20250914-20251212": {
         "png": [
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_dashboard_all_events.png",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_dashboard_crosses.png"
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_daily_max_extensions.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_dashboard_all_events.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_dashboard_crosses.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_extension_tail_metrics.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_hold_fail_rates.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_mfe_mae_by_event_window.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_oos_by_month.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_regime_segment_grid.png",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/index.png"
         ],
         "html": [
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_daily_max_extensions.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_dashboard_all_events.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_dashboard_crosses.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_definitions_summary.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_extension_tail_metrics.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_first_touch_time_distribution.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_heatmap_time_of_day_x_reaction.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_hold_fail_rates.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_mfe_mae_by_event_window.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_oos_by_month.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_regime_segment_grid.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_touch_sequence_stats.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_touches_per_day_distribution.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_vwap_events.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_vwap_performance_all_events.html",
-          "reports/MNQZ25_20250914-20251212_15m/MNQZ25_20250914-20251212_15m_vwap_performance_crosses_only.html",
-          "reports/MNQZ25_20250914-20251212_15m/index.html"
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_daily_max_extensions.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_dashboard_all_events.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_dashboard_crosses.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_extension_tail_metrics.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_hold_fail_rates.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_mfe_mae_by_event_window.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_oos_by_month.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/MNQZ25_20250914-20251212_15m_regime_segment_grid.html",
+          "reports/MNQZ25_20250914-20251212_15m/dashboards/index.html"
         ],
         "csv": [],
         "start_date": "20250914",
@@ -3089,11 +3090,11 @@
         "contract": "MNQZ25",
         "timeframe": "15m",
         "date_range": "20250914-20251212",
-        "dashboard_index": "reports/MNQZ25_20250914-20251212_15m/index.html",
+        "dashboard_index": "reports/MNQZ25_20250914-20251212_15m/dashboards/index.html",
         "canonical": true,
-        "status": "LEGACY_WITH_DATA_EXPORTS",
+        "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
-        "public_safe": false
+        "public_safe": true
       }
     },
     "30m": {
