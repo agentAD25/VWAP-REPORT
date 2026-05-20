@@ -309,6 +309,17 @@ body {
     </style>
 </head>
 <body>
+<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+
+
     <div class="header">
         <h1>Out-of-Sample by Month</h1>
         <div class="subtitle">
@@ -316,6 +327,10 @@ body {
             RTH | 
             1m | 
             Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-09-15 - 2025-12-12 (63 sessions)
         </div>
         
     </div>
@@ -343,12 +358,7 @@ body {
     
 
     
-    <div class="download-section">
-        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Downloads</h3>
-        
-        <a href="oos_by_month.csv" class="download-link" download>oos_by_month.csv</a>
-        
-    </div>
+    
     
 
     
@@ -388,9 +398,9 @@ body {
         };
 
         
-        Plotly.newPlot('chart-1', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [1349, 1940, 1552, 1130], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [376, 670, 430, 324], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [109.63899184581172, 82.54432989690721, 71.58687258687259, 119.65870910698496], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": ["2025-09-01 00:00:00-04:00", "2025-10-01 00:00:00-04:00", "2025-11-01 00:00:00-04:00", "2025-12-01 00:00:00-05:00"], "y": [40.12765957446809, 36.862686567164175, 30.64186046511628, 45.95679012345679], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
         
     </script>

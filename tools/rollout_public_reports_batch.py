@@ -144,13 +144,20 @@ def _iso_from_yyyymmdd(value: str) -> str:
     return f"{value[:4]}-{value[4:6]}-{value[6:8]}"
 
 
-def build_targets(contracts: list[str]) -> list[Target]:
+def build_targets(contracts: list[str], *, timeframes_filter: list[str] | None = None) -> list[Target]:
     targets: list[Target] = []
+    allowed_tfs = {t.lower() for t in timeframes_filter} if timeframes_filter else None
     for contract in contracts:
         if contract not in CONTRACT_META:
             raise ValueError(f"Unknown contract: {contract}")
         meta = CONTRACT_META[contract]
         tfs = meta.get("timeframes", TIMEFRAMES)
+        if allowed_tfs is not None:
+            tfs = tuple(tf for tf in tfs if tf.lower() in allowed_tfs)
+            if not tfs:
+                raise ValueError(
+                    f"No timeframes matched filter {sorted(allowed_tfs)} for {contract}"
+                )
         suffix = meta.get("bundle_suffix", "")
         for tf in tfs:
             bars, _, _ = LATTICE[tf]
@@ -202,15 +209,27 @@ def _sha256_inventory(files: list[str]) -> str:
     return hashlib.sha256("\n".join(files).encode()).hexdigest()
 
 
-def validate_batch_approval(approval: str) -> None:
-    if not any(
+def validate_batch_approval(
+    approval: str,
+    *,
+    contracts: list[str] | None = None,
+    timeframes_filter: list[str] | None = None,
+) -> None:
+    if any(
         approval.startswith(prefix) and len(approval) > len(prefix)
         for prefix in BATCH_APPROVAL_PREFIXES
     ):
-        raise ValueError(
-            "Invalid batch approval. Required prefix one of: "
-            + ", ".join(f"{p}<tag>" for p in BATCH_APPROVAL_PREFIXES)
-        )
+        return
+    if contracts and timeframes_filter and len(contracts) == 1 and len(timeframes_filter) == 1:
+        c, tf = contracts[0].upper(), timeframes_filter[0].lower()
+        sync_prefix = f"GO_REPLACE_PUBLIC_REPORT_{c}_{tf.upper()}_CERTIFIED_"
+        if approval.startswith(sync_prefix) and len(approval) > len(sync_prefix):
+            return
+    raise ValueError(
+        "Invalid batch approval. Required prefix one of: "
+        + ", ".join(f"{p}<tag>" for p in BATCH_APPROVAL_PREFIXES)
+        + " or GO_REPLACE_PUBLIC_REPORT_{CONTRACT}_{TF}_CERTIFIED_<tag> for single-target runs"
+    )
 
 
 def validate_mnqz25_post_backfill_source(target: Target) -> dict[str, Any]:
@@ -801,6 +820,12 @@ def commit_contract(contract: str, message: str) -> dict[str, Any]:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Batch MNQ public report rollout (H/M/U bridge, MNQZ25 post-backfill)")
     p.add_argument("--contract", action="append", dest="contracts")
+    p.add_argument(
+        "--timeframe",
+        action="append",
+        dest="timeframes",
+        help="Limit rollout to specific timeframes (e.g. 1m). Repeatable.",
+    )
     p.add_argument("--all-remaining", action="store_true")
     p.add_argument("--dry-run", action="store_true")
     p.add_argument("--resume", action="store_true")
@@ -817,7 +842,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    validate_batch_approval(args.approval)
+    timeframes_filter = [t.lower() for t in args.timeframes] if args.timeframes else None
 
     if args.all_remaining:
         contracts = ["MNQM25", "MNQU25"]
@@ -827,6 +852,10 @@ def main(argv: list[str] | None = None) -> int:
         print("Specify --contract and/or --all-remaining", file=sys.stderr)
         return 2
 
+    validate_batch_approval(
+        args.approval, contracts=contracts, timeframes_filter=timeframes_filter
+    )
+
     for c in contracts:
         if c in BATCH_BLOCKED_CONTRACTS:
             print(f"Refusing to rollout blocked contract: {c}", file=sys.stderr)
@@ -834,7 +863,7 @@ def main(argv: list[str] | None = None) -> int:
 
     targets: list[Target] = []
     for contract in contracts:
-        targets.extend(build_targets([contract]))
+        targets.extend(build_targets([contract], timeframes_filter=timeframes_filter))
 
     state = load_state()
     if not state.get("protected_baselines"):
@@ -845,7 +874,9 @@ def main(argv: list[str] | None = None) -> int:
     summary: dict[str, Any] = {
         "mode": mode,
         "contracts": contracts,
+        "timeframes_filter": timeframes_filter,
         "target_count": len(targets),
+        "target_keys": [t.key for t in targets],
         "results": [],
     }
 
