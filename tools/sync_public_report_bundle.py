@@ -110,6 +110,20 @@ def _folder_is_legacy_corrupt(folder: Path, target_folder: str) -> bool:
     return _folder_has_csv_exports(folder) or not has_dashboards_gallery
 
 
+def _purge_legacy_root_files(canonical_dest: Path) -> list[str]:
+    """Remove stale root-level artifacts; keep dashboards/ subfolder only."""
+    removed: list[str] = []
+    if not canonical_dest.is_dir():
+        return removed
+    for item in list(canonical_dest.iterdir()):
+        if item.name == "dashboards":
+            continue
+        if item.is_file():
+            item.unlink()
+            removed.append(item.name)
+    return removed
+
+
 def _find_replace_candidates(
     contract: str,
     timeframe: str,
@@ -206,11 +220,14 @@ def sync_bundle(
     dashboards_dest = canonical_dest / "dashboards"
     src_dashboards = source / "dashboards"
     deleted: list[str] = []
+    purged_root: list[str] = []
 
     if replace_same_contract_timeframe:
         for folder in _find_replace_candidates(contract, timeframe, target_name):
             shutil.rmtree(folder)
             deleted.append(folder.name)
+        if canonical_dest.is_dir():
+            purged_root = _purge_legacy_root_files(canonical_dest)
 
     canonical_dest.mkdir(parents=True, exist_ok=True)
     slug_copied = (0, 0)
@@ -255,6 +272,7 @@ def sync_bundle(
         "slug_alias": slug_alias,
         "replace_same_contract_timeframe": replace_same_contract_timeframe,
         "deleted_folders": deleted,
+        "purged_root_files": purged_root,
         "canonical_dest": str(canonical_dest),
         "slug_dest": str(slug_dest) if slug_dest else None,
         "copied_slug": slug_copied[0],

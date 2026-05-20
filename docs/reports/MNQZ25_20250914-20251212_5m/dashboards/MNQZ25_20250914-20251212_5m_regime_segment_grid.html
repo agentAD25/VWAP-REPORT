@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regime Segment Grid - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+
+
+
+
+
+
+
+
+
+        
+        .vwap-public-disclosure-banner, .vwap-public-disclosure-footer, .vwap-public-disclosure-nt8,
+        .vwap-public-disclosure-csv {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #cfefff);
+            background: rgba(0, 40, 80, 0.45);
+            border: 1px solid rgba(0, 180, 216, 0.35);
+            border-radius: 10px;
+        }
+        .vwap-public-disclosure-footer { margin-top: 24px; color: var(--text-muted, #b8d4e8); }
+        .vwap-public-disclosure-oneline { margin: 10px 0 0 0; font-size: 0.82em; color: var(--text-accent, #7dd3fc); }
+        .vwap-complete-session-policy {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #e0f7fa);
+            background: rgba(0, 60, 40, 0.35);
+            border: 1px solid rgba(0, 200, 140, 0.45);
+            border-radius: 10px;
+        }
+        .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
+
+    </style>
+</head>
+<body>
+    <div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
+  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
+  and must not be used as a live quote or execution feed. Session calculations use
+  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
+  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
+  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
+  certification bundles are <strong>not included</strong> in public packages.</p>
+  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
+</div>
+    
+    <div class="vwap-complete-session-policy" role="note" aria-label="Session sample policy">
+  <p><strong>Complete-session sample (63 sessions).</strong> Dashboards and aggregates in this
+  report use <strong>only</strong> verified full New York <strong>RTH</strong> sessions
+  (2025-09-14 through 2025-12-12 calendar window): each included session has exactly
+  <strong>78</strong> five-minute bars on the bar-<strong>close</strong> lattice with first close
+  <strong>09:35</strong> ET and last close <strong>16:00</strong> ET (strict 09:30&ndash;16:00 ET window).
+  Partial, holiday-short, or incomplete sessions are <strong>excluded</strong> from these calculations.</p>
+  <ul>
+    <li><strong>Historical / not real-time</strong> &mdash; research output only; not a live quote or execution feed.</li>
+    <li><strong>No public machine-readable event export</strong> &mdash; public HTML-first packages omit CSV/JSON extracts
+    and do not publish <code>vwap_events</code> or bar lattices online.</li>
+  </ul>
+</div>
+    
+    <div class="vwap-public-disclosure-nt8" role="note">
+  <p><strong>NT8 certification scope:</strong> Internal regression certification against NinjaTrader ParityBars is
+  <strong>CONDITIONAL PASS</strong> for a specific alignment mode (<code>report timestamp_et + 1 minute == NT8 Timestamp</code>)
+  and stated fixture/date scope only. This page does <strong>not</strong> claim exact OHLC parity at tick granularity,
+  exchange alignment, vendor endorsement, or reproducibility outside that certified bundle.</p>
+</div>
+    <div class="header">
+        <h1>Regime Segment Grid</h1>
+        <div class="subtitle">
+            MNQ | 
+            RTH | 
+            5m | 
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-09-15 - 2025-12-12 (63 sessions)
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Highest Reversion Probability</div>
+            <div class="value">100.00%</div>
+            
+            <div class="description">Touch: 9</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Best Median MFE</div>
+            <div class="value">444.00 ticks</div>
+            
+            <div class="description">Maximum favorable excursion</div>
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Low Sample Size</div>
+            <div class="value">93.88%</div>
+            
+            <div class="description">Buckets with n < 30</div>
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Reversion Probability by Touch Sequence</div>
+            
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Median MFE by Touch Sequence</div>
+            
+            
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="panel">
+        <div class="insights-title">Data Preview</div>
+        <table class="data-table" id="dataTable">
+            <thead>
+                <tr>
+                    
+                    <th>touch_sequence_number</th>
+                    
+                    <th>vwap_slope_bucket</th>
+                    
+                    <th>p_revert</th>
+                    
+                    <th>median_mfe</th>
+                    
+                    <th>sample_size</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>25.00%</td>
+                    
+                    <td>69.50</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>36.36%</td>
+                    
+                    <td>108.00</td>
+                    
+                    <td>22</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>33.33%</td>
+                    
+                    <td>84.00</td>
+                    
+                    <td>90</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>72.00</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>86.00</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>12.50%</td>
+                    
+                    <td>86.50</td>
+                    
+                    <td>16</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>121.00</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>26.76%</td>
+                    
+                    <td>87.00</td>
+                    
+                    <td>71</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>117.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>37.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>144.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>50.00%</td>
+                    
+                    <td>62.50</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>158.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>27.91%</td>
+                    
+                    <td>58.00</td>
+                    
+                    <td>43</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>50.00%</td>
+                    
+                    <td>82.00</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>28.57%</td>
+                    
+                    <td>57.00</td>
+                    
+                    <td>14</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>81.00</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>68.00</td>
+                    
+                    <td>6</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>35.00</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>74.00</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>71.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>86.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>27.27%</td>
+                    
+                    <td>68.00</td>
+                    
+                    <td>11</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>4</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>25.00%</td>
+                    
+                    <td>78.00</td>
+                    
+                    <td>28</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>24.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>41.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>33.33%</td>
+                    
+                    <td>28.00</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>flat</td>
+                    
+                    <td>50.00%</td>
+                    
+                    <td>57.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>21.43%</td>
+                    
+                    <td>59.00</td>
+                    
+                    <td>14</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>42.50</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>131.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>5</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>50.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>88.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>53.00</td>
+                    
+                    <td>9</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>33.33%</td>
+                    
+                    <td>49.00</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>18.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>10.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>6</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>204.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>7</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>20.00%</td>
+                    
+                    <td>56.00</td>
+                    
+                    <td>5</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>7</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>25.00%</td>
+                    
+                    <td>40.50</td>
+                    
+                    <td>4</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>8</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>75.00</td>
+                    
+                    <td>3</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>8</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>50.00%</td>
+                    
+                    <td>36.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>8</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>84.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>9</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>100.00%</td>
+                    
+                    <td>21.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>9</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>50.00%</td>
+                    
+                    <td>38.50</td>
+                    
+                    <td>2</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>10</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>75.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>10</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>100.00%</td>
+                    
+                    <td>14.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>11</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>444.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>12</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.00%</td>
+                    
+                    <td>332.00</td>
+                    
+                    <td>1</td>
+                    
+                </tr>
+                
+            </tbody>
+        </table>
+        
+    </div>
+    
+
+    
+    
+    
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Grid showing performance metrics across touch sequences and VWAP slope regimes.</p>
+    </div>
+    
+
+    
+
+    <script>
+        // Plotly chart rendering
+        
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+
+        const plotlyLayout = {
+            paper_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            plot_bgcolor: 'rgba(15, 20, 35, 0.8)',
+            font: { color: '#90e0ef', family: 'Segoe UI, Tahoma, Geneva, Verdana, sans-serif' },
+            xaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            yaxis: {
+                gridcolor: 'rgba(0, 150, 255, 0.1)',
+                linecolor: 'rgba(0, 150, 255, 0.3)',
+                zeroline: false
+            },
+            colorway: ['#00b4d8', '#0077b6', '#90e0ef', '#7b2cbf', '#9d4edd', '#4ade80', '#f87171']
+        };
+
+        
+        Plotly.newPlot('chart-1', [{"x": [1, 2, 3, 4, 4, 5, 5], "y": [0.25, 0.5, 0.5, 0.0, 0.0, 0.5, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}, {"x": [1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6, 6, 7, 8, 9, 10], "y": [0.3636363636363636, 0.125, 0.0, 0.0, 0.2857142857142857, 0.0, 0.2727272727272727, 0.3333333333333333, 0.0, 0.0, 0.3333333333333333, 0.0, 0.0, 0.2, 0.0, 1.0, 0.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}, {"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 8, 8, 9, 10, 11, 12], "y": [0.3333333333333333, 0.0, 0.0, 0.0, 0.0, 0.2676056338028169, 0.2790697674418604, 0.0, 0.0, 0.0, 0.0, 0.25, 0.0, 0.2142857142857142, 0.0, 0.0, 0.0, 0.0, 0.25, 0.5, 0.0, 0.5, 1.0, 0.0, 0.0], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2%", "hoverformat": ".2%"}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "yaxis2": {"tickformat": ".2f", "hoverformat": ".2f"}, "yaxis3": {"tickformat": ".2f", "hoverformat": ".2f"}}, plotlyConfig);
+        
+        Plotly.newPlot('chart-2', [{"x": [1, 2, 3, 4, 4, 5, 5], "y": [69.5, 62.5, 82.0, 86.0, 74.0, 57.5, 24.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}, {"x": [1, 2, 2, 2, 3, 3, 4, 5, 5, 5, 6, 6, 6, 7, 8, 9, 10], "y": [108.0, 86.5, 144.5, 121.0, 57.0, 81.0, 68.0, 28.0, 131.0, 41.5, 49.0, 18.0, 204.0, 56.0, 75.0, 21.0, 75.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}, {"x": [1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5, 6, 6, 6, 7, 8, 8, 9, 10, 11, 12], "y": [84.0, 72.0, 86.0, 117.5, 37.0, 87.0, 58.0, 158.0, 68.0, 35.0, 71.0, 78.0, 42.5, 59.0, 50.5, 53.0, 10.5, 88.5, 40.5, 36.5, 84.0, 38.5, 14.0, 444.0, 332.0], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}, "hovertemplate": "<b>%{fullData.name}</b><br>%{x}<br>%{y:.2f}<extra></extra>"}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "yaxis2": {"tickformat": ".2f", "hoverformat": ".2f"}, "yaxis3": {"tickformat": ".2f", "hoverformat": ".2f"}}, plotlyConfig);
+        
+        
+    </script>
+    <footer class="vwap-public-disclosure-footer" role="contentinfo">
+  <p><strong>Disclaimer:</strong> For research and educational use only. Not investment, tax, or trading advice.
+  Past market structure does not guarantee future outcomes. ALPHA DRIP / the operator makes no representation
+  regarding accuracy, completeness, or suitability for any purpose.</p>
+  <p><strong>Downloads:</strong> Any CSV or JSON here is an offline-generated <strong>research extract</strong>,
+  not a live data API. Bar-level OHLCV lattice exports are not published in the public dry-run package.</p>
+</footer>
+</body>
+</html>
