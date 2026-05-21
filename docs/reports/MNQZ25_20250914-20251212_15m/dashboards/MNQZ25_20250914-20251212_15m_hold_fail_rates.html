@@ -229,6 +229,11 @@ body {
     margin-top: var(--spacing-xs);
 }
 
+.takeaway-card .takeaway-warning {
+    color: var(--warning);
+    font-weight: 500;
+}
+
 /* Status Indicators */
 .positive {
     color: var(--success);
@@ -296,6 +301,7 @@ body {
 .mb-md { margin-bottom: var(--spacing-md); }
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
+
         .vwap-public-disclosure-banner, .vwap-public-disclosure-footer, .vwap-public-disclosure-nt8,
         .vwap-public-disclosure-csv {
             margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
@@ -320,20 +326,10 @@ body {
             border-radius: 10px;
         }
         .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
-</style>
+
+    </style>
 </head>
 <body>
-<div class="vwap-public-disclosure-banner" role="note" aria-label="Research disclosure">
-  <p><strong>Historical RTH VWAP research report.</strong> This content is <strong>not</strong> real-time market data
-  and must not be used as a live quote or execution feed. Session calculations use
-  <strong>America/New_York</strong> <strong>regular trading hours (RTH)</strong>. VWAP is
-  <strong>cumulative HLC3 (typical-price) VWAP</strong> on the report bar lattice (bar timestamps label bar start).</p>
-  <p>Public pages show <strong>derived report context only</strong>. Raw OHLCV bar lattices and internal NinjaTrader
-  certification bundles are <strong>not included</strong> in public packages.</p>
-  <p class="vwap-public-disclosure-oneline">Not real-time • Historical research output • RTH • America/New_York • HLC3 VWAP</p>
-</div>
-
-
     <div class="header">
         <h1>Hold / Fail Rates</h1>
         <div class="subtitle">
@@ -358,13 +354,15 @@ body {
             
             <div class="description">Across all event types and directions</div>
             
+            
         </div>
         
         <div class="takeaway-card">
             <div class="label">Highest Hold Rate</div>
             <div class="value">75.34%</div>
             
-            <div class="description">TOUCH from from above</div>
+            <div class="description">TOUCH from above — n=73</div>
+            
             
         </div>
         
@@ -372,7 +370,8 @@ body {
             <div class="label">Highest Fail Rate</div>
             <div class="value">32.31%</div>
             
-            <div class="description">PIERCE from from above</div>
+            <div class="description">PIERCE from above — n=65</div>
+            
             
         </div>
         
@@ -380,7 +379,8 @@ body {
             <div class="label">Overall Hold Share</div>
             <div class="value">72.89%</div>
             
-            <div class="description">1159 held / 431 failed</div>
+            <div class="description">1159 held / 431 failed (210 neither held nor failed)</div>
+            
             
         </div>
         
@@ -546,7 +546,7 @@ body {
     
     <div class="panel">
         <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
-        <p class="text-muted">Hold and fail rates for VWAP interaction events (TOUCH, PIERCE, CROSS) by approach direction. Rates are fractions of total_events in each segment.</p>
+        <p class="text-muted">Hold and fail rates for VWAP interaction events (TOUCH, PIERCE, CROSS) by approach direction. hold_rate = held_count / total_events; fail_rate = failed_count / total_events. held_count and failed_count are not required to sum to total_events (some events are neither). Buckets with fewer than 10 events can show 0% or 100% extremes; check n= on KPI cards and total_events in the table before interpreting segment leaders.</p>
     </div>
     
 
@@ -630,9 +630,9 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6512890094979648, 0.6769230769230768, 0.7534246575342465], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6147859922178988, 0.6857142857142857, 0.6904761904761904], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "hold_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6513, 0.6769, 0.7534000000000001], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6148, 0.6857, 0.6905], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "hold_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.2130257801899592, 0.323076923076923, 0.2328767123287671], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.2477302204928664, 0.3142857142857142, 0.2738095238095238], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "fail_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.213, 0.3231, 0.2329], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.2477, 0.3143, 0.2738], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "fail_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
     </script>
     
