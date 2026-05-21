@@ -109,10 +109,17 @@ CONTRACT_META: dict[str, dict[str, Any]] = {
         "sessions": 59,
         "iso_start": "2025-12-15",
         "iso_end": "2026-03-13",
-        "timeframes": ("5m",),
+        "timeframes": ("1m", "5m", "15m", "30m"),
         "bundle_root": REGEN_ROOT / "mnqh26_report_csv_bridge_readiness_20260519",
+        "bundle_roots_by_tf": {
+            "1m": REGEN_ROOT / "mnqh26_1m_report_bundle_20260521",
+            "5m": REGEN_ROOT / "mnqh26_report_csv_bridge_readiness_20260519",
+            "15m": REGEN_ROOT / "mnqh26_15m_report_bundle_20260521",
+            "30m": REGEN_ROOT / "mnqh26_30m_report_bundle_20260521",
+        },
         "source_profile": "mnqh26_bridge",
         "one_minute_gate_status": "ONE_MINUTE_OPEN_LATTICE_FIXED_CONFIRMED",
+        "rollout_tag": "20260521",
     },
 }
 
@@ -172,6 +179,8 @@ def build_targets(contracts: list[str], *, timeframes_filter: list[str] | None =
                     f"No timeframes matched filter {sorted(allowed_tfs)} for {contract}"
                 )
         suffix = meta.get("bundle_suffix", "")
+        rollout_tag = meta.get("rollout_tag", "20260520")
+        bundle_roots_by_tf = meta.get("bundle_roots_by_tf") or {}
         for tf in tfs:
             bars, _, _ = LATTICE[tf]
             short = f"{contract}_{meta['start']}-{meta['end']}_{tf}"
@@ -185,11 +194,13 @@ def build_targets(contracts: list[str], *, timeframes_filter: list[str] | None =
                     sessions=meta["sessions"],
                     bars_per_session=bars,
                     bundle_name=f"{short}{suffix}",
-                    bundle_root=meta.get("bundle_root", BUNDLE_ROOT),
+                    bundle_root=bundle_roots_by_tf.get(tf) or meta.get("bundle_root", BUNDLE_ROOT),
                     target_folder=short,
                     legacy_folder=f"{contract}_{meta['legacy_start']}-{meta['end']}_{tf}",
-                    staging_slug=f"vwap-{contract.lower()}-{tf}-historical-sample-20260520",
-                    sync_approval=f"GO_REPLACE_PUBLIC_REPORT_{contract}_{tf.upper()}_CERTIFIED_20260520",
+                    staging_slug=f"vwap-{contract.lower()}-{tf}-historical-sample-{rollout_tag}",
+                    sync_approval=(
+                        f"GO_REPLACE_PUBLIC_REPORT_{contract}_{tf.upper()}_CERTIFIED_{rollout_tag}"
+                    ),
                     source_profile=meta.get("source_profile", "hmu_bridge"),
                 )
             )
@@ -345,7 +356,16 @@ def validate_mnqh26_bridge_source(target: Target) -> dict[str, Any]:
         if man.get("db_writes") is True:
             failures.append("db_writes_true")
         sp_norm = sp.replace("\\", "/")
-        if "mnqh26_5m_complete_sessions_internal_events_20260518_132334" not in sp_norm:
+        lineage_blob = json.dumps(man.get("source_lineage") or {}).replace("\\", "/")
+        multitf_ok = "mnqh26_1m_first_multitf_20260518_132334" in sp_norm or (
+            "mnqh26_1m_first_multitf_20260518_132334" in lineage_blob
+        )
+        rd_ok = f"mnqh26_{target.timeframe}_research_dataset_internal_20260521" in sp_norm
+        five_m_ok = "mnqh26_5m_complete_sessions_internal_events_20260518_132334" in sp_norm
+        if target.timeframe == "5m":
+            if not five_m_ok:
+                failures.append("parquet_lineage_not_mnqh26_certified")
+        elif not (rd_ok or multitf_ok):
             failures.append("parquet_lineage_not_mnqh26_certified")
 
     multitf_root = (

@@ -2318,6 +2318,47 @@
     }
   },
   "MNQH26": {
+    "1m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_daily_max_extensions.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_dashboard_all_events.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_dashboard_crosses.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_extension_tail_metrics.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_hold_fail_rates.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_mfe_mae_by_event_window.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_oos_by_month.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_regime_segment_grid.png",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_daily_max_extensions.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_dashboard_all_events.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_dashboard_crosses.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_extension_tail_metrics.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_hold_fail_rates.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_mfe_mae_by_event_window.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_oos_by_month.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/MNQH26_20251215-20260313_1m_regime_segment_grid.html",
+          "reports/MNQH26_20251215-20260313_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "MNQH26",
+        "timeframe": "1m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/MNQH26_20251215-20260313_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
     "5m": {
       "20251215-20260313": {
         "png": [
@@ -2353,6 +2394,88 @@
         "timeframe": "5m",
         "date_range": "20251215-20260313",
         "dashboard_index": "reports/MNQH26_20251215-20260313_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_daily_max_extensions.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_dashboard_all_events.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_dashboard_crosses.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_extension_tail_metrics.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_hold_fail_rates.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_mfe_mae_by_event_window.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_oos_by_month.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_regime_segment_grid.png",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_daily_max_extensions.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_dashboard_all_events.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_dashboard_crosses.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_extension_tail_metrics.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_hold_fail_rates.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_mfe_mae_by_event_window.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_oos_by_month.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/MNQH26_20251215-20260313_15m_regime_segment_grid.html",
+          "reports/MNQH26_20251215-20260313_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "MNQH26",
+        "timeframe": "15m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/MNQH26_20251215-20260313_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_daily_max_extensions.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_dashboard_all_events.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_dashboard_crosses.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_extension_tail_metrics.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_hold_fail_rates.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_mfe_mae_by_event_window.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_oos_by_month.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_regime_segment_grid.png",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_daily_max_extensions.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_dashboard_all_events.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_dashboard_crosses.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_extension_tail_metrics.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_hold_fail_rates.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_mfe_mae_by_event_window.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_oos_by_month.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/MNQH26_20251215-20260313_30m_regime_segment_grid.html",
+          "reports/MNQH26_20251215-20260313_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "MNQH26",
+        "timeframe": "30m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/MNQH26_20251215-20260313_30m/dashboards/index.html",
         "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
