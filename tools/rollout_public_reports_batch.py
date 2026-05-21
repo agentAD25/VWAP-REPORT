@@ -40,6 +40,7 @@ SYNC_TOOL = REPO_ROOT / "tools/sync_public_report_bundle.py"
 BATCH_APPROVAL_PREFIXES = (
     "GO_ROLLOUT_PUBLIC_REPORTS_MNQM25_MNQU25_CERTIFIED_",
     "GO_ROLLOUT_PUBLIC_REPORTS_MNQZ25_1M_15M_30M_CERTIFIED_",
+    "GO_DRYRUN_PUBLIC_REPORT_MNQH26_5M_CERTIFIED_",
 )
 FOLDER_PATTERN = re.compile(r"^(?P<contract>[A-Z0-9]+)_(?P<start>\d{8})-(?P<end>\d{8})_(?P<tf>\d+m)$")
 BATCH_BLOCKED_CONTRACTS = frozenset({"MNQH25"})
@@ -100,6 +101,18 @@ CONTRACT_META: dict[str, dict[str, Any]] = {
         "bundle_suffix": "_rth_complete_sessions_post_backfill_20260518_151357",
         "source_profile": "mnqz25_post_backfill",
         "one_minute_gate_status": "MNQZ25_1M_OPEN_LATTICE_FIXED_CONFIRMED",
+    },
+    "MNQH26": {
+        "start": "20251215",
+        "end": "20260313",
+        "legacy_start": "20251215",
+        "sessions": 59,
+        "iso_start": "2025-12-15",
+        "iso_end": "2026-03-13",
+        "timeframes": ("5m",),
+        "bundle_root": REGEN_ROOT / "mnqh26_report_csv_bridge_readiness_20260519",
+        "source_profile": "mnqh26_bridge",
+        "one_minute_gate_status": "ONE_MINUTE_OPEN_LATTICE_FIXED_CONFIRMED",
     },
 }
 
@@ -284,9 +297,76 @@ def validate_mnqz25_post_backfill_source(target: Target) -> dict[str, Any]:
     return row
 
 
+def validate_mnqh26_bridge_source(target: Target) -> dict[str, Any]:
+    """MNQH26 parquet report CSV bridge (not mnq_2025_all_tf_canonicalization)."""
+    bundle = target.internal_bundle
+    failures: list[str] = []
+    row: dict[str, Any] = {
+        "bundle": str(bundle),
+        "timeframe": target.timeframe,
+        "source_profile": "mnqh26_bridge",
+        "manifest_sessions": target.sessions,
+    }
+
+    if not bundle.is_dir():
+        failures.append("bundle_missing")
+        row["gate"] = "SOURCE_BLOCKED"
+        row["failures"] = failures
+        return row
+
+    dashboards = bundle / "dashboards"
+    if not dashboards.is_dir() or not (dashboards / "index.html").is_file():
+        failures.append("missing_dashboards_index")
+
+    for stem in CORE_PUBLIC_STEMS:
+        if not list(dashboards.glob(f"*{stem}*.html")):
+            failures.append(f"missing_core_dashboard_{stem}")
+
+    man_path = bundle / "parquet_report_csv_bridge_manifest.json"
+    if not man_path.is_file():
+        failures.append("missing_parquet_report_csv_bridge_manifest")
+    else:
+        man = json.loads(man_path.read_text(encoding="utf-8"))
+        row["manifest_timeframe"] = man.get("timeframe")
+        row["manifest_sessions"] = man.get("sessions")
+        row["public_export"] = man.get("public_export")
+        row["machine_readable_exports"] = man.get("machine_readable_exports")
+        row["db_writes"] = man.get("db_writes")
+        sp = (man.get("source_parquet") or {}).get("bars_features", "")
+        row["bars_parquet"] = sp
+        if man.get("timeframe") != target.timeframe:
+            failures.append("timeframe_mismatch")
+        if man.get("sessions") != target.sessions:
+            failures.append(f"sessions_{man.get('sessions')}_expected_{target.sessions}")
+        if man.get("public_export") is True:
+            failures.append("public_export_true")
+        if man.get("machine_readable_exports") not in ("internal_only", None, False, ""):
+            failures.append("machine_readable_not_internal")
+        if man.get("db_writes") is True:
+            failures.append("db_writes_true")
+        sp_norm = sp.replace("\\", "/")
+        if "mnqh26_5m_complete_sessions_internal_events_20260518_132334" not in sp_norm:
+            failures.append("parquet_lineage_not_mnqh26_certified")
+
+    multitf_root = (
+        SUPABASE_ROOT
+        / "LOCAL DATABASE/out/vwap_strategy_research/mnqh26_1m_first_multitf_20260518_132334"
+    )
+    row["lattice_audit_ref"] = str(multitf_root / f"lattice_{target.timeframe}_check.csv")
+    if not (multitf_root / f"lattice_{target.timeframe}_check.csv").is_file():
+        failures.append("lattice_audit_missing")
+
+    row["canonical_dataset_optional"] = True
+    row["gate"] = "SOURCE_OK" if not failures else "SOURCE_BLOCKED"
+    row["failures"] = failures
+    return row
+
+
 def validate_source_bundle(target: Target) -> dict[str, Any]:
     if target.source_profile == "mnqz25_post_backfill":
         return validate_mnqz25_post_backfill_source(target)
+    if target.source_profile == "mnqh26_bridge":
+        return validate_mnqh26_bridge_source(target)
     bundle = target.internal_bundle
     failures: list[str] = []
     row: dict[str, Any] = {"bundle": str(bundle), "timeframe": target.timeframe}
