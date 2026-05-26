@@ -3778,5 +3778,835 @@
         "public_safe": false
       }
     }
+  },
+  "MESH25": {
+    "1m": {
+      "20241220-20250314": {
+        "png": [
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_oos_by_month.png",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_oos_by_month.html",
+          "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_1m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20241220",
+        "end_date": "20250314",
+        "start": "20241220",
+        "end": "20250314",
+        "contract": "MESH25",
+        "timeframe": "1m",
+        "date_range": "20241220-20250314",
+        "dashboard_index": "reports/vwap-mes-mesh25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20241220-20250314": {
+        "png": [
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_oos_by_month.png",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_oos_by_month.html",
+          "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_5m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20241220",
+        "end_date": "20250314",
+        "start": "20241220",
+        "end": "20250314",
+        "contract": "MESH25",
+        "timeframe": "5m",
+        "date_range": "20241220-20250314",
+        "dashboard_index": "reports/vwap-mes-mesh25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20241220-20250314": {
+        "png": [
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_oos_by_month.png",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_oos_by_month.html",
+          "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_15m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20241220",
+        "end_date": "20250314",
+        "start": "20241220",
+        "end": "20250314",
+        "contract": "MESH25",
+        "timeframe": "15m",
+        "date_range": "20241220-20250314",
+        "dashboard_index": "reports/vwap-mes-mesh25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20241220-20250314": {
+        "png": [
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_oos_by_month.png",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_oos_by_month.html",
+          "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/MESH25_20241220-20250314_30m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20241220",
+        "end_date": "20250314",
+        "start": "20241220",
+        "end": "20250314",
+        "contract": "MESH25",
+        "timeframe": "30m",
+        "date_range": "20241220-20250314",
+        "dashboard_index": "reports/vwap-mes-mesh25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MESM25": {
+    "1m": {
+      "20250320-20250613": {
+        "png": [
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_daily_max_extensions.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_dashboard_all_events.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_dashboard_crosses.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_hold_fail_rates.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_oos_by_month.png",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_daily_max_extensions.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_dashboard_all_events.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_dashboard_crosses.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_hold_fail_rates.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_oos_by_month.html",
+          "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_1m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250320",
+        "end_date": "20250613",
+        "start": "20250320",
+        "end": "20250613",
+        "contract": "MESM25",
+        "timeframe": "1m",
+        "date_range": "20250320-20250613",
+        "dashboard_index": "reports/vwap-mes-mesm25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250320-20250613": {
+        "png": [
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_daily_max_extensions.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_dashboard_all_events.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_dashboard_crosses.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_hold_fail_rates.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_oos_by_month.png",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_daily_max_extensions.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_dashboard_all_events.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_dashboard_crosses.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_hold_fail_rates.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_oos_by_month.html",
+          "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_5m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250320",
+        "end_date": "20250613",
+        "start": "20250320",
+        "end": "20250613",
+        "contract": "MESM25",
+        "timeframe": "5m",
+        "date_range": "20250320-20250613",
+        "dashboard_index": "reports/vwap-mes-mesm25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250320-20250613": {
+        "png": [
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_daily_max_extensions.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_dashboard_all_events.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_dashboard_crosses.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_hold_fail_rates.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_oos_by_month.png",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_daily_max_extensions.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_dashboard_all_events.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_dashboard_crosses.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_hold_fail_rates.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_oos_by_month.html",
+          "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_15m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250320",
+        "end_date": "20250613",
+        "start": "20250320",
+        "end": "20250613",
+        "contract": "MESM25",
+        "timeframe": "15m",
+        "date_range": "20250320-20250613",
+        "dashboard_index": "reports/vwap-mes-mesm25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250320-20250613": {
+        "png": [
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_daily_max_extensions.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_dashboard_all_events.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_dashboard_crosses.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_hold_fail_rates.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_oos_by_month.png",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_daily_max_extensions.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_dashboard_all_events.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_dashboard_crosses.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_hold_fail_rates.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_oos_by_month.html",
+          "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/MESM25_20250320-20250613_30m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250320",
+        "end_date": "20250613",
+        "start": "20250320",
+        "end": "20250613",
+        "contract": "MESM25",
+        "timeframe": "30m",
+        "date_range": "20250320-20250613",
+        "dashboard_index": "reports/vwap-mes-mesm25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MESU25": {
+    "1m": {
+      "20250620-20250912": {
+        "png": [
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_daily_max_extensions.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_dashboard_all_events.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_dashboard_crosses.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_hold_fail_rates.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_oos_by_month.png",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_daily_max_extensions.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_dashboard_all_events.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_dashboard_crosses.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_hold_fail_rates.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_oos_by_month.html",
+          "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_1m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250620",
+        "end_date": "20250912",
+        "start": "20250620",
+        "end": "20250912",
+        "contract": "MESU25",
+        "timeframe": "1m",
+        "date_range": "20250620-20250912",
+        "dashboard_index": "reports/vwap-mes-mesu25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250620-20250912": {
+        "png": [
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_daily_max_extensions.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_dashboard_all_events.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_dashboard_crosses.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_hold_fail_rates.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_oos_by_month.png",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_daily_max_extensions.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_dashboard_all_events.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_dashboard_crosses.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_hold_fail_rates.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_oos_by_month.html",
+          "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_5m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250620",
+        "end_date": "20250912",
+        "start": "20250620",
+        "end": "20250912",
+        "contract": "MESU25",
+        "timeframe": "5m",
+        "date_range": "20250620-20250912",
+        "dashboard_index": "reports/vwap-mes-mesu25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250620-20250912": {
+        "png": [
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_daily_max_extensions.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_dashboard_all_events.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_dashboard_crosses.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_hold_fail_rates.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_oos_by_month.png",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_daily_max_extensions.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_dashboard_all_events.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_dashboard_crosses.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_hold_fail_rates.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_oos_by_month.html",
+          "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_15m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250620",
+        "end_date": "20250912",
+        "start": "20250620",
+        "end": "20250912",
+        "contract": "MESU25",
+        "timeframe": "15m",
+        "date_range": "20250620-20250912",
+        "dashboard_index": "reports/vwap-mes-mesu25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250620-20250912": {
+        "png": [
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_daily_max_extensions.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_dashboard_all_events.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_dashboard_crosses.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_hold_fail_rates.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_oos_by_month.png",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_daily_max_extensions.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_dashboard_all_events.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_dashboard_crosses.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_hold_fail_rates.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_oos_by_month.html",
+          "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/MESU25_20250620-20250912_30m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250620",
+        "end_date": "20250912",
+        "start": "20250620",
+        "end": "20250912",
+        "contract": "MESU25",
+        "timeframe": "30m",
+        "date_range": "20250620-20250912",
+        "dashboard_index": "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MESZ25": {
+    "1m": {
+      "20250922-20251212": {
+        "png": [
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_daily_max_extensions.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_dashboard_all_events.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_dashboard_crosses.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_hold_fail_rates.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_oos_by_month.png",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_daily_max_extensions.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_dashboard_all_events.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_dashboard_crosses.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_hold_fail_rates.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_oos_by_month.html",
+          "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_1m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250922",
+        "end_date": "20251212",
+        "start": "20250922",
+        "end": "20251212",
+        "contract": "MESZ25",
+        "timeframe": "1m",
+        "date_range": "20250922-20251212",
+        "dashboard_index": "reports/vwap-mes-mesz25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250922-20251212": {
+        "png": [
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_daily_max_extensions.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_dashboard_all_events.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_dashboard_crosses.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_hold_fail_rates.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_oos_by_month.png",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_daily_max_extensions.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_dashboard_all_events.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_dashboard_crosses.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_hold_fail_rates.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_oos_by_month.html",
+          "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_5m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250922",
+        "end_date": "20251212",
+        "start": "20250922",
+        "end": "20251212",
+        "contract": "MESZ25",
+        "timeframe": "5m",
+        "date_range": "20250922-20251212",
+        "dashboard_index": "reports/vwap-mes-mesz25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250922-20251212": {
+        "png": [
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_daily_max_extensions.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_dashboard_all_events.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_dashboard_crosses.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_hold_fail_rates.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_oos_by_month.png",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_daily_max_extensions.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_dashboard_all_events.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_dashboard_crosses.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_hold_fail_rates.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_oos_by_month.html",
+          "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_15m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250922",
+        "end_date": "20251212",
+        "start": "20250922",
+        "end": "20251212",
+        "contract": "MESZ25",
+        "timeframe": "15m",
+        "date_range": "20250922-20251212",
+        "dashboard_index": "reports/vwap-mes-mesz25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250922-20251212": {
+        "png": [
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_daily_max_extensions.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_dashboard_all_events.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_dashboard_crosses.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_hold_fail_rates.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_oos_by_month.png",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_daily_max_extensions.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_dashboard_all_events.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_dashboard_crosses.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_hold_fail_rates.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_oos_by_month.html",
+          "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/MESZ25_20250922-20251212_30m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20250922",
+        "end_date": "20251212",
+        "start": "20250922",
+        "end": "20251212",
+        "contract": "MESZ25",
+        "timeframe": "30m",
+        "date_range": "20250922-20251212",
+        "dashboard_index": "reports/vwap-mes-mesz25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MESH26": {
+    "1m": {
+      "20251222-20260116": {
+        "png": [
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_oos_by_month.png",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_oos_by_month.html",
+          "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_1m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20251222",
+        "end_date": "20260116",
+        "start": "20251222",
+        "end": "20260116",
+        "contract": "MESH26",
+        "timeframe": "1m",
+        "date_range": "20251222-20260116",
+        "dashboard_index": "reports/vwap-mes-mesh26-1m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20251222-20260116": {
+        "png": [
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_oos_by_month.png",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_oos_by_month.html",
+          "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_5m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20251222",
+        "end_date": "20260116",
+        "start": "20251222",
+        "end": "20260116",
+        "contract": "MESH26",
+        "timeframe": "5m",
+        "date_range": "20251222-20260116",
+        "dashboard_index": "reports/vwap-mes-mesh26-5m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20251222-20260116": {
+        "png": [
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_oos_by_month.png",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_oos_by_month.html",
+          "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_15m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20251222",
+        "end_date": "20260116",
+        "start": "20251222",
+        "end": "20260116",
+        "contract": "MESH26",
+        "timeframe": "15m",
+        "date_range": "20251222-20260116",
+        "dashboard_index": "reports/vwap-mes-mesh26-15m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20251222-20260116": {
+        "png": [
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/index.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_daily_max_extensions.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_dashboard_all_events.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_dashboard_crosses.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_extension_tail_metrics.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_hold_fail_rates.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_oos_by_month.png",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_regime_segment_grid.png"
+        ],
+        "html": [
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/index.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_daily_max_extensions.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_dashboard_all_events.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_dashboard_crosses.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_extension_tail_metrics.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_hold_fail_rates.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_oos_by_month.html",
+          "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/MESH26_20251222-20260116_30m_regime_segment_grid.html"
+        ],
+        "csv": [],
+        "start_date": "20251222",
+        "end_date": "20260116",
+        "start": "20251222",
+        "end": "20260116",
+        "contract": "MESH26",
+        "timeframe": "30m",
+        "date_range": "20251222-20260116",
+        "dashboard_index": "reports/vwap-mes-mesh26-30m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
   }
 }
