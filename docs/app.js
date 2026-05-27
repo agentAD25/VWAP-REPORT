@@ -65,11 +65,32 @@ function resolveReport(contract, timeframe) {
         return null;
     }
 
-    const canonical = Object.entries(ranges).find(
-        ([, entry]) => entry.active && entry.canonical && entry.dashboard_index
-    );
-    if (canonical) {
-        return { dateRange: canonical[0], ...canonical[1] };
+    const scoreEntry = (entry) => {
+        let score = 0;
+        if (entry.public_safe) {
+            score += 100;
+        }
+        if (entry.status === 'CURRENT_CERTIFIED_PUBLIC') {
+            score += 50;
+        }
+        if ((entry.dashboard_index || '').includes('/dashboards/index.html')) {
+            score += 25;
+        }
+        if ((entry.dashboard_index || '').includes('vwap-')) {
+            score += 10;
+        }
+        if (entry.status === 'LEGACY_WITH_DATA_EXPORTS') {
+            score -= 200;
+        }
+        return score;
+    };
+
+    const canonicalCandidates = Object.entries(ranges)
+        .filter(([, entry]) => entry.active && entry.canonical && entry.dashboard_index)
+        .sort((a, b) => scoreEntry(b[1]) - scoreEntry(a[1]));
+    if (canonicalCandidates.length > 0) {
+        const [dateRange, entry] = canonicalCandidates[0];
+        return { dateRange, ...entry };
     }
 
     const active = Object.entries(ranges)

@@ -3340,9 +3340,9 @@
         "timeframe": "1m",
         "date_range": "20250623-20250915",
         "dashboard_index": "reports/NQU25_20250623-20250915_1m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250620-20250912": {
@@ -3419,9 +3419,9 @@
         "timeframe": "5m",
         "date_range": "20250623-20250915",
         "dashboard_index": "reports/NQU25_20250623-20250915_5m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250620-20250912": {
@@ -3498,9 +3498,9 @@
         "timeframe": "15m",
         "date_range": "20250623-20250915",
         "dashboard_index": "reports/NQU25_20250623-20250915_15m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250620-20250912": {
@@ -3579,9 +3579,9 @@
         "timeframe": "30m",
         "date_range": "20250623-20250915",
         "dashboard_index": "reports/NQU25_20250623-20250915_30m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250620-20250912": {
@@ -3661,7 +3661,7 @@
         "dashboard_index": "reports/NQZ25_20250915-20251215_1m/index.html",
         "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250916-20251215": {
@@ -3697,9 +3697,9 @@
         "timeframe": "1m",
         "date_range": "20250916-20251215",
         "dashboard_index": "reports/NQZ25_20250916-20251215_1m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250922-20251212": {
@@ -3777,7 +3777,7 @@
         "dashboard_index": "reports/NQZ25_20250915-20251215_5m/index.html",
         "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250916-20251215": {
@@ -3813,9 +3813,9 @@
         "timeframe": "5m",
         "date_range": "20250916-20251215",
         "dashboard_index": "reports/NQZ25_20250916-20251215_5m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250922-20251212": {
@@ -3893,7 +3893,7 @@
         "dashboard_index": "reports/NQZ25_20250915-20251215_15m/index.html",
         "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250916-20251215": {
@@ -3929,9 +3929,9 @@
         "timeframe": "15m",
         "date_range": "20250916-20251215",
         "dashboard_index": "reports/NQZ25_20250916-20251215_15m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250922-20251212": {
@@ -4009,7 +4009,7 @@
         "dashboard_index": "reports/NQZ25_20250915-20251215_30m/index.html",
         "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250916-20251215": {
@@ -4045,9 +4045,9 @@
         "timeframe": "30m",
         "date_range": "20250916-20251215",
         "dashboard_index": "reports/NQZ25_20250916-20251215_30m/index.html",
-        "canonical": true,
+        "canonical": false,
         "status": "LEGACY_WITH_DATA_EXPORTS",
-        "active": true,
+        "active": false,
         "public_safe": false
       },
       "20250922-20251212": {

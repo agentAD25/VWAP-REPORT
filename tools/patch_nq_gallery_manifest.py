@@ -16,6 +16,38 @@ BUNDLE_MANIFEST = (
 )
 
 
+NQ_CONTRACT_PREFIXES = ("NQH25", "NQM25", "NQU25", "NQZ25", "NQH26")
+
+
+def is_nq_contract(contract: str) -> bool:
+    return contract.startswith("NQ") and not contract.startswith("MNQ")
+
+
+def deactivate_legacy_nq_entries(manifest: dict) -> int:
+    """Deactivate pre-existing legacy NQ manifest routes (non vwap-nq public samples)."""
+    deactivated = 0
+    for contract in list(manifest.keys()):
+        if not is_nq_contract(contract):
+            continue
+        for tf, ranges in manifest[contract].items():
+            if not isinstance(ranges, dict):
+                continue
+            for _dr, entry in ranges.items():
+                if not isinstance(entry, dict):
+                    continue
+                idx = entry.get("dashboard_index", "")
+                legacy = (
+                    "vwap-nq-" not in idx
+                    or entry.get("status") == "LEGACY_WITH_DATA_EXPORTS"
+                    or entry.get("public_safe") is False
+                )
+                if legacy and entry.get("active"):
+                    entry["active"] = False
+                    entry["canonical"] = False
+                    deactivated += 1
+    return deactivated
+
+
 def load_nq_bundles() -> list[tuple[str, str, str, str, str, bool]]:
     raw = json.loads(BUNDLE_MANIFEST.read_text(encoding="utf-8"))
     rows: list[tuple[str, str, str, str, str, bool]] = []
@@ -91,6 +123,7 @@ def main() -> int:
     before_keys = set(manifest.keys())
     added = 0
     reused = 0
+    deactivated = deactivate_legacy_nq_entries(manifest)
     nq_bundles = load_nq_bundles()
     for contract, tf, slug, start, end, partial in nq_bundles:
         if not (REPORTS / slug).is_dir():
@@ -103,6 +136,7 @@ def main() -> int:
         if dr in manifest[contract][tf]:
             existing = manifest[contract][tf][dr]
             if existing.get("dashboard_index") == entry["dashboard_index"]:
+                manifest[contract][tf][dr] = entry
                 reused += 1
                 continue
             print(f"BLOCKED: {contract}/{tf}/{dr} exists with different dashboard_index", file=sys.stderr)
@@ -128,7 +162,16 @@ def main() -> int:
         return 1
 
     MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"added": added, "reused": reused, "nq_contracts": list({b[0] for b in nq_bundles})}))
+    print(
+        json.dumps(
+            {
+                "added": added,
+                "reused": reused,
+                "legacy_deactivated": deactivated,
+                "nq_contracts": list({b[0] for b in nq_bundles}),
+            }
+        )
+    )
     return 0
 
 
