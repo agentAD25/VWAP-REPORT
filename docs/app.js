@@ -22,6 +22,29 @@ function getTimeframeParam(urlParams) {
 }
 
 /**
+ * Build gallery URL with optional contract/timeframe query params.
+ */
+function buildGalleryUrl(contract, timeframe) {
+    const params = new URLSearchParams();
+    if (contract) {
+        params.set('contract', contract);
+    }
+    if (timeframe) {
+        params.set('timeframe', timeframe);
+    }
+    const qs = params.toString();
+    return qs ? `${window.location.pathname}?${qs}` : window.location.pathname;
+}
+
+/**
+ * Persist gallery selection in the address bar without adding a history entry.
+ */
+function syncGalleryUrl(contract, timeframe) {
+    const galleryUrl = buildGalleryUrl(contract, timeframe);
+    history.replaceState({ page: 'gallery', contract, timeframe }, '', galleryUrl);
+}
+
+/**
  * Contract has at least one active routable report.
  */
 function contractHasActiveRoutes(contract) {
@@ -72,14 +95,15 @@ function resolveReport(contract, timeframe) {
 }
 
 /**
- * Navigate to the report dashboard index (full page redirect).
+ * Navigate to the report dashboard index (normal history-preserving redirect).
  */
-function navigateToDashboard(report) {
+function navigateToDashboard(report, contract, timeframe) {
     if (!report?.dashboard_index) {
         return false;
     }
+    syncGalleryUrl(contract, timeframe);
     const target = new URL(report.dashboard_index, window.location.href);
-    window.location.replace(target.href);
+    window.location.assign(target.href);
     return true;
 }
 
@@ -123,7 +147,7 @@ function routeSelection(contract, timeframe) {
         return false;
     }
 
-    return navigateToDashboard(report);
+    return navigateToDashboard(report, contract, timeframe);
 }
 
 async function loadManifest() {
@@ -189,6 +213,7 @@ function handleContractChange() {
     const contract = contractSelect.value || null;
     timeframeSelect.value = '';
     populateTimeframes(contract);
+    syncGalleryUrl(contract, null);
     clearGalleryView();
 }
 
@@ -198,6 +223,7 @@ function handleTimeframeChange() {
     if (contract && timeframe) {
         routeSelection(contract, timeframe);
     } else {
+        syncGalleryUrl(contract, null);
         clearGalleryView();
     }
 }
@@ -205,24 +231,31 @@ function handleTimeframeChange() {
 function initializeApp() {
     populateContracts();
 
+    contractSelect.addEventListener('change', handleContractChange);
+    timeframeSelect.addEventListener('change', handleTimeframeChange);
+
     const urlParams = new URLSearchParams(window.location.search);
     const contractParam = urlParams.get('contract');
     const tfParam = getTimeframeParam(urlParams);
 
-    if (contractParam && tfParam) {
-        if (contractHasActiveRoutes(contractParam)) {
-            contractSelect.value = contractParam;
-            populateTimeframes(contractParam);
+    if (contractParam && contractHasActiveRoutes(contractParam)) {
+        contractSelect.value = contractParam;
+        populateTimeframes(contractParam);
+        if (tfParam) {
             if (resolveReport(contractParam, tfParam)) {
                 timeframeSelect.value = tfParam;
-                routeSelection(contractParam, tfParam);
+            } else {
+                showRoutingMessage(
+                    'No public report is available for this contract/timeframe.'
+                );
                 return;
             }
-            showRoutingMessage(
-                'No public report is available for this contract/timeframe.'
-            );
-            return;
         }
+        clearGalleryView();
+        return;
+    }
+
+    if (contractParam) {
         showRoutingMessage(
             'No public report is available for this contract/timeframe.'
         );
@@ -230,8 +263,6 @@ function initializeApp() {
     }
 
     clearGalleryView();
-    contractSelect.addEventListener('change', handleContractChange);
-    timeframeSelect.addEventListener('change', handleTimeframeChange);
 }
 
 if (document.readyState === 'loading') {

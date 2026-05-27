@@ -71,6 +71,7 @@ def repair_one(contract: str, timeframe: str, dash_dir: Path) -> None:
 
     report_params = {
         "instrument": contract_to_instrument(contract) or "MNQ",
+        "contract": contract,
         "session_type": "RTH",
         "timeframe": timeframe,
         "date_range": {
