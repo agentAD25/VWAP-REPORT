@@ -1,0 +1,136 @@
+#!/usr/bin/env python3
+"""Additive NQ entries to docs/manifest.json for gallery routing (idempotent)."""
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+REPORTS = REPO / "docs" / "reports"
+MANIFEST = REPO / "docs" / "manifest.json"
+BUNDLE_MANIFEST = (
+    REPO.parent
+    / "supabase-opti-database"
+    / "configs/vwap_report/instruments/nq_all20_public_manifest_20260525.json"
+)
+
+
+def load_nq_bundles() -> list[tuple[str, str, str, str, str, bool]]:
+    raw = json.loads(BUNDLE_MANIFEST.read_text(encoding="utf-8"))
+    rows: list[tuple[str, str, str, str, str, bool]] = []
+    for item in raw["bundles"]:
+        start = item["start"].replace("-", "")
+        end = item["end"].replace("-", "")
+        rows.append(
+            (
+                item["contract"],
+                item["timeframe"],
+                item["slug"],
+                start,
+                end,
+                bool(item.get("partial", False)),
+            )
+        )
+    return rows
+
+
+def scan_assets(slug: str) -> tuple[list[str], list[str]]:
+    folder = REPORTS / slug
+    dash = folder / "dashboards"
+    if not dash.is_dir():
+        raise FileNotFoundError(f"Missing dashboards: {dash}")
+    png: list[str] = []
+    html: list[str] = []
+    for f in sorted(dash.iterdir()):
+        if not f.is_file():
+            continue
+        rel = f"reports/{slug}/dashboards/{f.name}".replace("\\", "/")
+        if f.suffix.lower() == ".png":
+            png.append(rel)
+        elif f.suffix.lower() == ".html":
+            html.append(rel)
+    if not any(p.endswith("index.html") for p in html):
+        raise FileNotFoundError(f"Missing dashboards/index.html under {slug}")
+    return png, html
+
+
+def build_entry(
+    contract: str,
+    tf: str,
+    slug: str,
+    start: str,
+    end: str,
+    *,
+    partial: bool,
+) -> dict:
+    png, html = scan_assets(slug)
+    date_range = f"{start}-{end}"
+    return {
+        "png": png,
+        "html": html,
+        "csv": [],
+        "start_date": start,
+        "end_date": end,
+        "start": start,
+        "end": end,
+        "contract": contract,
+        "timeframe": tf,
+        "date_range": date_range,
+        "dashboard_index": f"reports/{slug}/dashboards/index.html",
+        "canonical": True,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": True,
+        "public_safe": True,
+    }
+
+
+def main() -> int:
+    original: dict = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    manifest: dict = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    before_keys = set(manifest.keys())
+    added = 0
+    reused = 0
+    nq_bundles = load_nq_bundles()
+    for contract, tf, slug, start, end, partial in nq_bundles:
+        if not (REPORTS / slug).is_dir():
+            print(f"BLOCKED: missing staged report {slug}", file=sys.stderr)
+            return 1
+        entry = build_entry(contract, tf, slug, start, end, partial=partial)
+        dr = entry["date_range"]
+        manifest.setdefault(contract, {})
+        manifest[contract].setdefault(tf, {})
+        if dr in manifest[contract][tf]:
+            existing = manifest[contract][tf][dr]
+            if existing.get("dashboard_index") == entry["dashboard_index"]:
+                reused += 1
+                continue
+            print(f"BLOCKED: {contract}/{tf}/{dr} exists with different dashboard_index", file=sys.stderr)
+            return 1
+        manifest[contract][tf][dr] = entry
+        added += 1
+
+    after_keys = set(manifest.keys())
+    if not before_keys.issubset(after_keys):
+        print("BLOCKED: manifest keys removed", file=sys.stderr)
+        return 1
+    for k in before_keys:
+        if k.startswith("NQ"):
+            continue
+        if manifest.get(k) != original.get(k):
+            print(f"BLOCKED: non-NQ key modified: {k}", file=sys.stderr)
+            return 1
+    if manifest.get("MNQH25") != original.get("MNQH25"):
+        print("BLOCKED: MNQH25 modified", file=sys.stderr)
+        return 1
+    if manifest.get("MESH25") != original.get("MESH25"):
+        print("BLOCKED: MESH25 modified", file=sys.stderr)
+        return 1
+
+    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"added": added, "reused": reused, "nq_contracts": list({b[0] for b in nq_bundles})}))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
