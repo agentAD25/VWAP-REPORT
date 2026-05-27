@@ -227,6 +227,11 @@ body {
     margin-top: var(--spacing-xs);
 }
 
+.takeaway-card .takeaway-warning {
+    color: var(--warning);
+    font-weight: 500;
+}
+
 /* Status Indicators */
 .positive {
     color: var(--success);
@@ -373,13 +378,28 @@ body {
             margin-bottom: var(--spacing-sm);
         }
 
+        .gallery-nav {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .gallery-nav a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .gallery-nav a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
+    <p class="gallery-nav"><a id="back-to-gallery" href="/VWAP-REPORT/?contract=MNQM25&amp;timeframe=5m">Back to Gallery</a></p>
     <div class="header">
         <h1>VWAP Report Dashboards</h1>
         <div class="subtitle">
-            MNQM | RTH | 5m | Built by TonySnow | ALPHA DRIP
+            MNQ | RTH | 5m | Built by TonySnow | ALPHA DRIP
         </div>
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
             2025-03-17 - 2025-06-13

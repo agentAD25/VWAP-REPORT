@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VWAP Report Dashboards - ALPHA DRIP</title>
     <style>
-        /* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
 :root {
     /* Background Colors */
     --bg-primary: #0a0e27;
@@ -227,6 +227,11 @@ body {
     margin-top: var(--spacing-xs);
 }
 
+.takeaway-card .takeaway-warning {
+    color: var(--warning);
+    font-weight: 500;
+}
+
 /* Status Indicators */
 .positive {
     color: var(--success);
@@ -295,23 +300,38 @@ body {
 .mb-lg { margin-bottom: var(--spacing-lg); }
 
 
+        .vwap-public-disclosure-banner, .vwap-public-disclosure-footer, .vwap-public-disclosure-nt8,
+        .vwap-public-disclosure-csv {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #cfefff);
+            background: rgba(0, 40, 80, 0.45);
+            border: 1px solid rgba(0, 180, 216, 0.35);
+            border-radius: 10px;
+        }
+        .vwap-public-disclosure-footer { margin-top: 24px; color: var(--text-muted, #b8d4e8); }
+        .vwap-public-disclosure-oneline { margin: 10px 0 0 0; font-size: 0.82em; color: var(--text-accent, #7dd3fc); }
+        .vwap-complete-session-policy {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #e0f7fa);
+            background: rgba(0, 60, 40, 0.35);
+            border: 1px solid rgba(0, 200, 140, 0.45);
+            border-radius: 10px;
+        }
+        .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
 
-
-
-
-
-
-
-
-
-        
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: var(--spacing-md);
             margin-top: var(--spacing-lg);
         }
-        
+
         .dashboard-card {
             background: var(--bg-panel);
             border-radius: var(--radius-lg);
@@ -324,13 +344,13 @@ body {
             color: inherit;
             display: block;
         }
-        
+
         .dashboard-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             border-color: var(--accent-cyan);
         }
-        
+
         .dashboard-card img {
             width: 100%;
             height: 200px;
@@ -339,13 +359,13 @@ body {
             margin-bottom: var(--spacing-sm);
             border: 1px solid var(--border-color);
         }
-        
+
         .dashboard-card h3 {
             color: var(--text-accent);
             margin-bottom: var(--spacing-xs);
             font-size: var(--font-size-lg);
         }
-        
+
         .dashboard-card .placeholder {
             width: 100%;
             height: 200px;
@@ -357,138 +377,78 @@ body {
             color: var(--text-muted);
             margin-bottom: var(--spacing-sm);
         }
+
+        .gallery-nav {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .gallery-nav a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .gallery-nav a:hover {
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
+    <p class="gallery-nav"><a id="back-to-gallery" href="/VWAP-REPORT/?contract=MGCZ24&amp;timeframe=5m">Back to Gallery</a></p>
     <div class="header">
         <h1>VWAP Report Dashboards</h1>
         <div class="subtitle">
             MGC | RTH | 5m | Built by TonySnow | ALPHA DRIP
         </div>
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
-            N/A
+            2024-07-25 - 2024-11-22
         </div>
     </div>
-    
+
     <div class="panel">
         <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
         <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
     </div>
-    
+
     <div class="gallery">
         
         <a href="MGCZ24_20240725-20241122_5m_daily_max_extensions.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_daily_max_extensions.png" alt="Mgcz24 20240725-20241122 5M Daily Max Extensions" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Daily Max Extensions</h3>
+            <img src="MGCZ24_20240725-20241122_5m_daily_max_extensions.png" alt="Max Extensions" loading="lazy">
+            <h3>Max Extensions</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_dashboard_all_events.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_dashboard_all_events.png" alt="Mgcz24 20240725-20241122 5M Dashboard All Events" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Dashboard All Events</h3>
+            <img src="MGCZ24_20240725-20241122_5m_dashboard_all_events.png" alt="All Events" loading="lazy">
+            <h3>All Events</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_dashboard_crosses.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_dashboard_crosses.png" alt="Mgcz24 20240725-20241122 5M Dashboard Crosses" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Dashboard Crosses</h3>
+            <img src="MGCZ24_20240725-20241122_5m_dashboard_crosses.png" alt="Crosses" loading="lazy">
+            <h3>Crosses</h3>
         </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_definitions_summary.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_definitions_summary.png" alt="Mgcz24 20240725-20241122 5M Definitions Summary" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Definitions Summary</h3>
-        </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_extension_tail_metrics.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_extension_tail_metrics.png" alt="Mgcz24 20240725-20241122 5M Extension Tail Metrics" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Extension Tail Metrics</h3>
+            <img src="MGCZ24_20240725-20241122_5m_extension_tail_metrics.png" alt="Tail Metrics" loading="lazy">
+            <h3>Tail Metrics</h3>
         </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_first_touch_time_distribution.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_first_touch_time_distribution.png" alt="Mgcz24 20240725-20241122 5M First Touch Time Distribution" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M First Touch Time Distribution</h3>
-        </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_heatmap_time_of_day_x_reaction.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_heatmap_time_of_day_x_reaction.png" alt="Mgcz24 20240725-20241122 5M Heatmap Time Of Day X Reaction" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Heatmap Time Of Day X Reaction</h3>
+            <img src="MGCZ24_20240725-20241122_5m_heatmap_time_of_day_x_reaction.png" alt="Time Of Day X Reaction" loading="lazy">
+            <h3>Time Of Day X Reaction</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_hold_fail_rates.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_hold_fail_rates.png" alt="Mgcz24 20240725-20241122 5M Hold Fail Rates" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Hold Fail Rates</h3>
+            <img src="MGCZ24_20240725-20241122_5m_hold_fail_rates.png" alt="Fail Rates" loading="lazy">
+            <h3>Fail Rates</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_mfe_mae_by_event_window.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_mfe_mae_by_event_window.png" alt="Mgcz24 20240725-20241122 5M Mfe Mae By Event Window" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Mfe Mae By Event Window</h3>
+            <img src="MGCZ24_20240725-20241122_5m_mfe_mae_by_event_window.png" alt="Mae By Event Window" loading="lazy">
+            <h3>Mae By Event Window</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_oos_by_month.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_oos_by_month.png" alt="Mgcz24 20240725-20241122 5M Oos By Month" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Oos By Month</h3>
+            <img src="MGCZ24_20240725-20241122_5m_oos_by_month.png" alt="By Month" loading="lazy">
+            <h3>By Month</h3>
         </a>
-        
         <a href="MGCZ24_20240725-20241122_5m_regime_segment_grid.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_regime_segment_grid.png" alt="Mgcz24 20240725-20241122 5M Regime Segment Grid" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Regime Segment Grid</h3>
+            <img src="MGCZ24_20240725-20241122_5m_regime_segment_grid.png" alt="Segment Grid" loading="lazy">
+            <h3>Segment Grid</h3>
         </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_touch_sequence_stats.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_touch_sequence_stats.png" alt="Mgcz24 20240725-20241122 5M Touch Sequence Stats" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Touch Sequence Stats</h3>
-        </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_touches_per_day_distribution.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_touches_per_day_distribution.png" alt="Mgcz24 20240725-20241122 5M Touches Per Day Distribution" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Touches Per Day Distribution</h3>
-        </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_vwap_events.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_vwap_events.png" alt="Mgcz24 20240725-20241122 5M Vwap Events" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Vwap Events</h3>
-        </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_vwap_performance_all_events.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_vwap_performance_all_events.png" alt="Mgcz24 20240725-20241122 5M Vwap Performance All Events" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Vwap Performance All Events</h3>
-        </a>
-        
-        <a href="MGCZ24_20240725-20241122_5m_vwap_performance_crosses_only.html" class="dashboard-card" target="_blank">
-            
-            <img src="MGCZ24_20240725-20241122_5m_vwap_performance_crosses_only.png" alt="Mgcz24 20240725-20241122 5M Vwap Performance Crosses Only" loading="lazy">
-            
-            <h3>Mgcz24 20240725-20241122 5M Vwap Performance Crosses Only</h3>
-        </a>
-        
     </div>
 </body>
 </html>
