@@ -8,8 +8,8 @@
 |-------|--------|
 | Contract | MESH26 |
 | Timeframe | 5m RTH bar-close lattice |
-| Session window | 2025-12-22 through 2026-01-16 (calendar) |
-| Complete RTH sessions | 17 (whitelist-certified when applicable) |
+| Session window | 2025-12-22 through 2026-03-13 (calendar) |
+| Complete RTH sessions | 55 (whitelist-certified when applicable) |
 | Bar lattice | 78 closes per session, 09:35–16:00 ET |
 
 ## What is included
@@ -29,7 +29,7 @@
 ## Lineage
 
 - Generated from internal canonical parquet/report research bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_strategy_research\mes_generic_canonicalization_20260525_full\MESH26`
-- Packaged from internal regen bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_reports_internal_regen\mes_generic_bridge_20260525_full\MESH26_20251222-20260116_5m`
+- Packaged from internal regen bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_reports_internal_regen\mes_generic_bridge_20260525_full\MESH26_20251222-20260313_5m`
 - Upstream **1-minute bar regression gate:** `ONE_MINUTE_BAR_ISSUE_FIXED_CONFIRMED`
 - `public_export`: **false**
 
