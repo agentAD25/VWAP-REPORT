@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VWAP Report Dashboards - ALPHA DRIP</title>
+    <title>Out-of-Sample by Month - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
+        /* Theme CSS */
 /* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
 :root {
     /* Background Colors */
@@ -325,130 +327,91 @@ body {
         }
         .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .dashboard-card {
-            background: var(--bg-panel);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-md);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-panel);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-cyan);
-        }
-
-        .dashboard-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--radius-sm);
-            margin-bottom: var(--spacing-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .dashboard-card h3 {
-            color: var(--text-accent);
-            margin-bottom: var(--spacing-xs);
-            font-size: var(--font-size-lg);
-        }
-
-        .dashboard-card .placeholder {
-            width: 100%;
-            height: 200px;
-            background: var(--bg-card);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .gallery-nav {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .gallery-nav a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .gallery-nav a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
-    <p class="gallery-nav"><a id="back-to-gallery" href="/VWAP-REPORT/?contract=NQH25&amp;timeframe=1m">Back to Gallery</a></p>
     <div class="header">
-        <h1>VWAP Report Dashboards</h1>
+        <h1>Out-of-Sample by Month</h1>
         <div class="subtitle">
-            NQ | RTH | 1m | Built by TonySnow | ALPHA DRIP
+            NQ |
+            RTH |
+            5m |
+            Built by TonySnow | ALPHA DRIP
         </div>
+        
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
             2024-12-16 - 2025-03-14
         </div>
-    </div>
-
-    <div class="panel">
-        <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
-        <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
-    </div>
-
-    <div class="gallery">
         
-        <a href="NQH25_20241216-20250314_1m_daily_max_extensions.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_daily_max_extensions.png" alt="Max Extensions" loading="lazy">
-            <h3>Max Extensions</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_dashboard_all_events.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_dashboard_all_events.png" alt="All Events" loading="lazy">
-            <h3>All Events</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_dashboard_crosses.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_dashboard_crosses.png" alt="Crosses" loading="lazy">
-            <h3>Crosses</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_extension_tail_metrics.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_extension_tail_metrics.png" alt="Tail Metrics" loading="lazy">
-            <h3>Tail Metrics</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.png" alt="Time Of Day X Reaction" loading="lazy">
-            <h3>Time Of Day X Reaction</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_hold_fail_rates.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_hold_fail_rates.png" alt="Fail Rates" loading="lazy">
-            <h3>Fail Rates</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_mfe_mae_by_event_window.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_mfe_mae_by_event_window.png" alt="Mae By Event Window" loading="lazy">
-            <h3>Mae By Event Window</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_oos_by_month.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_oos_by_month.png" alt="By Month" loading="lazy">
-            <h3>By Month</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_regime_segment_grid.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_regime_segment_grid.png" alt="Segment Grid" loading="lazy">
-            <h3>Segment Grid</h3>
-        </a>
     </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">440</div>
+            
+            <div class="description">Average: 110 per month</div>
+            
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Avg Touches/Day</div>
+            <div class="value">7.3</div>
+            
+            <div class="description">Average across months</div>
+            
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Monthly Event Counts</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Touches Per Day by Month</div>
+            
+            <div id="chart-2" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Monthly out-of-sample performance metrics and stability analysis.</p>
+    </div>
+    
+
+    
+
+    
+    <script>
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+        
+        Plotly.newPlot('chart-1', [{"x": ["2024-12-01", "2025-01-01", "2025-02-01", "2025-03-01"], "y": [70, 162, 141, 67], "type": "scatter", "mode": "lines+markers", "line": {"color": "#00b4d8", "width": 2}, "marker": {"color": "#00b4d8", "size": 4}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "event_count", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+        Plotly.newPlot('chart-2', [{"x": ["2024-12-01", "2025-01-01", "2025-02-01", "2025-03-01"], "y": [7.0, 8.1, 7.421052631578948, 6.7], "type": "bar", "marker": {"color": ["#00b4d8", "#0077b6", "#90e0ef", "#7b2cbf"]}}], {"xaxis": {"title": "month", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "avg_touches_per_day", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "stack", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        
+    </script>
+    
 </body>
 </html>

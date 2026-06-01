@@ -8,8 +8,8 @@
 |-------|--------|
 | Contract | NQH25 |
 | Timeframe | 15m RTH bar-close lattice |
-| Session window | 2025-01-02 through 2025-03-14 (calendar) |
-| Complete RTH sessions | 49 (whitelist-certified when applicable) |
+| Session window | 2024-12-16 through 2025-03-14 (calendar) |
+| Complete RTH sessions | 59 (whitelist-certified when applicable) |
 | Bar lattice | 26 closes per session, 09:35–16:00 ET |
 
 ## What is included
@@ -28,8 +28,8 @@
 
 ## Lineage
 
-- Generated from internal canonical parquet/report research bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_strategy_research\nq_generic_canonicalization_20260525_full\NQH25`
-- Packaged from internal regen bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_reports_internal_regen\nq_generic_bridge_20260525_full\NQH25_20250102-20250314_15m`
+- Generated from internal canonical parquet/report research bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_strategy_research\nqh25_source_repair_20260531\NQH25`
+- Packaged from internal regen bundle: `D:\alphadrip database\supabase-opti-database\LOCAL DATABASE\out\vwap_reports_internal_regen\nqh25_source_repair_20260531\NQH25_20241216-20250314_15m`
 - Upstream **1-minute bar regression gate:** `ONE_MINUTE_BAR_ISSUE_FIXED_CONFIRMED`
 - `public_export`: **false**
 

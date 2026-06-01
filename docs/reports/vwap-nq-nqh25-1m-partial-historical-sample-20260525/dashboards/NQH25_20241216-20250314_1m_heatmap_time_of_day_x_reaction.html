@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VWAP Report Dashboards - ALPHA DRIP</title>
+    <title>Time of Day x Reaction Heatmap - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
     <style>
+        /* Theme CSS */
 /* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
 :root {
     /* Background Colors */
@@ -325,130 +327,83 @@ body {
         }
         .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: var(--spacing-md);
-            margin-top: var(--spacing-lg);
-        }
-
-        .dashboard-card {
-            background: var(--bg-panel);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-md);
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-panel);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .dashboard-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
-            border-color: var(--accent-cyan);
-        }
-
-        .dashboard-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: var(--radius-sm);
-            margin-bottom: var(--spacing-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .dashboard-card h3 {
-            color: var(--text-accent);
-            margin-bottom: var(--spacing-xs);
-            font-size: var(--font-size-lg);
-        }
-
-        .dashboard-card .placeholder {
-            width: 100%;
-            height: 200px;
-            background: var(--bg-card);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .gallery-nav {
-            margin-bottom: var(--spacing-md);
-        }
-
-        .gallery-nav a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .gallery-nav a:hover {
-            text-decoration: underline;
-        }
-
     </style>
 </head>
 <body>
-    <p class="gallery-nav"><a id="back-to-gallery" href="/VWAP-REPORT/?contract=NQH25&amp;timeframe=1m">Back to Gallery</a></p>
     <div class="header">
-        <h1>VWAP Report Dashboards</h1>
+        <h1>Time of Day x Reaction Heatmap</h1>
         <div class="subtitle">
-            NQ | RTH | 1m | Built by TonySnow | ALPHA DRIP
+            NQ |
+            RTH |
+            1m |
+            Built by TonySnow | ALPHA DRIP
         </div>
+        
         <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
             2024-12-16 - 2025-03-14
         </div>
-    </div>
-
-    <div class="panel">
-        <h2 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Available Dashboards</h2>
-        <p class="text-muted">Click on any dashboard to view the full interactive report.</p>
-    </div>
-
-    <div class="gallery">
         
-        <a href="NQH25_20241216-20250314_1m_daily_max_extensions.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_daily_max_extensions.png" alt="Max Extensions" loading="lazy">
-            <h3>Max Extensions</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_dashboard_all_events.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_dashboard_all_events.png" alt="All Events" loading="lazy">
-            <h3>All Events</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_dashboard_crosses.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_dashboard_crosses.png" alt="Crosses" loading="lazy">
-            <h3>Crosses</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_extension_tail_metrics.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_extension_tail_metrics.png" alt="Tail Metrics" loading="lazy">
-            <h3>Tail Metrics</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.png" alt="Time Of Day X Reaction" loading="lazy">
-            <h3>Time Of Day X Reaction</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_hold_fail_rates.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_hold_fail_rates.png" alt="Fail Rates" loading="lazy">
-            <h3>Fail Rates</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_mfe_mae_by_event_window.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_mfe_mae_by_event_window.png" alt="Mae By Event Window" loading="lazy">
-            <h3>Mae By Event Window</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_oos_by_month.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_oos_by_month.png" alt="By Month" loading="lazy">
-            <h3>By Month</h3>
-        </a>
-        <a href="NQH25_20241216-20250314_1m_regime_segment_grid.html" class="dashboard-card" target="_blank">
-            <img src="NQH25_20241216-20250314_1m_regime_segment_grid.png" alt="Segment Grid" loading="lazy">
-            <h3>Segment Grid</h3>
-        </a>
     </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Best Time (Reaction)</div>
+            <div class="value">14:39</div>
+            
+            <div class="description">Reaction: 300.0</div>
+            
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">1,128</div>
+            
+            <div class="description">Across all time buckets</div>
+            
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Reaction Size by Time of Day</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
+    </div>
+    
+
+    
+
+    
+    <script>
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+        
+        Plotly.newPlot('chart-1', [{"z": [[NaN, 209.33333333333331, 84.0, 38.0, 77.0, 79.0, 94.0], [NaN, 48.25, 97.5, 43.85714285714285, 12.0, 136.0, 188.0], [NaN, 180.66666666666663, 70.0, 64.5, 151.25, NaN, 2.0], [NaN, 55.5, 84.33333333333333, 40.333333333333336, 35.0, NaN, 39.0], [NaN, 153.0, 79.0, 89.33333333333333, 70.5, NaN, 118.0], [NaN, 100.0, 83.5, 63.6, 27.5, 135.0, 36.0], [NaN, 74.5, 32.0, 57.2, 23.5, 171.0, NaN], [NaN, 151.25, 78.0, 61.833333333333336, 2.5, 26.5, 37.0], [NaN, 75.5, 55.66666666666666, 40.0, 65.0, NaN, NaN], [NaN, 134.5, 114.5, 60.2, 50.0, 16.0, NaN], [NaN, 123.33333333333331, 56.66666666666666, 54.85714285714285, 35.0, NaN, NaN], [NaN, 155.5, 55.5, 50.4, 19.0, NaN, 49.5], [NaN, 68.0, 15.0, 33.666666666666664, 68.5, 92.5, 54.0], [NaN, 104.5, 107.75, 48.4, 42.2, 22.0, 145.0], [NaN, 44.0, 70.33333333333333, NaN, 7.0, 13.5, 13.0], [NaN, 111.5, 89.0, 29.25, 19.5, 22.0, 44.0], [NaN, 120.33333333333331, 52.5, 16.0, 50.0, 9.0, 63.333333333333336], [NaN, 60.5, 68.5, 30.0, NaN, 9.0, 112.0], [NaN, 216.0, 150.5, 117.33333333333331, 64.0, 71.0, 6.0], [NaN, 62.333333333333336, 96.0, 48.6, 107.0, 39.0, 141.0], [NaN, 81.25, 51.0, 107.0, NaN, 155.0, 18.0], [NaN, 95.42857142857144, 168.0, NaN, NaN, 44.0, 29.0], [NaN, 177.57142857142858, 69.4, NaN, 32.0, NaN, 22.666666666666668], [NaN, 102.8, 44.333333333333336, NaN, 7.0, NaN, 25.0], [NaN, 73.0, 30.0, 49.5, NaN, NaN, 84.5], [NaN, 70.5, 78.33333333333333, 128.0, 27.0, 23.0, 9.0], [NaN, 44.66666666666666, 72.66666666666667, 16.0, NaN, 56.0, 54.5], [NaN, 110.66666666666669, 89.0, 78.0, NaN, 56.333333333333336, 30.0], [NaN, 62.0, 105.5, 30.0, NaN, 180.0, 26.0], [NaN, 60.333333333333336, 97.75, 58.333333333333336, 10.0, 22.0, 8.5], [NaN, 133.5, 77.8, 41.0, 54.66666666666666, 125.66666666666669, 44.0], [NaN, 67.66666666666667, 62.5, 37.0, 45.0, 64.0, 11.0], [127.04166666666669, 53.333333333333336, 79.0, NaN, 36.66666666666666, 39.0, NaN], [111.8695652173913, 51.8, 67.66666666666667, 84.0, 52.333333333333336, NaN, 97.0], [137.1, 165.0, 107.0, 20.0, 36.0, 65.5, 80.75], [146.65217391304347, 112.0, 33.2, 49.5, 10.5, 30.0, 193.0], [157.53846153846155, 76.16666666666667, 53.8, 33.333333333333336, 66.0, NaN, 31.0], [137.46666666666667, 134.75, 127.0, 24.5, 68.33333333333333, 88.0, NaN], [98.42857142857144, 46.333333333333336, 18.0, 110.5, 76.5, 59.5, 23.5], [89.3125, 57.0, 60.0, 38.0, 141.5, 300.0, 56.5], [86.15384615384616, 103.4, 31.0, 47.0, 84.5, NaN, 82.0], [104.33333333333331, 76.33333333333333, 115.0, 27.666666666666668, NaN, NaN, 27.5], [72.0, 75.25, 77.5, 176.0, NaN, 46.5, 69.5], [119.53846153846152, 133.0, NaN, 46.333333333333336, 64.0, 56.5, 65.66666666666667], [80.875, 97.0, NaN, 106.33333333333331, 36.0, 43.0, 51.25], [57.833333333333336, 77.0, 10.0, 33.333333333333336, 83.0, 69.0, 25.0], [106.58333333333331, 118.0, 70.5, 48.333333333333336, 39.5, NaN, 65.0], [143.45454545454547, 45.8, 53.75, NaN, 41.5, 50.0, 174.5], [119.0, 129.5, 65.5, 84.0, NaN, 10.0, 24.0], [107.75, 96.5, NaN, 39.333333333333336, NaN, 211.0, 47.0], [80.42857142857143, 134.0, 42.0, 26.666666666666668, 8.0, 60.0, 98.0], [100.77777777777776, 66.6, 91.0, 4.0, 15.0, 62.5, 104.16666666666669], [75.5, 105.57142857142856, NaN, 101.0, 68.0, 11.0, 84.5], [132.28571428571428, 53.2, 35.5, NaN, 155.4, 11.0, 97.4], [44.5, 122.71428571428572, 113.5, NaN, 29.0, 16.0, 86.0], [109.33333333333331, 113.83333333333331, 119.5, 116.0, 74.5, 49.0, 146.5], [120.71428571428572, 51.0, 78.25, 19.0, 27.5, 45.0, 99.5], [118.25, 100.6, 47.0, 91.0, 102.5, 15.0, 48.5], [208.28571428571428, 102.5, 112.0, 41.5, 194.66666666666663, 36.0, 5.0], [124.28571428571428, 21.0, 59.0, 13.0, 34.0, 23.0, 48.25]], "x": ["9", "10", "11", "12", "13", "14", "15"], "y": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+    </script>
+    
 </body>
 </html>
