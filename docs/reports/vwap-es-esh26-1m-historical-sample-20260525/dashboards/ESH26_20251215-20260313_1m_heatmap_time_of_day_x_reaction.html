@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time of Day x Reaction Heatmap - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.takeaway-card .takeaway-warning {
+    color: var(--warning);
+    font-weight: 500;
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+        .vwap-public-disclosure-banner, .vwap-public-disclosure-footer, .vwap-public-disclosure-nt8,
+        .vwap-public-disclosure-csv {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #cfefff);
+            background: rgba(0, 40, 80, 0.45);
+            border: 1px solid rgba(0, 180, 216, 0.35);
+            border-radius: 10px;
+        }
+        .vwap-public-disclosure-footer { margin-top: 24px; color: var(--text-muted, #b8d4e8); }
+        .vwap-public-disclosure-oneline { margin: 10px 0 0 0; font-size: 0.82em; color: var(--text-accent, #7dd3fc); }
+        .vwap-complete-session-policy {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #e0f7fa);
+            background: rgba(0, 60, 40, 0.35);
+            border: 1px solid rgba(0, 200, 140, 0.45);
+            border-radius: 10px;
+        }
+        .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Time of Day x Reaction Heatmap</h1>
+        <div class="subtitle">
+            ES |
+            RTH |
+            1m |
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-12-15 - 2026-03-13
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Best Time (Reaction)</div>
+            <div class="value">14:27</div>
+            
+            <div class="description">Reaction: 46.0</div>
+            
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">1,918</div>
+            
+            <div class="description">Across all time buckets</div>
+            
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Reaction Size by Time of Day</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
+    </div>
+    
+
+    
+
+    
+    <script>
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+        
+        Plotly.newPlot('chart-1', [{"z": [[NaN, 27.307692307692307, 12.142857142857142, 5.333333333333333, 17.714285714285715, 31.5, 9.4], [NaN, 22.714285714285715, 16.5, 13.5, 15.833333333333334, 10.666666666666666, 5.333333333333333], [NaN, 19.0, 20.75, 6.0, 20.142857142857142, 13.2, 14.6], [NaN, 28.444444444444443, 11.25, 12.333333333333334, 14.166666666666666, 10.666666666666666, 6.0], [NaN, 32.57142857142857, 26.33333333333333, 10.25, 13.333333333333334, 3.0, 18.0], [NaN, 25.8, 25.0, 39.5, 8.2, 11.5, 9.75], [NaN, 19.0, 12.166666666666666, 26.33333333333333, 2.0, 15.0, 8.0], [NaN, 24.88888888888889, 17.2, 27.0, 12.8, 6.0, NaN], [NaN, 23.0, 10.333333333333334, 25.5, 16.0, 10.0, 14.5], [NaN, 11.166666666666666, 12.666666666666666, 13.5, 7.5, 19.8, 6.75], [NaN, 29.0, 14.0, 17.333333333333332, 4.0, 4.0, 18.75], [NaN, 23.75, 8.333333333333334, 28.33333333333333, 25.0, 8.8, 5.333333333333333], [NaN, 23.714285714285715, 25.0, 13.333333333333334, 13.0, 7.0, 10.4], [NaN, 16.0, 15.75, 21.5, 18.0, 5.5, 12.0], [NaN, 18.166666666666668, 13.666666666666666, 21.0, 10.333333333333334, 11.666666666666666, 10.6], [NaN, 17.5, 13.0, 18.666666666666668, 3.0, 3.6666666666666665, 9.25], [NaN, 33.0, 10.0, 10.333333333333334, 9.75, 31.666666666666668, 8.6], [NaN, 16.333333333333332, 13.0, 7.5, 12.0, 10.5, 9.857142857142858], [NaN, 19.9, 10.8, 13.75, 8.666666666666666, 6.333333333333333, 3.333333333333333], [NaN, 19.6, 12.0, 11.0, 12.0, 9.666666666666666, 8.333333333333334], [NaN, 20.83333333333333, 17.666666666666668, 14.5, 16.75, 6.0, 12.25], [NaN, 17.833333333333332, 12.333333333333334, 22.75, 17.0, 7.333333333333333, 9.333333333333334], [NaN, 17.0, 18.75, 16.666666666666668, 9.428571428571429, 5.428571428571429, 7.0], [NaN, 23.0, 9.333333333333334, 6.0, 12.2, 3.333333333333333, 9.333333333333334], [NaN, 14.833333333333334, 12.666666666666666, 17.5, 6.8, 8.2, 6.0], [NaN, 10.833333333333334, 9.333333333333334, 25.0, 16.6, 8.2, 8.666666666666666], [NaN, 28.2, 33.6, 11.4, 9.0, 4.0, 16.5], [NaN, 25.0, 12.75, 15.0, 11.5, 46.0, 3.75], [NaN, 15.444444444444445, 19.75, 16.0, 6.5, 12.0, 15.0], [NaN, 15.714285714285714, 10.5, 17.0, 17.0, 15.25, 8.0], [NaN, 16.625, 15.666666666666666, 1.0, 28.0, 9.0, 11.75], [NaN, 21.33333333333333, 24.33333333333333, 13.25, 20.714285714285715, 15.0, 11.333333333333334], [25.71875, 24.285714285714285, 30.0, 10.0, 11.333333333333334, 17.4, 11.666666666666666], [22.20689655172414, 18.33333333333333, 6.0, 10.25, 5.0, 19.2, 4.333333333333333], [22.608695652173918, 23.8, 30.0, 7.75, 30.75, 7.0, 6.0], [19.047619047619047, 22.75, 21.666666666666668, 1.0, 10.75, 8.0, 2.0], [17.263157894736842, 15.25, 15.0, 8.0, 26.75, 8.6, 4.5], [25.529411764705884, 24.0, 28.0, 9.5, 8.0, 3.75, 5.0], [22.41176470588235, 24.25, 11.5, 3.0, 11.5, 15.6, 7.2], [22.066666666666663, 13.333333333333334, 16.4, 12.666666666666666, 16.2, 11.0, 7.25], [20.77777777777778, 8.75, 7.5, 17.2, 5.8, 11.5, 7.857142857142857], [24.153846153846157, 9.0, 20.0, 31.0, 14.25, 10.333333333333334, 7.0], [29.764705882352946, 13.6, 13.0, 23.0, 7.333333333333333, 26.5, 9.25], [24.7, 9.25, 8.0, 16.333333333333332, 11.0, 12.333333333333334, 13.0], [25.363636363636363, 18.8, 8.5, 19.0, 5.0, 11.75, 11.75], [22.363636363636363, 15.166666666666666, 5.333333333333333, 8.0, 6.6, 27.5, 14.125], [17.272727272727273, 11.428571428571429, 13.0, 14.333333333333334, 11.4, 18.0, 6.4], [18.444444444444443, 23.9, 19.0, 13.0, 14.5, 6.0, 10.666666666666666], [15.727272727272728, 11.0, 10.0, 24.5, 5.0, 25.0, 13.0], [20.375, 12.6, 11.666666666666666, 16.0, 17.333333333333332, 5.5, 12.333333333333334], [20.23076923076923, 21.0, 4.666666666666667, 12.25, 25.75, 10.333333333333334, 7.625], [25.866666666666667, 11.5, 10.2, 20.0, 18.0, 13.0, 12.909090909090908], [23.454545454545453, 20.666666666666668, 16.4, 12.75, 8.6, 13.5, 11.2], [12.333333333333334, 14.77777777777778, 10.0, 9.0, 10.666666666666666, 9.75, 11.454545454545457], [15.636363636363637, 24.5, NaN, 11.333333333333334, 9.2, 12.25, 17.285714285714285], [23.6, 14.571428571428571, 27.0, 10.5, 4.0, 11.0, 16.833333333333332], [20.0, 13.6, 14.25, 15.8, 4.8, 13.333333333333334, 11.8], [21.2, 17.833333333333332, 11.0, 17.833333333333332, 18.0, 19.75, 13.25], [31.166666666666668, 15.0, 12.333333333333334, 10.0, 6.0, 14.0, 13.0], [33.3, 19.8, 11.0, 18.5, 21.0, 19.666666666666668, 22.5]], "x": ["9", "10", "11", "12", "13", "14", "15"], "y": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+    </script>
+    
+</body>
+</html>
