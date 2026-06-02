@@ -6106,5 +6106,835 @@
         "public_safe": true
       }
     }
+  },
+  "ESH25": {
+    "1m": {
+      "20241216-20250314": {
+        "png": [
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_daily_max_extensions.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_dashboard_all_events.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_dashboard_crosses.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_extension_tail_metrics.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_hold_fail_rates.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_oos_by_month.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_regime_segment_grid.png",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_daily_max_extensions.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_dashboard_all_events.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_dashboard_crosses.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_extension_tail_metrics.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_hold_fail_rates.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_oos_by_month.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_1m_regime_segment_grid.html",
+          "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20241216",
+        "end_date": "20250314",
+        "start": "20241216",
+        "end": "20250314",
+        "contract": "ESH25",
+        "timeframe": "1m",
+        "date_range": "20241216-20250314",
+        "dashboard_index": "reports/vwap-es-esh25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20241216-20250314": {
+        "png": [
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_daily_max_extensions.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_dashboard_all_events.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_dashboard_crosses.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_extension_tail_metrics.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_hold_fail_rates.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_oos_by_month.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_regime_segment_grid.png",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_daily_max_extensions.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_dashboard_all_events.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_dashboard_crosses.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_extension_tail_metrics.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_hold_fail_rates.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_oos_by_month.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_5m_regime_segment_grid.html",
+          "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20241216",
+        "end_date": "20250314",
+        "start": "20241216",
+        "end": "20250314",
+        "contract": "ESH25",
+        "timeframe": "5m",
+        "date_range": "20241216-20250314",
+        "dashboard_index": "reports/vwap-es-esh25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20241216-20250314": {
+        "png": [
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_daily_max_extensions.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_dashboard_all_events.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_dashboard_crosses.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_extension_tail_metrics.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_hold_fail_rates.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_oos_by_month.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_regime_segment_grid.png",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_daily_max_extensions.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_dashboard_all_events.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_dashboard_crosses.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_extension_tail_metrics.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_hold_fail_rates.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_oos_by_month.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_15m_regime_segment_grid.html",
+          "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20241216",
+        "end_date": "20250314",
+        "start": "20241216",
+        "end": "20250314",
+        "contract": "ESH25",
+        "timeframe": "15m",
+        "date_range": "20241216-20250314",
+        "dashboard_index": "reports/vwap-es-esh25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20241216-20250314": {
+        "png": [
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_daily_max_extensions.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_dashboard_all_events.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_dashboard_crosses.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_extension_tail_metrics.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_hold_fail_rates.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_oos_by_month.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_regime_segment_grid.png",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_daily_max_extensions.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_dashboard_all_events.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_dashboard_crosses.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_extension_tail_metrics.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_hold_fail_rates.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_oos_by_month.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/ESH25_20241216-20250314_30m_regime_segment_grid.html",
+          "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20241216",
+        "end_date": "20250314",
+        "start": "20241216",
+        "end": "20250314",
+        "contract": "ESH25",
+        "timeframe": "30m",
+        "date_range": "20241216-20250314",
+        "dashboard_index": "reports/vwap-es-esh25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "ESM25": {
+    "1m": {
+      "20250317-20250613": {
+        "png": [
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_daily_max_extensions.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_dashboard_all_events.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_dashboard_crosses.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_extension_tail_metrics.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_hold_fail_rates.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_oos_by_month.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_regime_segment_grid.png",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_daily_max_extensions.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_dashboard_all_events.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_dashboard_crosses.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_extension_tail_metrics.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_hold_fail_rates.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_oos_by_month.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_1m_regime_segment_grid.html",
+          "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250317",
+        "end_date": "20250613",
+        "start": "20250317",
+        "end": "20250613",
+        "contract": "ESM25",
+        "timeframe": "1m",
+        "date_range": "20250317-20250613",
+        "dashboard_index": "reports/vwap-es-esm25-1m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250317-20250613": {
+        "png": [
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_daily_max_extensions.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_dashboard_all_events.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_dashboard_crosses.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_extension_tail_metrics.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_hold_fail_rates.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_oos_by_month.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_regime_segment_grid.png",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_daily_max_extensions.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_dashboard_all_events.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_dashboard_crosses.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_extension_tail_metrics.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_hold_fail_rates.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_oos_by_month.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_5m_regime_segment_grid.html",
+          "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250317",
+        "end_date": "20250613",
+        "start": "20250317",
+        "end": "20250613",
+        "contract": "ESM25",
+        "timeframe": "5m",
+        "date_range": "20250317-20250613",
+        "dashboard_index": "reports/vwap-es-esm25-5m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250317-20250613": {
+        "png": [
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_daily_max_extensions.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_dashboard_all_events.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_dashboard_crosses.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_extension_tail_metrics.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_hold_fail_rates.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_oos_by_month.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_regime_segment_grid.png",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_daily_max_extensions.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_dashboard_all_events.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_dashboard_crosses.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_extension_tail_metrics.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_hold_fail_rates.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_oos_by_month.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_15m_regime_segment_grid.html",
+          "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250317",
+        "end_date": "20250613",
+        "start": "20250317",
+        "end": "20250613",
+        "contract": "ESM25",
+        "timeframe": "15m",
+        "date_range": "20250317-20250613",
+        "dashboard_index": "reports/vwap-es-esm25-15m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250317-20250613": {
+        "png": [
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_daily_max_extensions.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_dashboard_all_events.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_dashboard_crosses.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_extension_tail_metrics.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_hold_fail_rates.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_oos_by_month.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_regime_segment_grid.png",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_daily_max_extensions.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_dashboard_all_events.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_dashboard_crosses.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_extension_tail_metrics.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_hold_fail_rates.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_oos_by_month.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/ESM25_20250317-20250613_30m_regime_segment_grid.html",
+          "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250317",
+        "end_date": "20250613",
+        "start": "20250317",
+        "end": "20250613",
+        "contract": "ESM25",
+        "timeframe": "30m",
+        "date_range": "20250317-20250613",
+        "dashboard_index": "reports/vwap-es-esm25-30m-partial-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "ESU25": {
+    "1m": {
+      "20250616-20250912": {
+        "png": [
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_daily_max_extensions.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_dashboard_all_events.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_dashboard_crosses.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_extension_tail_metrics.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_hold_fail_rates.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_oos_by_month.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_regime_segment_grid.png",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_daily_max_extensions.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_dashboard_all_events.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_dashboard_crosses.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_extension_tail_metrics.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_hold_fail_rates.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_oos_by_month.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_1m_regime_segment_grid.html",
+          "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250616",
+        "end_date": "20250912",
+        "start": "20250616",
+        "end": "20250912",
+        "contract": "ESU25",
+        "timeframe": "1m",
+        "date_range": "20250616-20250912",
+        "dashboard_index": "reports/vwap-es-esu25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250616-20250912": {
+        "png": [
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_daily_max_extensions.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_dashboard_all_events.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_dashboard_crosses.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_extension_tail_metrics.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_hold_fail_rates.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_oos_by_month.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_regime_segment_grid.png",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_daily_max_extensions.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_dashboard_all_events.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_dashboard_crosses.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_extension_tail_metrics.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_hold_fail_rates.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_oos_by_month.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_5m_regime_segment_grid.html",
+          "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250616",
+        "end_date": "20250912",
+        "start": "20250616",
+        "end": "20250912",
+        "contract": "ESU25",
+        "timeframe": "5m",
+        "date_range": "20250616-20250912",
+        "dashboard_index": "reports/vwap-es-esu25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250616-20250912": {
+        "png": [
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_daily_max_extensions.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_dashboard_all_events.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_dashboard_crosses.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_extension_tail_metrics.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_hold_fail_rates.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_oos_by_month.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_regime_segment_grid.png",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_daily_max_extensions.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_dashboard_all_events.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_dashboard_crosses.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_extension_tail_metrics.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_hold_fail_rates.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_oos_by_month.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_15m_regime_segment_grid.html",
+          "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250616",
+        "end_date": "20250912",
+        "start": "20250616",
+        "end": "20250912",
+        "contract": "ESU25",
+        "timeframe": "15m",
+        "date_range": "20250616-20250912",
+        "dashboard_index": "reports/vwap-es-esu25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250616-20250912": {
+        "png": [
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_daily_max_extensions.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_dashboard_all_events.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_dashboard_crosses.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_extension_tail_metrics.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_hold_fail_rates.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_oos_by_month.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_regime_segment_grid.png",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_daily_max_extensions.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_dashboard_all_events.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_dashboard_crosses.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_extension_tail_metrics.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_hold_fail_rates.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_oos_by_month.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/ESU25_20250616-20250912_30m_regime_segment_grid.html",
+          "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250616",
+        "end_date": "20250912",
+        "start": "20250616",
+        "end": "20250912",
+        "contract": "ESU25",
+        "timeframe": "30m",
+        "date_range": "20250616-20250912",
+        "dashboard_index": "reports/vwap-es-esu25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "ESZ25": {
+    "1m": {
+      "20250915-20251212": {
+        "png": [
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_daily_max_extensions.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_dashboard_all_events.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_dashboard_crosses.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_extension_tail_metrics.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_hold_fail_rates.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_oos_by_month.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_regime_segment_grid.png",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_daily_max_extensions.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_dashboard_all_events.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_dashboard_crosses.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_extension_tail_metrics.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_hold_fail_rates.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_oos_by_month.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_1m_regime_segment_grid.html",
+          "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250915",
+        "end_date": "20251212",
+        "start": "20250915",
+        "end": "20251212",
+        "contract": "ESZ25",
+        "timeframe": "1m",
+        "date_range": "20250915-20251212",
+        "dashboard_index": "reports/vwap-es-esz25-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20250915-20251212": {
+        "png": [
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_daily_max_extensions.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_dashboard_all_events.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_dashboard_crosses.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_extension_tail_metrics.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_hold_fail_rates.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_oos_by_month.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_regime_segment_grid.png",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_daily_max_extensions.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_dashboard_all_events.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_dashboard_crosses.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_extension_tail_metrics.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_hold_fail_rates.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_oos_by_month.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_5m_regime_segment_grid.html",
+          "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250915",
+        "end_date": "20251212",
+        "start": "20250915",
+        "end": "20251212",
+        "contract": "ESZ25",
+        "timeframe": "5m",
+        "date_range": "20250915-20251212",
+        "dashboard_index": "reports/vwap-es-esz25-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20250915-20251212": {
+        "png": [
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_daily_max_extensions.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_dashboard_all_events.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_dashboard_crosses.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_extension_tail_metrics.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_hold_fail_rates.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_oos_by_month.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_regime_segment_grid.png",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_daily_max_extensions.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_dashboard_all_events.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_dashboard_crosses.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_extension_tail_metrics.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_hold_fail_rates.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_oos_by_month.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_15m_regime_segment_grid.html",
+          "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250915",
+        "end_date": "20251212",
+        "start": "20250915",
+        "end": "20251212",
+        "contract": "ESZ25",
+        "timeframe": "15m",
+        "date_range": "20250915-20251212",
+        "dashboard_index": "reports/vwap-es-esz25-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20250915-20251212": {
+        "png": [
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_daily_max_extensions.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_dashboard_all_events.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_dashboard_crosses.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_extension_tail_metrics.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_hold_fail_rates.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_oos_by_month.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_regime_segment_grid.png",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_daily_max_extensions.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_dashboard_all_events.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_dashboard_crosses.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_extension_tail_metrics.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_hold_fail_rates.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_oos_by_month.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/ESZ25_20250915-20251212_30m_regime_segment_grid.html",
+          "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20250915",
+        "end_date": "20251212",
+        "start": "20250915",
+        "end": "20251212",
+        "contract": "ESZ25",
+        "timeframe": "30m",
+        "date_range": "20250915-20251212",
+        "dashboard_index": "reports/vwap-es-esz25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "ESH26": {
+    "1m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_daily_max_extensions.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_dashboard_all_events.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_dashboard_crosses.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_extension_tail_metrics.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_hold_fail_rates.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_oos_by_month.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_regime_segment_grid.png",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_daily_max_extensions.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_dashboard_all_events.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_dashboard_crosses.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_extension_tail_metrics.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_hold_fail_rates.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_oos_by_month.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_1m_regime_segment_grid.html",
+          "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "ESH26",
+        "timeframe": "1m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/vwap-es-esh26-1m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_daily_max_extensions.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_dashboard_all_events.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_dashboard_crosses.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_extension_tail_metrics.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_hold_fail_rates.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_oos_by_month.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_regime_segment_grid.png",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_daily_max_extensions.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_dashboard_all_events.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_dashboard_crosses.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_extension_tail_metrics.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_hold_fail_rates.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_oos_by_month.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_5m_regime_segment_grid.html",
+          "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "ESH26",
+        "timeframe": "5m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/vwap-es-esh26-5m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_daily_max_extensions.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_dashboard_all_events.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_dashboard_crosses.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_extension_tail_metrics.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_hold_fail_rates.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_oos_by_month.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_regime_segment_grid.png",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_daily_max_extensions.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_dashboard_all_events.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_dashboard_crosses.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_extension_tail_metrics.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_hold_fail_rates.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_oos_by_month.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_15m_regime_segment_grid.html",
+          "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "ESH26",
+        "timeframe": "15m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/vwap-es-esh26-15m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20251215-20260313": {
+        "png": [
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_daily_max_extensions.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_dashboard_all_events.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_dashboard_crosses.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_extension_tail_metrics.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_heatmap_time_of_day_x_reaction.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_hold_fail_rates.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_mfe_mae_by_event_window.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_oos_by_month.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_regime_segment_grid.png",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/index.png"
+        ],
+        "html": [
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_daily_max_extensions.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_dashboard_all_events.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_dashboard_crosses.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_extension_tail_metrics.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_heatmap_time_of_day_x_reaction.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_hold_fail_rates.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_mfe_mae_by_event_window.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_oos_by_month.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/ESH26_20251215-20260313_30m_regime_segment_grid.html",
+          "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20251215",
+        "end_date": "20260313",
+        "start": "20251215",
+        "end": "20260313",
+        "contract": "ESH26",
+        "timeframe": "30m",
+        "date_range": "20251215-20260313",
+        "dashboard_index": "reports/vwap-es-esh26-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
   }
 }
