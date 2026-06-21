@@ -2,13 +2,15 @@
 """Additive NQ entries to docs/manifest.json for gallery routing (idempotent)."""
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-REPORTS = REPO / "docs" / "reports"
-MANIFEST = REPO / "docs" / "manifest.json"
+DOCS = REPO / "docs"
+REPORTS = DOCS / "reports"
+MANIFEST = DOCS / "manifest.json"
 BUNDLE_MANIFEST = (
     REPO.parent
     / "supabase-opti-database"
@@ -23,8 +25,16 @@ def is_nq_contract(contract: str) -> bool:
     return contract.startswith("NQ") and not contract.startswith("MNQ")
 
 
+def dashboard_index_exists(entry: dict) -> bool:
+    """Return True when the manifest dashboard_index resolves to a local file."""
+    idx = entry.get("dashboard_index", "")
+    if not idx:
+        return False
+    return (DOCS / idx).is_file()
+
+
 def deactivate_legacy_nq_entries(manifest: dict) -> int:
-    """Deactivate pre-existing legacy NQ manifest routes (non vwap-nq public samples)."""
+    """Deactivate invalid NQ routes only; preserve active routes with local dashboards."""
     deactivated = 0
     for contract in list(manifest.keys()):
         if not is_nq_contract(contract):
@@ -33,15 +43,15 @@ def deactivate_legacy_nq_entries(manifest: dict) -> int:
             if not isinstance(ranges, dict):
                 continue
             for _dr, entry in ranges.items():
-                if not isinstance(entry, dict):
+                if not isinstance(entry, dict) or not entry.get("active"):
                     continue
-                idx = entry.get("dashboard_index", "")
-                legacy = (
-                    "vwap-nq-" not in idx
-                    or entry.get("status") == "LEGACY_WITH_DATA_EXPORTS"
+                if dashboard_index_exists(entry):
+                    continue
+                invalid = (
+                    entry.get("status") == "LEGACY_WITH_DATA_EXPORTS"
                     or entry.get("public_safe") is False
                 )
-                if legacy and entry.get("active"):
+                if invalid or "vwap-nq-" not in entry.get("dashboard_index", ""):
                     entry["active"] = False
                     entry["canonical"] = False
                     deactivated += 1
@@ -117,7 +127,7 @@ def build_entry(
     }
 
 
-def main() -> int:
+def apply_patch(*, dry_run: bool = False) -> dict:
     original: dict = json.loads(MANIFEST.read_text(encoding="utf-8"))
     manifest: dict = json.loads(MANIFEST.read_text(encoding="utf-8"))
     before_keys = set(manifest.keys())
@@ -127,8 +137,7 @@ def main() -> int:
     nq_bundles = load_nq_bundles()
     for contract, tf, slug, start, end, partial in nq_bundles:
         if not (REPORTS / slug).is_dir():
-            print(f"BLOCKED: missing staged report {slug}", file=sys.stderr)
-            return 1
+            raise FileNotFoundError(f"Missing staged report {slug}")
         entry = build_entry(contract, tf, slug, start, end, partial=partial)
         dr = entry["date_range"]
         manifest.setdefault(contract, {})
@@ -139,39 +148,60 @@ def main() -> int:
                 manifest[contract][tf][dr] = entry
                 reused += 1
                 continue
-            print(f"BLOCKED: {contract}/{tf}/{dr} exists with different dashboard_index", file=sys.stderr)
-            return 1
+            if dashboard_index_exists(existing):
+                continue
+            raise RuntimeError(
+                f"{contract}/{tf}/{dr} exists with different dashboard_index: "
+                f"{existing.get('dashboard_index')}"
+            )
         manifest[contract][tf][dr] = entry
         added += 1
 
     after_keys = set(manifest.keys())
     if not before_keys.issubset(after_keys):
-        print("BLOCKED: manifest keys removed", file=sys.stderr)
-        return 1
+        raise RuntimeError("manifest keys removed")
     for k in before_keys:
         if k.startswith("NQ"):
             continue
         if manifest.get(k) != original.get(k):
-            print(f"BLOCKED: non-NQ key modified: {k}", file=sys.stderr)
-            return 1
+            raise RuntimeError(f"non-NQ key modified: {k}")
     if manifest.get("MNQH25") != original.get("MNQH25"):
-        print("BLOCKED: MNQH25 modified", file=sys.stderr)
-        return 1
+        raise RuntimeError("MNQH25 modified")
     if manifest.get("MESH25") != original.get("MESH25"):
-        print("BLOCKED: MESH25 modified", file=sys.stderr)
-        return 1
+        raise RuntimeError("MESH25 modified")
 
-    MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
-    print(
-        json.dumps(
-            {
-                "added": added,
-                "reused": reused,
-                "legacy_deactivated": deactivated,
-                "nq_contracts": list({b[0] for b in nq_bundles}),
-            }
-        )
-    )
+    preserve = ("NQM26", "NQU25", "NQZ25")
+    for contract in preserve:
+        for tf, ranges in original.get(contract, {}).items():
+            for dr, entry in ranges.items():
+                if not isinstance(entry, dict) or not entry.get("active"):
+                    continue
+                patched = manifest.get(contract, {}).get(tf, {}).get(dr)
+                if not patched or not patched.get("active"):
+                    raise RuntimeError(f"preservation failed: {contract}/{tf}/{dr}")
+
+    result = {
+        "added": added,
+        "reused": reused,
+        "legacy_deactivated": deactivated,
+        "nq_contracts": sorted({b[0] for b in nq_bundles}),
+        "dry_run": dry_run,
+    }
+    if not dry_run:
+        MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    return result
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Patch NQ gallery manifest entries")
+    parser.add_argument("--dry-run", action="store_true", help="Validate patch without writing manifest")
+    args = parser.parse_args()
+    try:
+        result = apply_patch(dry_run=args.dry_run)
+    except (FileNotFoundError, RuntimeError) as exc:
+        print(f"BLOCKED: {exc}", file=sys.stderr)
+        return 1
+    print(json.dumps(result))
     return 0
 
 
