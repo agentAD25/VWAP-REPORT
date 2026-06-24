@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time of Day x Reaction Heatmap - ALPHA DRIP</title>
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
+    <style>
+        /* Theme CSS */
+/* ALPHA DRIP VWAP Dashboard Theme - Single Source of Truth */
+:root {
+    /* Background Colors */
+    --bg-primary: #0a0e27;
+    --bg-secondary: #1a1f3a;
+    --bg-tertiary: #0f1419;
+    --bg-panel: rgba(15, 20, 35, 0.8);
+    --bg-header: rgba(0, 100, 200, 0.1);
+    --bg-card: rgba(0, 50, 100, 0.3);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.86);
+    --text-muted: rgba(255, 255, 255, 0.58);
+    --text-accent: #90e0ef;
+    --text-subtitle: #7dd3fc;
+    
+    /* Accent Colors */
+    --accent-cyan: #00b4d8;
+    --accent-blue: #0077b6;
+    --accent-light-cyan: #90e0ef;
+    --accent-purple: #7b2cbf;
+    --accent-light-purple: #9d4edd;
+    
+    /* Status Colors */
+    --success: #4ade80;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    
+    /* Borders & Shadows */
+    --border-color: rgba(0, 150, 255, 0.2);
+    --border-strong: rgba(0, 150, 255, 0.3);
+    --border-header: rgba(0, 180, 216, 0.3);
+    --shadow-panel: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --shadow-text: 0 0 20px rgba(0, 180, 216, 0.5);
+    
+    /* Grid & Chart Colors */
+    --grid-color: rgba(0, 150, 255, 0.1);
+    --grid-strong: rgba(255, 255, 255, 0.06);
+    
+    /* Spacing */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 40px;
+    
+    /* Border Radius */
+    --radius-sm: 5px;
+    --radius-md: 10px;
+    --radius-lg: 15px;
+    
+    /* Typography */
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size-xs: 0.8em;
+    --font-size-sm: 0.9em;
+    --font-size-base: 1em;
+    --font-size-lg: 1.1em;
+    --font-size-xl: 1.3em;
+    --font-size-2xl: 1.5em;
+    --font-size-3xl: 2.5em;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-tertiary) 100%);
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-header);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-strong);
+}
+
+.header h1 {
+    font-size: var(--font-size-3xl);
+    background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-light-cyan) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: var(--shadow-text);
+}
+
+.header .subtitle {
+    color: var(--text-accent);
+    font-size: var(--font-size-lg);
+}
+
+/* Panel/Container Styles */
+.panel {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+}
+
+.card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Chart Container */
+.chart-container {
+    background: var(--bg-panel);
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-panel);
+    backdrop-filter: blur(10px);
+    margin-bottom: var(--spacing-md);
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 100%;
+}
+
+.chart-title {
+    font-size: var(--font-size-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--text-accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.chart-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--text-subtitle);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Table Styles */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: var(--spacing-sm);
+}
+
+.data-table th {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+    color: var(--text-primary);
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: 1px solid var(--border-header);
+    font-size: var(--font-size-base);
+}
+
+.data-table td {
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+}
+
+.data-table tr:nth-child(even) {
+    background: rgba(0, 100, 200, 0.1);
+}
+
+.data-table tr:hover {
+    background: rgba(0, 150, 255, 0.2);
+    transition: background 0.3s;
+}
+
+/* Takeaways Cards */
+.takeaways {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.takeaway-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    border: 1px solid var(--border-color);
+}
+
+.takeaway-card .label {
+    color: var(--text-muted);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+}
+
+.takeaway-card .value {
+    color: var(--text-accent);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+}
+
+.takeaway-card .description {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-xs);
+}
+
+.takeaway-card .takeaway-warning {
+    color: var(--warning);
+    font-weight: 500;
+}
+
+/* Status Indicators */
+.positive {
+    color: var(--success);
+}
+
+.negative {
+    color: var(--danger);
+}
+
+.warning {
+    color: var(--warning);
+}
+
+/* Links & Downloads */
+.download-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-card);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+}
+
+.download-link {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+    transition: all 0.3s;
+}
+
+.download-link:hover {
+    background: rgba(0, 180, 216, 0.2);
+    border-color: var(--accent-cyan);
+}
+
+/* Grid Layouts */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: var(--text-muted);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+
+        .vwap-public-disclosure-banner, .vwap-public-disclosure-footer, .vwap-public-disclosure-nt8,
+        .vwap-public-disclosure-csv {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #cfefff);
+            background: rgba(0, 40, 80, 0.45);
+            border: 1px solid rgba(0, 180, 216, 0.35);
+            border-radius: 10px;
+        }
+        .vwap-public-disclosure-footer { margin-top: 24px; color: var(--text-muted, #b8d4e8); }
+        .vwap-public-disclosure-oneline { margin: 10px 0 0 0; font-size: 0.82em; color: var(--text-accent, #7dd3fc); }
+        .vwap-complete-session-policy {
+            margin: 12px var(--spacing-md, 16px) 16px var(--spacing-md, 16px);
+            padding: 14px 18px;
+            font-size: 0.88em;
+            line-height: 1.45;
+            color: var(--text-secondary, #e0f7fa);
+            background: rgba(0, 60, 40, 0.35);
+            border: 1px solid rgba(0, 200, 140, 0.45);
+            border-radius: 10px;
+        }
+        .vwap-complete-session-policy ul { margin: 10px 0 0 18px; }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Time of Day x Reaction Heatmap</h1>
+        <div class="subtitle">
+            MGCJ |
+            RTH |
+            1m |
+            Built by TonySnow | ALPHA DRIP
+        </div>
+        
+        <div class="subtitle" style="margin-top: 10px; font-size: 0.9em; color: var(--text-muted);">
+            2025-01-29 - 2025-03-26
+        </div>
+        
+    </div>
+
+    
+    <div class="takeaways">
+        
+        <div class="takeaway-card">
+            <div class="label">Best Time (Reaction)</div>
+            <div class="value">10:59</div>
+            
+            <div class="description">Reaction: 14.8</div>
+            
+            
+        </div>
+        
+        <div class="takeaway-card">
+            <div class="label">Total Events</div>
+            <div class="value">2,391</div>
+            
+            <div class="description">Across all time buckets</div>
+            
+            
+        </div>
+        
+    </div>
+    
+
+    
+    <div class="dashboard-container">
+        
+        <div class="chart-container">
+            <div class="chart-title">Average Reaction Size by Time of Day</div>
+            
+            <div id="chart-1" style="height: 450px; width: 100%; margin: 0 auto;"></div>
+        </div>
+        
+    </div>
+    
+
+    
+
+    
+    <div class="panel">
+        <h3 style="color: var(--text-accent); margin-bottom: var(--spacing-sm);">Notes</h3>
+        <p class="text-muted">Heatmap showing reaction patterns across different times of day.</p>
+    </div>
+    
+
+    
+
+    
+    <script>
+        const plotlyConfig = {
+            displayModeBar: true,
+            displaylogo: false,
+            modeBarButtonsToRemove: ['lasso2d', 'select2d'],
+            responsive: true
+        };
+        
+        Plotly.newPlot('chart-1', [{"z": [[NaN, 10.685714285714312, 11.428571428571688, 6.599999999999909, 4.533333333333455, 5.400000000000546, 3.4000000000005457], [NaN, 12.492307692307804, 4.914285714285662, 5.466666666667152, 7.249999999999773, 3.200000000000728, 5.300000000000182], [NaN, 6.11428571428509, 7.600000000000061, 3.0666666666675155, 5.599999999999325, 4.66666666666697, 3.2], [NaN, 12.879999999999743, 7.359999999999855, 3.6000000000001364, 5.428571428571169, 5.440000000000145, 4.066666666666303], [NaN, 7.033333333333455, 6.914285714285662, 2.6799999999997453, 7.66666666666697, 2.0, 2.1599999999998545], [NaN, 6.799999999999879, 10.599999999999682, 3.480000000000473, 6.900000000000546, 2.399999999999636, 3.6799999999999273], [NaN, 8.171428571428546, 7.600000000000061, 3.733333333333374, 5.0399999999997815, 3.699999999999818, 6.300000000000182], [NaN, 8.799999999999955, 4.914285714285403, 4.080000000000291, 6.599999999999454, 3.900000000000091, 2.0], [NaN, 7.163636363636463, 6.133333333333819, 3.200000000000273, 8.0, 3.700000000000273, 7.066666666666909], [NaN, 7.959999999999309, 3.200000000000364, 2.8, 9.400000000000546, 4.4, 4.2666666666658175], [NaN, 6.959999999999491, 5.2999999999999545, 2.699999999999818, 6.399999999999636, 3.299999999999727, 2.800000000000182], [NaN, 7.066666666666606, 7.099999999999682, 3.0, 6.266666666666424, 3.333333333333333, 3.399999999999636], [NaN, 6.599999999999454, 5.266666666667031, 3.199999999999948, 5.600000000000364, 3.099999999999909, 1.199999999999818], [NaN, 8.177777777777212, 7.0499999999999545, 0.9999999999990904, 4.499999999999545, 3.399999999999636, 1.4999999999990905], [NaN, 7.550000000000182, 4.320000000000073, 7.199999999999515, 5.33333333333303, 3.466666666666545, 2.9333333333330907], [NaN, 9.272727272727272, 4.7999999999996765, 2.9599999999994906, 8.199999999999818, 2.7999999999992724, 1.0], [NaN, 7.0, 7.350000000000364, 4.800000000000364, 4.571428571428571, 6.799999999999272, 5.0399999999997815], [NaN, 6.933333333333546, 4.355555555555636, 4.240000000000146, 6.133333333333212, 6.266666666666424, 2.479999999999927], [NaN, 6.369230769230853, 5.422222222222142, 4.171428571428676, 3.7000000000000455, 5.439999999999782, 4.699999999999818], [NaN, 5.920000000000073, 5.022222222222303, 4.066666666666303, 3.666666666666364, 3.999999999999636, 6.0], [NaN, 8.11428571428574, 5.766666666666576, 3.199999999999818, 4.266666666666727, 3.099999999999909, 1.699999999999818], [NaN, 6.500000000000455, 5.5, 4.900000000000091, 5.679999999999927, 2.599999999999909, 6.399999999999636], [NaN, 10.872727272727635, 4.966666666666242, 4.199999999999818, 3.039999999999781, 2.240000000000145, 4.666666666666667], [NaN, 10.850000000000136, 4.577777777778465, 3.799999999999272, 5.300000000000182, 3.039999999999781, 2.266666666666424], [NaN, 8.400000000000242, 3.7500000000002274, 2.0, 8.800000000000363, 3.039999999999418, 2.800000000000485], [NaN, 4.533333333333252, 4.400000000000364, 1.0, 2.866666666667394, 4.0, 4.199999999999818], [NaN, 5.644444444443959, 2.879999999999927, 2.600000000000364, 7.085714285714078, 2.2666666666670303, 2.5999999999994543], [NaN, 6.879999999999745, 6.133333333333212, 3.5999999999997576, 5.200000000000121, 3.9999999999990905, 2.5999999999994543], [NaN, 6.457142857142961, 4.5, 2.7999999999992724, 5.866666666666788, 4.133333333333819, 0.8000000000001819], [NaN, 7.949999999999818, 6.200000000000273, 4.0, 4.266666666666424, 4.199999999999818, 6.0], [NaN, 8.749999999999545, 5.133333333333212, 3.5999999999994543, 3.0666666666663027, 2.7999999999992724, 2.133333333333212], [NaN, 9.066666666666707, 4.571428571428831, 3.866666666666788, 3.0666666666669093, 2.200000000000728, 2.200000000000728], [8.815384615384504, 6.228571428571221, 5.777777777777778, 3.733333333333273, 3.933333333333697, 2.480000000000291, 6.399999999999636], [6.788571428571284, 4.600000000000061, 5.600000000000364, 3.288888888888929, 3.5999999999997576, 3.066666666667212, 4.800000000001091], [7.558620689655322, 4.479999999999928, 4.4000000000004444, 2.9599999999998543, 3.759999999999855, 2.2666666666673336, 2.0], [8.770370370370411, 5.560000000000036, 6.08888888888901, 4.8999999999991815, 4.066666666666303, 3.199999999999818, 4.799999999999272], [10.095238095238267, 4.914285714285662, 5.733333333333576, 5.066666666666303, 4.342857142857871, 3.333333333332727, NaN], [9.165217391304155, 7.563636363636264, 4.240000000000509, 4.199999999999818, 4.742857142856987, 4.0, 8.399999999999636], [9.140000000000054, 8.349999999999909, 3.085714285714338, 2.4000000000002424, 4.879999999999927, 6.160000000000219, 1.6000000000003638], [7.894736842105168, 4.550000000000409, 3.600000000000364, 3.8999999999991815, 3.4857142857144936, 3.828571428571845, 4.200000000000728], [6.199999999999666, 4.977777777778304, 3.680000000000291, 4.300000000000182, 2.880000000000291, 3.520000000000073, 3.199999999999818], [8.239999999999963, 5.733333333333576, 4.0499999999999545, 2.100000000000364, 2.999999999999394, 0.9000000000005457, NaN], [6.258823529411636, 5.25, 4.2000000000000455, 3.3599999999998547, 4.466666666666545, 3.3600000000002184, NaN], [9.942857142857282, 5.450000000000273, 4.099999999999682, 3.0400000000001457, 4.133333333333212, 2.4000000000005457, NaN], [9.600000000000245, 3.600000000000104, 3.93333333333309, 2.479999999999927, 3.4400000000001456, 1.7333333333329697, 4.399999999999636], [8.781818181818297, 6.399999999999636, 5.799999999999879, 3.799999999999727, 3.866666666666788, 3.733333333334182, 6.800000000000182], [10.246153846154185, 9.866666666666182, 7.199999999999818, 3.519999999999709, 3.800000000000182, 4.400000000000546, 1.5999999999985448], [9.4571428571427, 7.760000000000582, 8.400000000000242, 2.9999999999996967, 3.6000000000008185, 4.733333333333879, 2.0], [7.377777777777737, 6.933333333333697, 3.199999999999636, 2.699999999999818, 2.9333333333336973, 4.900000000000318, 3.199999999999818], [7.222222222222121, 9.040000000000145, 2.4000000000002424, 3.5333333333337578, 3.466666666667152, 4.22857142857148, 2.5999999999994543], [8.099999999999758, 7.679999999999927, 3.520000000000073, 5.120000000000073, 2.800000000000485, 5.111111111111313, 3.199999999999818], [8.033333333333, 5.314285714285818, 3.1200000000004366, 4.533333333333455, 1.800000000000182, 3.9999999999997726, 1.4666666666671515], [5.418181818181686, 7.199999999999818, 4.533333333333455, 1.680000000000291, 4.666666666666667, 2.6666666666666665, 3.0], [7.781818181818215, 5.0, 2.8, 3.280000000000291, 3.0666666666663027, 3.119999999999709, 2.6666666666666665], [8.23333333333297, 10.133333333333818, 5.759999999999854, 1.5999999999994543, 3.200000000000728, 3.6, 2.666666666667273], [5.822222222222384, 3.280000000000291, 4.0, 4.899999999999636, 2.5, 3.542857142857039, 2.9333333333330907], [6.933333333333091, 5.399999999999636, 5.0399999999997815, 2.7200000000008004, 8.720000000000436, 3.5428571428572986, 3.600000000000364], [11.5600000000004, 4.640000000000145, 5.066666666666606, 2.800000000000182, 5.279999999999927, 4.177777777777818, 0.7999999999998787], [4.533333333332848, 6.533333333333758, 6.514285714285506, 3.040000000000873, 7.866666666665878, 3.519999999999709, 1.199999999999515], [10.888888888888689, 14.800000000000365, 5.279999999999563, 4.866666666666788, 7.77142857142852, 4.320000000000436, 1.3333333333333333]], "x": ["9", "10", "11", "12", "13", "14", "15"], "y": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"], "type": "heatmap", "colorscale": [[0, "#0077b6"], [0.5, "#00b4d8"], [1, "#90e0ef"]]}], {"xaxis": {"title": "hour", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "minute", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        
+    </script>
+    
+</body>
+</html>
