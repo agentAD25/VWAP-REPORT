@@ -352,14 +352,14 @@ body {
             <div class="label">Best Window (MFE)</div>
             <div class="value">30 min</div>
             
-            <div class="description">Median MFE: 0.0 ticks</div>
+            <div class="description">Median MFE: 17.0 ticks</div>
             
             
         </div>
         
         <div class="takeaway-card">
             <div class="label">MFE/MAE Asymmetry</div>
-            <div class="value">0.73x</div>
+            <div class="value">0.59x</div>
             
             <div class="description">Ratio of favorable to adverse excursion</div>
             
@@ -368,7 +368,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Total Events</div>
-            <div class="value">561</div>
+            <div class="value">166</div>
             
             <div class="description">Across all windows</div>
             
@@ -427,9 +427,9 @@ body {
                     
                     <td>FROM_ABOVE</td>
                     
-                    <td>0.0009000000000001</td>
+                    <td>4.500000000000615</td>
                     
-                    <td>0.0052999999999996</td>
+                    <td>26.49999999999819</td>
                     
                     <td>52</td>
                     
@@ -443,9 +443,9 @@ body {
                     
                     <td>FROM_BELOW</td>
                     
-                    <td>0.0007999999999999</td>
+                    <td>3.99999999999956</td>
                     
-                    <td>0.0045999999999999</td>
+                    <td>22.999999999999687</td>
                     
                     <td>52</td>
                     
@@ -459,11 +459,11 @@ body {
                     
                     <td>FROM_ABOVE</td>
                     
-                    <td>0.0034999999999998</td>
+                    <td>16.999999999995907</td>
                     
-                    <td>0.0023999999999997</td>
+                    <td>10.00000000000334</td>
                     
-                    <td>70</td>
+                    <td>13</td>
                     
                 </tr>
                 
@@ -475,11 +475,11 @@ body {
                     
                     <td>FROM_BELOW</td>
                     
-                    <td>0.0041000000000002</td>
+                    <td>9.00000000000123</td>
                     
-                    <td>0.0020000000000002</td>
+                    <td>13.000000000000789</td>
                     
-                    <td>68</td>
+                    <td>11</td>
                     
                 </tr>
                 
@@ -491,11 +491,11 @@ body {
                     
                     <td>FROM_ABOVE</td>
                     
-                    <td>0.0019999999999997</td>
+                    <td>11.499999999999844</td>
                     
-                    <td>0.0015999999999998</td>
+                    <td>6.00000000000156</td>
                     
-                    <td>161</td>
+                    <td>22</td>
                     
                 </tr>
                 
@@ -507,11 +507,11 @@ body {
                     
                     <td>FROM_BELOW</td>
                     
-                    <td>0.0017</td>
+                    <td>6.999999999999229</td>
                     
-                    <td>0.0019</td>
+                    <td>10.999999999998789</td>
                     
-                    <td>158</td>
+                    <td>16</td>
                     
                 </tr>
                 
@@ -538,9 +538,9 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": ["30", "30", "30"], "y": [0.0009000000000001, 0.0034999999999998, 0.0019999999999997], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["30", "30", "30"], "y": [0.0007999999999999, 0.0041000000000002, 0.0017], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["30"]}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["30", "30", "30"], "y": [4.500000000000615, 16.999999999995907, 11.499999999999844], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["30", "30", "30"], "y": [3.99999999999956, 9.00000000000123, 6.999999999999229], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["30"]}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": ["30", "30", "30"], "y": [0.0052999999999996, 0.0023999999999997, 0.0015999999999998], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["30", "30", "30"], "y": [0.0045999999999999, 0.0020000000000002, 0.0019], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["30"]}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": ["30", "30", "30"], "y": [26.49999999999819, 10.00000000000334, 6.00000000000156], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["30", "30", "30"], "y": [22.999999999999687, 13.000000000000789, 10.999999999998789], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "Window (minutes)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "type": "category", "categoryorder": "array", "categoryarray": ["30"]}, "yaxis": {"title": "median_mae", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
     </script>
     

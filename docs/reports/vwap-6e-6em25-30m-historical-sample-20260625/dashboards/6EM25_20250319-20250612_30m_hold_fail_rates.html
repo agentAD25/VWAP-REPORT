@@ -350,7 +350,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Total Events</div>
-            <div class="value">572</div>
+            <div class="value">157</div>
             
             <div class="description">Across all event types and directions</div>
             
@@ -361,25 +361,27 @@ body {
             <div class="label">Highest Hold Rate</div>
             <div class="value">100.00%</div>
             
-            <div class="description">PIERCE from above — n=64</div>
+            <div class="description">TOUCH from below — n=11</div>
             
             
         </div>
         
         <div class="takeaway-card">
             <div class="label">Highest Fail Rate</div>
-            <div class="value">0.00%</div>
+            <div class="value">22.22%</div>
             
-            <div class="description">CROSS from above — n=55</div>
+            <div class="description">TOUCH from above — n=9</div>
             
+            
+            <div class="description takeaway-warning">Small sample: this rate is based on 9 events.</div>
             
         </div>
         
         <div class="takeaway-card">
             <div class="label">Overall Hold Share</div>
-            <div class="value">100.00%</div>
+            <div class="value">85.82%</div>
             
-            <div class="description">537 held / 0 failed (35 neither held nor failed)</div>
+            <div class="description">115 held / 19 failed (23 neither held nor failed)</div>
             
             
         </div>
@@ -440,11 +442,11 @@ body {
                     
                     <td>37</td>
                     
-                    <td>0</td>
+                    <td>4</td>
                     
                     <td>67.27%</td>
                     
-                    <td>0.00%</td>
+                    <td>7.27%</td>
                     
                 </tr>
                 
@@ -458,11 +460,11 @@ body {
                     
                     <td>36</td>
                     
-                    <td>0</td>
+                    <td>8</td>
                     
                     <td>67.92%</td>
                     
-                    <td>0.00%</td>
+                    <td>15.09%</td>
                     
                 </tr>
                 
@@ -472,15 +474,15 @@ body {
                     
                     <td>FROM_ABOVE</td>
                     
-                    <td>64</td>
+                    <td>12</td>
                     
-                    <td>64</td>
+                    <td>10</td>
                     
-                    <td>0</td>
+                    <td>2</td>
                     
-                    <td>100.00%</td>
+                    <td>83.33%</td>
                     
-                    <td>0.00%</td>
+                    <td>16.67%</td>
                     
                 </tr>
                 
@@ -490,15 +492,15 @@ body {
                     
                     <td>FROM_BELOW</td>
                     
-                    <td>84</td>
+                    <td>17</td>
                     
-                    <td>84</td>
+                    <td>14</td>
                     
-                    <td>0</td>
+                    <td>3</td>
                     
-                    <td>100.00%</td>
+                    <td>82.35%</td>
                     
-                    <td>0.00%</td>
+                    <td>17.65%</td>
                     
                 </tr>
                 
@@ -508,15 +510,15 @@ body {
                     
                     <td>FROM_ABOVE</td>
                     
-                    <td>111</td>
+                    <td>9</td>
                     
-                    <td>111</td>
+                    <td>7</td>
                     
-                    <td>0</td>
+                    <td>2</td>
                     
-                    <td>100.00%</td>
+                    <td>77.78%</td>
                     
-                    <td>0.00%</td>
+                    <td>22.22%</td>
                     
                 </tr>
                 
@@ -526,9 +528,9 @@ body {
                     
                     <td>FROM_BELOW</td>
                     
-                    <td>205</td>
+                    <td>11</td>
                     
-                    <td>205</td>
+                    <td>11</td>
                     
                     <td>0</td>
                     
@@ -630,9 +632,9 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6727272727272727, 1.0, 1.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6792452830188679, 1.0, 1.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "hold_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6727272727272727, 0.8333333333333334, 0.7777777777777778], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.6792452830188679, 0.8235294117647058, 1.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "hold_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.0, 0.0, 0.0], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.0, 0.0, 0.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "fail_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.0727272727272727, 0.1666666666666666, 0.2222222222222222], "name": "FROM_ABOVE", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["CROSS", "PIERCE", "TOUCH"], "y": [0.1509433962264151, 0.1764705882352941, 0.0], "name": "FROM_BELOW", "type": "bar", "marker": {"color": "#0077b6"}}], {"xaxis": {"title": "event_type", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "fail_rate", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false, "tickformat": ".2f", "hoverformat": ".2f"}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}, "margin": {"l": 60, "r": 30, "t": 30, "b": 60}, "autosize": true}, plotlyConfig);
         
     </script>
     

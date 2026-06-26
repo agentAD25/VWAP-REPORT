@@ -350,7 +350,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Highest Reversion Probability</div>
-            <div class="value">0.0%</div>
+            <div class="value">50.0%</div>
             
             <div class="description">Touch: 1</div>
             
@@ -359,7 +359,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Best Median MFE</div>
-            <div class="value">0.0 ticks</div>
+            <div class="value">11.0 ticks</div>
             
             <div class="description">Maximum favorable excursion</div>
             
@@ -368,7 +368,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Low Sample Size</div>
-            <div class="value">88.9%</div>
+            <div class="value">90.0%</div>
             
             <div class="description">Buckets with n < 30</div>
             
@@ -423,11 +423,39 @@ body {
                     
                     <td>flat</td>
                     
-                    <td>0.0</td>
+                    <td>0.1282051282051282</td>
                     
-                    <td>0.0013999999999994</td>
+                    <td>5.00000000000167</td>
                     
                     <td>39</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.1363636363636363</td>
+                    
+                    <td>6.999999999999229</td>
+                    
+                    <td>22</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>steep</td>
+                    
+                    <td>0.5</td>
+                    
+                    <td>0.5000000000010552</td>
+                    
+                    <td>2</td>
                     
                 </tr>
                 
@@ -437,11 +465,39 @@ body {
                     
                     <td>flat</td>
                     
+                    <td>0.2857142857142857</td>
+                    
+                    <td>2.9999999999996696</td>
+                    
+                    <td>14</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2222222222222222</td>
+                    
+                    <td>3.99999999999956</td>
+                    
+                    <td>9</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>steep</td>
+                    
                     <td>0.0</td>
                     
-                    <td>0.0011999999999998</td>
+                    <td>11.000000000001007</td>
                     
-                    <td>21</td>
+                    <td>1</td>
                     
                 </tr>
                 
@@ -451,11 +507,25 @@ body {
                     
                     <td>flat</td>
                     
+                    <td>0.1428571428571428</td>
+                    
+                    <td>2.999999999997449</td>
+                    
+                    <td>7</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
                     <td>0.0</td>
                     
-                    <td>0.0005999999999994</td>
+                    <td>1.0000000000021103</td>
                     
-                    <td>13</td>
+                    <td>3</td>
                     
                 </tr>
                 
@@ -467,9 +537,9 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0003999999999999</td>
+                    <td>2.999999999997449</td>
                     
-                    <td>7</td>
+                    <td>5</td>
                     
                 </tr>
                 
@@ -481,63 +551,7 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0014000000000002</td>
-                    
-                    <td>4</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>6</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0007999999999999</td>
-                    
-                    <td>5</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>7</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0009000000000001</td>
-                    
-                    <td>4</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>8</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0002000000000004</td>
-                    
-                    <td>9</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>11</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0009999999999998</td>
+                    <td>6.00000000000156</td>
                     
                     <td>2</td>
                     
@@ -566,9 +580,9 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": [1, 2, 3, 4, 5, 6, 7, 8, 11], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": [1, 2, 3, 4, 5], "y": [0.1282051282051282, 0.2857142857142857, 0.1428571428571428, 0.0, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 2, 3], "y": [0.1363636363636363, 0.2222222222222222, 0.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}, {"x": [1, 2], "y": [0.5, 0.0], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": [1, 2, 3, 4, 5, 6, 7, 8, 11], "y": [0.0013999999999994, 0.0011999999999998, 0.0005999999999994, 0.0003999999999999, 0.0014000000000002, 0.0007999999999999, 0.0009000000000001, 0.0002000000000004, 0.0009999999999998], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": [1, 2, 3, 4, 5], "y": [5.00000000000167, 2.9999999999996696, 2.999999999997449, 2.999999999997449, 6.00000000000156], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 2, 3], "y": [6.999999999999229, 3.99999999999956, 1.0000000000021103], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}, {"x": [1, 2], "y": [0.5000000000010552, 11.000000000001007], "name": "steep", "type": "scatter", "mode": "lines+markers", "line": {"color": "#90e0ef", "width": 2}, "marker": {"color": "#90e0ef", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
     </script>
     

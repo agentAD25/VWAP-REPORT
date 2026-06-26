@@ -350,7 +350,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Highest Reversion Probability</div>
-            <div class="value">0.0%</div>
+            <div class="value">21.9%</div>
             
             <div class="description">Touch: 1</div>
             
@@ -359,7 +359,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Best Median MFE</div>
-            <div class="value">0.0 ticks</div>
+            <div class="value">6.0 ticks</div>
             
             <div class="description">Maximum favorable excursion</div>
             
@@ -368,7 +368,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">Low Sample Size</div>
-            <div class="value">100.0%</div>
+            <div class="value">87.5%</div>
             
             <div class="description">Buckets with n < 30</div>
             
@@ -423,11 +423,25 @@ body {
                     
                     <td>flat</td>
                     
-                    <td>0.0</td>
+                    <td>0.21875</td>
                     
-                    <td>0.0007999999999999</td>
+                    <td>5.999999999999339</td>
                     
-                    <td>23</td>
+                    <td>32</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>1</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.0666666666666666</td>
+                    
+                    <td>1.99999999999978</td>
+                    
+                    <td>15</td>
                     
                 </tr>
                 
@@ -439,9 +453,23 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0011999999999998</td>
+                    <td>2.999999999997449</td>
                     
-                    <td>23</td>
+                    <td>13</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>2</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.1666666666666666</td>
+                    
+                    <td>3.5000000000007248</td>
+                    
+                    <td>12</td>
                     
                 </tr>
                 
@@ -453,9 +481,23 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0003999999999999</td>
+                    <td>4.999999999997229</td>
                     
-                    <td>11</td>
+                    <td>5</td>
+                    
+                </tr>
+                
+                <tr>
+                    
+                    <td>3</td>
+                    
+                    <td>moderate</td>
+                    
+                    <td>0.2</td>
+                    
+                    <td>0.0</td>
+                    
+                    <td>5</td>
                     
                 </tr>
                 
@@ -467,9 +509,9 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0002000000000004</td>
+                    <td>2.4999999999986144</td>
                     
-                    <td>9</td>
+                    <td>2</td>
                     
                 </tr>
                 
@@ -481,49 +523,7 @@ body {
                     
                     <td>0.0</td>
                     
-                    <td>0.0009999999999998</td>
-                    
-                    <td>6</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>6</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0002000000000004</td>
-                    
-                    <td>4</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>7</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0003000000000001</td>
-                    
-                    <td>8</td>
-                    
-                </tr>
-                
-                <tr>
-                    
-                    <td>10</td>
-                    
-                    <td>flat</td>
-                    
-                    <td>0.0</td>
-                    
-                    <td>0.0001999999999995</td>
+                    <td>1.0000000000021103</td>
                     
                     <td>1</td>
                     
@@ -552,9 +552,9 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": [1, 2, 3, 4, 5, 6, 7, 10], "y": [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": [1, 2, 3, 4, 5], "y": [0.21875, 0.0, 0.0, 0.0, 0.0], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 2, 3], "y": [0.0666666666666666, 0.1666666666666666, 0.2], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "p_revert", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
-        Plotly.newPlot('chart-2', [{"x": [1, 2, 3, 4, 5, 6, 7, 10], "y": [0.0007999999999999, 0.0011999999999998, 0.0003999999999999, 0.0002000000000004, 0.0009999999999998, 0.0002000000000004, 0.0003000000000001, 0.0001999999999995], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-2', [{"x": [1, 2, 3, 4, 5], "y": [5.999999999999339, 2.999999999997449, 4.999999999997229, 2.4999999999986144, 1.0000000000021103], "name": "flat", "type": "scatter", "mode": "lines+markers", "line": {"color": "#9d4edd", "width": 2}, "marker": {"color": "#9d4edd", "size": 4}}, {"x": [1, 2, 3], "y": [1.99999999999978, 3.5000000000007248, 0.0], "name": "moderate", "type": "scatter", "mode": "lines+markers", "line": {"color": "#0077b6", "width": 2}, "marker": {"color": "#0077b6", "size": 4}}], {"xaxis": {"title": "touch_sequence_number", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "median_mfe", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
     </script>
     
