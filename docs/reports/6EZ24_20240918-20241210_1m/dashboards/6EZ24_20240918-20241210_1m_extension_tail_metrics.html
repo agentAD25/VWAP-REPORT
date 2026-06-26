@@ -350,7 +350,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P95 Extension Up</div>
-            <div class="value">0.0 ticks</div>
+            <div class="value">64.4 ticks</div>
             
             <div class="description">95th percentile</div>
             
@@ -359,7 +359,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P99 Extension Up</div>
-            <div class="value">0.0 ticks</div>
+            <div class="value">85.3 ticks</div>
             
             <div class="description">99th percentile (outlier threshold)</div>
             
@@ -368,7 +368,7 @@ body {
         
         <div class="takeaway-card">
             <div class="label">P95 Extension Down</div>
-            <div class="value">0.0 ticks</div>
+            <div class="value">90.8 ticks</div>
             
             <div class="description">95th percentile</div>
             
@@ -415,17 +415,17 @@ body {
                 
                 <tr>
                     
-                    <td>0.0114972193370901</td>
+                    <td>57.4860966854507</td>
                     
-                    <td>0.0128812188564644</td>
+                    <td>64.40609428232234</td>
                     
-                    <td>0.0170569236274274</td>
+                    <td>85.2846181371373</td>
                     
-                    <td>0.015289764986619</td>
+                    <td>76.44882493309527</td>
                     
-                    <td>0.0181553115623796</td>
+                    <td>90.7765578118984</td>
                     
-                    <td>0.0193671383899246</td>
+                    <td>96.83569194962304</td>
                     
                 </tr>
                 
@@ -452,7 +452,7 @@ body {
             responsive: true
         };
         
-        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [0.0114972193370901, 0.0128812188564644, 0.0170569236274274], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [0.015289764986619, 0.0181553115623796, 0.0193671383899246], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
+        Plotly.newPlot('chart-1', [{"x": ["P90", "P95", "P99"], "y": [57.4860966854507, 64.40609428232234, 85.2846181371373], "name": "Up", "type": "bar", "marker": {"color": "#00b4d8"}}, {"x": ["P90", "P95", "P99"], "y": [76.44882493309527, 90.7765578118984, 96.83569194962304], "name": "Down", "type": "bar", "marker": {"color": "#7b2cbf"}}], {"xaxis": {"title": "Percentile", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "yaxis": {"title": "Extension (ticks)", "gridcolor": "rgba(0, 150, 255, 0.1)", "linecolor": "rgba(0, 150, 255, 0.3)", "zeroline": false}, "barmode": "group", "paper_bgcolor": "rgba(15, 20, 35, 0.8)", "plot_bgcolor": "rgba(15, 20, 35, 0.8)", "font": {"color": "#90e0ef", "family": "Segoe UI, Tahoma, Geneva, Verdana, sans-serif"}}, plotlyConfig);
         
     </script>
     
