@@ -2369,6 +2369,100 @@
       }
     }
   },
+  "MCLN26": {
+    "1m": {
+      "20260519-20260616": {
+        "png": [
+          "reports/MCLN26_20260519-20260616_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLN26_20260519-20260616_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260519",
+        "end_date": "20260616",
+        "start": "20260519",
+        "end": "20260616",
+        "contract": "MCLN26",
+        "timeframe": "1m",
+        "date_range": "20260519-20260616",
+        "dashboard_index": "reports/MCLN26_20260519-20260616_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260519-20260616": {
+        "png": [
+          "reports/MCLN26_20260519-20260616_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLN26_20260519-20260616_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260519",
+        "end_date": "20260616",
+        "start": "20260519",
+        "end": "20260616",
+        "contract": "MCLN26",
+        "timeframe": "5m",
+        "date_range": "20260519-20260616",
+        "dashboard_index": "reports/MCLN26_20260519-20260616_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260519-20260616": {
+        "png": [
+          "reports/MCLN26_20260519-20260616_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLN26_20260519-20260616_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260519",
+        "end_date": "20260616",
+        "start": "20260519",
+        "end": "20260616",
+        "contract": "MCLN26",
+        "timeframe": "15m",
+        "date_range": "20260519-20260616",
+        "dashboard_index": "reports/MCLN26_20260519-20260616_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260519-20260616": {
+        "png": [
+          "reports/MCLN26_20260519-20260616_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLN26_20260519-20260616_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260519",
+        "end_date": "20260616",
+        "start": "20260519",
+        "end": "20260616",
+        "contract": "MCLN26",
+        "timeframe": "30m",
+        "date_range": "20260519-20260616",
+        "dashboard_index": "reports/MCLN26_20260519-20260616_30m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
   "MCLQ25": {
     "1m": {
       "20250620-20250716": {
@@ -3224,6 +3318,100 @@
         "timeframe": "30m",
         "date_range": "20250620-20250912",
         "dashboard_index": "reports/vwap-mes-mesu25-30m-historical-sample-20260525/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MESU26": {
+    "1m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MESU26_20260615-20260911_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MESU26_20260615-20260911_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MESU26",
+        "timeframe": "1m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MESU26_20260615-20260911_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MESU26_20260615-20260911_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MESU26_20260615-20260911_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MESU26",
+        "timeframe": "5m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MESU26_20260615-20260911_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MESU26_20260615-20260911_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MESU26_20260615-20260911_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MESU26",
+        "timeframe": "15m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MESU26_20260615-20260911_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MESU26_20260615-20260911_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MESU26_20260615-20260911_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MESU26",
+        "timeframe": "30m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MESU26_20260615-20260911_30m/dashboards/index.html",
         "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
@@ -4227,6 +4415,100 @@
         "timeframe": "30m",
         "date_range": "20240529-20240724",
         "dashboard_index": "reports/MGCQ24_20240529-20240724_30m/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MGCQ26": {
+    "1m": {
+      "20260528-20260729": {
+        "png": [
+          "reports/MGCQ26_20260528-20260729_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MGCQ26_20260528-20260729_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260528",
+        "end_date": "20260729",
+        "start": "20260528",
+        "end": "20260729",
+        "contract": "MGCQ26",
+        "timeframe": "1m",
+        "date_range": "20260528-20260729",
+        "dashboard_index": "reports/MGCQ26_20260528-20260729_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260528-20260729": {
+        "png": [
+          "reports/MGCQ26_20260528-20260729_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MGCQ26_20260528-20260729_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260528",
+        "end_date": "20260729",
+        "start": "20260528",
+        "end": "20260729",
+        "contract": "MGCQ26",
+        "timeframe": "5m",
+        "date_range": "20260528-20260729",
+        "dashboard_index": "reports/MGCQ26_20260528-20260729_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260528-20260729": {
+        "png": [
+          "reports/MGCQ26_20260528-20260729_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MGCQ26_20260528-20260729_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260528",
+        "end_date": "20260729",
+        "start": "20260528",
+        "end": "20260729",
+        "contract": "MGCQ26",
+        "timeframe": "15m",
+        "date_range": "20260528-20260729",
+        "dashboard_index": "reports/MGCQ26_20260528-20260729_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260528-20260729": {
+        "png": [
+          "reports/MGCQ26_20260528-20260729_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MGCQ26_20260528-20260729_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260528",
+        "end_date": "20260729",
+        "start": "20260528",
+        "end": "20260729",
+        "contract": "MGCQ26",
+        "timeframe": "30m",
+        "date_range": "20260528-20260729",
+        "dashboard_index": "reports/MGCQ26_20260528-20260729_30m/dashboards/index.html",
         "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
@@ -5762,6 +6044,100 @@
         "date_range": "20250623-20250915",
         "dashboard_index": "reports/NQU25_20250623-20250915_30m/index.html",
         "canonical": false,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "NQU26": {
+    "1m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/NQU26_20260615-20260911_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/NQU26_20260615-20260911_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "NQU26",
+        "timeframe": "1m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/NQU26_20260615-20260911_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/NQU26_20260615-20260911_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/NQU26_20260615-20260911_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "NQU26",
+        "timeframe": "5m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/NQU26_20260615-20260911_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/NQU26_20260615-20260911_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/NQU26_20260615-20260911_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "NQU26",
+        "timeframe": "15m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/NQU26_20260615-20260911_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/NQU26_20260615-20260911_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/NQU26_20260615-20260911_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "NQU26",
+        "timeframe": "30m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/NQU26_20260615-20260911_30m/dashboards/index.html",
+        "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
         "public_safe": true
