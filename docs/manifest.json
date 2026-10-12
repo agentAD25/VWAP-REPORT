@@ -5400,6 +5400,100 @@
       }
     }
   },
+  "MNQU26": {
+    "1m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MNQU26_20260615-20260911_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQU26_20260615-20260911_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MNQU26",
+        "timeframe": "1m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MNQU26_20260615-20260911_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MNQU26_20260615-20260911_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQU26_20260615-20260911_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MNQU26",
+        "timeframe": "5m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MNQU26_20260615-20260911_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MNQU26_20260615-20260911_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQU26_20260615-20260911_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MNQU26",
+        "timeframe": "15m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MNQU26_20260615-20260911_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260615-20260911": {
+        "png": [
+          "reports/MNQU26_20260615-20260911_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MNQU26_20260615-20260911_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260615",
+        "end_date": "20260911",
+        "start": "20260615",
+        "end": "20260911",
+        "contract": "MNQU26",
+        "timeframe": "30m",
+        "date_range": "20260615-20260911",
+        "dashboard_index": "reports/MNQU26_20260615-20260911_30m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
   "MNQZ24": {
     "1m": {
       "20240916-20241213": {
