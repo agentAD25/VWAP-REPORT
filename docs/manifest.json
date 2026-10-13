@@ -2651,6 +2651,100 @@
       }
     }
   },
+  "MCLQ26": {
+    "1m": {
+      "20260618-20260717": {
+        "png": [
+          "reports/MCLQ26_20260618-20260717_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLQ26_20260618-20260717_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260618",
+        "end_date": "20260717",
+        "start": "20260618",
+        "end": "20260717",
+        "contract": "MCLQ26",
+        "timeframe": "1m",
+        "date_range": "20260618-20260717",
+        "dashboard_index": "reports/MCLQ26_20260618-20260717_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260618-20260717": {
+        "png": [
+          "reports/MCLQ26_20260618-20260717_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLQ26_20260618-20260717_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260618",
+        "end_date": "20260717",
+        "start": "20260618",
+        "end": "20260717",
+        "contract": "MCLQ26",
+        "timeframe": "5m",
+        "date_range": "20260618-20260717",
+        "dashboard_index": "reports/MCLQ26_20260618-20260717_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260618-20260717": {
+        "png": [
+          "reports/MCLQ26_20260618-20260717_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLQ26_20260618-20260717_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260618",
+        "end_date": "20260717",
+        "start": "20260618",
+        "end": "20260717",
+        "contract": "MCLQ26",
+        "timeframe": "15m",
+        "date_range": "20260618-20260717",
+        "dashboard_index": "reports/MCLQ26_20260618-20260717_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260618-20260717": {
+        "png": [
+          "reports/MCLQ26_20260618-20260717_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLQ26_20260618-20260717_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260618",
+        "end_date": "20260717",
+        "start": "20260618",
+        "end": "20260717",
+        "contract": "MCLQ26",
+        "timeframe": "30m",
+        "date_range": "20260618-20260717",
+        "dashboard_index": "reports/MCLQ26_20260618-20260717_30m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
   "MCLU25": {
     "1m": {
       "20250722-20250814": {
@@ -2738,6 +2832,100 @@
         "timeframe": "30m",
         "date_range": "20250722-20250814",
         "dashboard_index": "reports/MCLU25_20250722-20250814_30m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    }
+  },
+  "MCLU26": {
+    "1m": {
+      "20260720-20260817": {
+        "png": [
+          "reports/MCLU26_20260720-20260817_1m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLU26_20260720-20260817_1m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260720",
+        "end_date": "20260817",
+        "start": "20260720",
+        "end": "20260817",
+        "contract": "MCLU26",
+        "timeframe": "1m",
+        "date_range": "20260720-20260817",
+        "dashboard_index": "reports/MCLU26_20260720-20260817_1m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "5m": {
+      "20260720-20260817": {
+        "png": [
+          "reports/MCLU26_20260720-20260817_5m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLU26_20260720-20260817_5m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260720",
+        "end_date": "20260817",
+        "start": "20260720",
+        "end": "20260817",
+        "contract": "MCLU26",
+        "timeframe": "5m",
+        "date_range": "20260720-20260817",
+        "dashboard_index": "reports/MCLU26_20260720-20260817_5m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "15m": {
+      "20260720-20260817": {
+        "png": [
+          "reports/MCLU26_20260720-20260817_15m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLU26_20260720-20260817_15m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260720",
+        "end_date": "20260817",
+        "start": "20260720",
+        "end": "20260817",
+        "contract": "MCLU26",
+        "timeframe": "15m",
+        "date_range": "20260720-20260817",
+        "dashboard_index": "reports/MCLU26_20260720-20260817_15m/dashboards/index.html",
+        "canonical": true,
+        "status": "CURRENT_CERTIFIED_PUBLIC",
+        "active": true,
+        "public_safe": true
+      }
+    },
+    "30m": {
+      "20260720-20260817": {
+        "png": [
+          "reports/MCLU26_20260720-20260817_30m/dashboards/index.png"
+        ],
+        "html": [
+          "reports/MCLU26_20260720-20260817_30m/dashboards/index.html"
+        ],
+        "csv": [],
+        "start_date": "20260720",
+        "end_date": "20260817",
+        "start": "20260720",
+        "end": "20260817",
+        "contract": "MCLU26",
+        "timeframe": "30m",
+        "date_range": "20260720-20260817",
+        "dashboard_index": "reports/MCLU26_20260720-20260817_30m/dashboards/index.html",
         "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
