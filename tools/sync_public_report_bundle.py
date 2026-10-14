@@ -265,6 +265,8 @@ def sync_bundle(
     reports_dir: Path | None = None,
     manifest_file: Path | None = None,
     audit_dir: Path | None = None,
+    dry_run: bool = False,
+    expected_supersede_count: int | None = None,
 ) -> dict:
     required_prefix = (
         f"GO_REPLACE_PUBLIC_REPORT_{contract.upper()}_{timeframe.upper()}_CERTIFIED_"
@@ -305,6 +307,45 @@ def sync_bundle(
                 f"No {contract.upper()} {timeframe} slug route to replace, "
                 "and the full-window destination is not already published"
             )
+        found_count = len(superseded_slugs)
+        if expected_supersede_count is not None and found_count > expected_supersede_count:
+            names = [path.name for path in superseded_slugs]
+            raise RuntimeError(
+                f"Refusing to supersede {found_count} slug routes; "
+                f"expected at most {expected_supersede_count}: {names}"
+            )
+        if (
+            expected_supersede_count is not None
+            and found_count != expected_supersede_count
+            and not (found_count == 0 and destination_ready)
+        ):
+            raise RuntimeError(
+                f"Slug supersede count {found_count} does not match "
+                f"expected {expected_supersede_count} for {contract.upper()} {timeframe}"
+            )
+
+    if dry_run:
+        audit_root = audit_dir or (REPO_ROOT / "out" / "audits")
+        audit_root.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "dry_run": True,
+            "approval": approval,
+            "contract": contract,
+            "timeframe": timeframe,
+            "target_folder": target_name,
+            "supersede_slug_routes": supersede_slug_routes,
+            "planned_superseded_slug_folders": [path.name for path in superseded_slugs],
+            "replace_same_contract_timeframe": replace_same_contract_timeframe,
+            "expected_supersede_count": expected_supersede_count,
+            "canonical_dest": str(canonical_dest),
+            "action": "DRY_RUN_NO_WRITE",
+        }
+        audit_path = audit_root / (
+            f"public_report_sync_{contract.lower()}_{timeframe}_{start}_{end}_dry_run.json"
+        )
+        audit_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+        payload["audit_path"] = str(audit_path)
+        return payload
 
     if replace_same_contract_timeframe:
         for folder in _find_replace_candidates(contract, timeframe, target_name):
@@ -360,6 +401,8 @@ def sync_bundle(
         "slug_alias": slug_alias,
         "replace_same_contract_timeframe": replace_same_contract_timeframe,
         "supersede_slug_routes": supersede_slug_routes,
+        "dry_run": False,
+        "expected_supersede_count": expected_supersede_count,
         "superseded_slug_folders": [path.name for path in superseded_slugs],
         "deleted_folders": deleted,
         "purged_root_files": purged_root,
@@ -416,6 +459,17 @@ def main(argv: list[str] | None = None) -> int:
         ),
     )
     parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Plan the sync and write an audit without copying or deleting report files",
+    )
+    parser.add_argument(
+        "--expected-supersede-count",
+        type=int,
+        default=None,
+        help="Fail closed when more slug routes match than this count",
+    )
+    parser.add_argument(
         "--approval",
         required=True,
         help="Explicit operator approval string",
@@ -434,10 +488,19 @@ def main(argv: list[str] | None = None) -> int:
             replace_same_contract_timeframe=args.replace_same_contract_timeframe,
             supersede_slug_routes=args.supersede_slug_routes,
             approval=args.approval,
+            dry_run=args.dry_run,
+            expected_supersede_count=args.expected_supersede_count,
         )
     except (ValueError, FileNotFoundError, RuntimeError) as exc:
         print(f"PUBLIC_REPORT_SYNC_FAIL: {exc}", file=sys.stderr)
         return 1
+
+    if result.get("dry_run"):
+        print("PUBLIC_REPORT_SYNC_DRY_RUN")
+        print(f"target: {result['target_folder']}")
+        print(f"planned_superseded: {result['planned_superseded_slug_folders']}")
+        print(f"audit: {result['audit_path']}")
+        return 0
 
     print("PUBLIC_REPORT_IDEMPOTENT_REPLACE_PASS")
     print(f"target: {result['target_folder']}")
