@@ -4,6 +4,7 @@ Idempotent sync of a certified public-safe VWAP report bundle into VWAP-REPORT d
 
 Copies HTML/PNG/MD only, updates canonical folder + optional slug alias,
 optionally removes superseded legacy folders for the same contract/timeframe,
+optionally supersedes one public slug route for that same contract/timeframe,
 regenerates manifest.json, and writes an audit summary.
 """
 
@@ -14,7 +15,6 @@ import hashlib
 import json
 import re
 import shutil
-import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -26,6 +26,12 @@ REPORTS_DIR = DOCS / "reports"
 BLOCKED_SUFFIXES = {".csv", ".json", ".parquet", ".txt"}
 ALLOWED_SUFFIXES = {".html", ".png", ".md"}
 FOLDER_PATTERN = re.compile(r"^(?P<contract>[A-Z0-9]+)_(?P<start>\d{8})-(?P<end>\d{8})_(?P<tf>\d+m)$")
+SLUG_FOLDER_PATTERN = re.compile(
+    r"^vwap-(?P<root>[a-z0-9]+)-(?P<contract>[a-z0-9]+)-(?P<tf>1m|5m|15m|30m)"
+    r"(?:-(?P<partial>partial))?-historical-sample-(?P<stamp>\d{8})$",
+    re.IGNORECASE,
+)
+MAX_SUPERSEDED_SLUGS_PER_TIMEFRAME = 1
 
 
 def _sha256_file(path: Path) -> str:
@@ -145,6 +151,56 @@ def _find_replace_candidates(
     return candidates
 
 
+def find_superseded_slug_routes(
+    contract: str,
+    timeframe: str,
+    *,
+    reports_dir: Path,
+    exclude_names: set[str] | None = None,
+) -> list[Path]:
+    """Return the one public slug folder for this contract and timeframe.
+
+    Fails closed when more than one slug matches, or when the slug instrument
+    root is not the contract's instrument. Canonical CONTRACT_START-END_TF
+    folders are ignored here; the older replace flag still handles those.
+    """
+    if not reports_dir.is_dir():
+        raise FileNotFoundError(f"Reports directory missing: {reports_dir}")
+    reports_root = reports_dir.resolve()
+    excluded = exclude_names or set()
+    contract_key = contract.upper()
+    timeframe_key = timeframe.lower()
+    found: list[Path] = []
+    for folder in sorted(reports_dir.iterdir()):
+        if not folder.is_dir() or folder.name in excluded:
+            continue
+        match = SLUG_FOLDER_PATTERN.match(folder.name)
+        if not match:
+            continue
+        folder_contract = match.group("contract").upper()
+        folder_tf = match.group("tf").lower()
+        if folder_contract != contract_key or folder_tf != timeframe_key:
+            continue
+        instrument_root = match.group("root").upper()
+        if not contract_key.startswith(instrument_root):
+            raise RuntimeError(
+                f"Slug instrument/contract mismatch: {folder.name} "
+                f"is {instrument_root} but contract is {contract_key}"
+            )
+        resolved = folder.resolve()
+        if reports_root not in resolved.parents:
+            raise RuntimeError(f"Slug path escapes reports dir: {folder}")
+        found.append(folder)
+    if len(found) > MAX_SUPERSEDED_SLUGS_PER_TIMEFRAME:
+        names = [path.name for path in found]
+        raise RuntimeError(
+            f"Refusing to supersede {len(found)} slug routes for "
+            f"{contract_key} {timeframe_key}; maximum is "
+            f"{MAX_SUPERSEDED_SLUGS_PER_TIMEFRAME}: {names}"
+        )
+    return found
+
+
 def _scan_public_safety(target: Path) -> dict:
     errors: list[str] = []
     files: list[str] = []
@@ -182,9 +238,16 @@ def _scan_public_safety(target: Path) -> dict:
     return {"files": files, "errors": errors, "passed": len(errors) == 0}
 
 
-def _regenerate_manifest() -> None:
+def _regenerate_manifest(reports_dir: Path, manifest_file: Path) -> None:
+    import importlib.util
+
     script = REPO_ROOT / "tools" / "generate_manifest.py"
-    subprocess.run([sys.executable, str(script)], check=True, cwd=REPO_ROOT)
+    spec = importlib.util.spec_from_file_location("vwap_generate_manifest_sync", script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"generate_manifest.py missing: {script}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.generate_manifest(reports_dir, manifest_file, write=True, verbose=False)
 
 
 def sync_bundle(
@@ -198,6 +261,10 @@ def sync_bundle(
     slug_alias: str | None,
     replace_same_contract_timeframe: bool,
     approval: str,
+    supersede_slug_routes: bool = False,
+    reports_dir: Path | None = None,
+    manifest_file: Path | None = None,
+    audit_dir: Path | None = None,
 ) -> dict:
     required_prefix = (
         f"GO_REPLACE_PUBLIC_REPORT_{contract.upper()}_{timeframe.upper()}_CERTIFIED_"
@@ -216,11 +283,28 @@ def sync_bundle(
     if not FOLDER_PATTERN.match(target_name):
         raise ValueError(f"Invalid target folder name: {target_name}")
 
-    canonical_dest = REPORTS_DIR / target_name
+    reports_root = reports_dir or REPORTS_DIR
+    manifest_path = manifest_file or (DOCS / "manifest.json")
+    canonical_dest = reports_root / target_name
     dashboards_dest = canonical_dest / "dashboards"
     src_dashboards = source / "dashboards"
     deleted: list[str] = []
     purged_root: list[str] = []
+    superseded_slugs: list[Path] = []
+
+    if supersede_slug_routes:
+        superseded_slugs = find_superseded_slug_routes(
+            contract,
+            timeframe,
+            reports_dir=reports_root,
+            exclude_names={slug_alias} if slug_alias else None,
+        )
+        destination_ready = (canonical_dest / "dashboards" / "index.html").is_file()
+        if not superseded_slugs and not destination_ready:
+            raise RuntimeError(
+                f"No {contract.upper()} {timeframe} slug route to replace, "
+                "and the full-window destination is not already published"
+            )
 
     if replace_same_contract_timeframe:
         for folder in _find_replace_candidates(contract, timeframe, target_name):
@@ -256,10 +340,14 @@ def sync_bundle(
             f"slug={scan_slug['errors']}"
         )
 
-    _regenerate_manifest()
+    for folder in superseded_slugs:
+        shutil.rmtree(folder)
+        deleted.append(folder.name)
 
-    audit_dir = REPO_ROOT / "out" / "audits"
-    audit_dir.mkdir(parents=True, exist_ok=True)
+    _regenerate_manifest(reports_root, manifest_path)
+
+    audit_root = audit_dir or (REPO_ROOT / "out" / "audits")
+    audit_root.mkdir(parents=True, exist_ok=True)
     payload = {
         "synced_at": datetime.now(timezone.utc).isoformat(),
         "approval": approval,
@@ -271,6 +359,8 @@ def sync_bundle(
         "target_folder": target_name,
         "slug_alias": slug_alias,
         "replace_same_contract_timeframe": replace_same_contract_timeframe,
+        "supersede_slug_routes": supersede_slug_routes,
+        "superseded_slug_folders": [path.name for path in superseded_slugs],
         "deleted_folders": deleted,
         "purged_root_files": purged_root,
         "canonical_dest": str(canonical_dest),
@@ -287,7 +377,7 @@ def sync_bundle(
     audit_name = (
         f"public_report_sync_{contract.lower()}_{timeframe}_{start}_{end}_latest.json"
     )
-    audit_path = audit_dir / audit_name
+    audit_path = audit_root / audit_name
     audit_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     payload["audit_path"] = str(audit_path)
     return payload
@@ -318,6 +408,14 @@ def main(argv: list[str] | None = None) -> int:
         help="Remove superseded legacy folders for same contract+timeframe",
     )
     parser.add_argument(
+        "--supersede-slug-routes",
+        action="store_true",
+        help=(
+            "After public safety passes, replace at most one existing slug "
+            "folder for this contract and timeframe"
+        ),
+    )
+    parser.add_argument(
         "--approval",
         required=True,
         help="Explicit operator approval string",
@@ -334,6 +432,7 @@ def main(argv: list[str] | None = None) -> int:
             target_folder=args.target_folder,
             slug_alias=args.keep_slug_alias,
             replace_same_contract_timeframe=args.replace_same_contract_timeframe,
+            supersede_slug_routes=args.supersede_slug_routes,
             approval=args.approval,
         )
     except (ValueError, FileNotFoundError, RuntimeError) as exc:
