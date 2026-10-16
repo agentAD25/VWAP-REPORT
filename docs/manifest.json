@@ -3866,26 +3866,22 @@
       }
     },
     "30m": {
-      "20241124-20250128": {
-        "png": [],
+      "20250102-20250128": {
+        "png": [
+          "reports/MGCG25_20250102-20250128_30m/dashboards/index.png"
+        ],
         "html": [
-          "reports/MGCG25_20241124-20250128_30m/daily_max_extensions.html",
-          "reports/MGCG25_20241124-20250128_30m/extension_tail_metrics.html",
-          "reports/MGCG25_20241124-20250128_30m/heatmap_time_of_day_x_reaction.html",
-          "reports/MGCG25_20241124-20250128_30m/index.html",
-          "reports/MGCG25_20241124-20250128_30m/mfe_mae_by_event_window.html",
-          "reports/MGCG25_20241124-20250128_30m/oos_by_month.html",
-          "reports/MGCG25_20241124-20250128_30m/regime_segment_grid.html"
+          "reports/MGCG25_20250102-20250128_30m/dashboards/index.html"
         ],
         "csv": [],
-        "start_date": "20241124",
+        "start_date": "20250102",
         "end_date": "20250128",
-        "start": "20241124",
+        "start": "20250102",
         "end": "20250128",
         "contract": "MGCG25",
         "timeframe": "30m",
-        "date_range": "20241124-20250128",
-        "dashboard_index": "reports/MGCG25_20241124-20250128_30m/index.html",
+        "date_range": "20250102-20250128",
+        "dashboard_index": "reports/MGCG25_20250102-20250128_30m/dashboards/index.html",
         "canonical": true,
         "status": "CURRENT_CERTIFIED_PUBLIC",
         "active": true,
